@@ -1,0 +1,1 @@
+<!-- file dùng để viết hàm kết nối cơ sở dữ liệu -->
