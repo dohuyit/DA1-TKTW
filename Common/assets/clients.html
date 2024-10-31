@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/client.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header id="header">
+        <div class="header-top">
+          <div class="container">
+            <p>Chào mừng đến với website của chúng tôi 🎉</p>
+          </div>
+        </div>
+        <div class="header-middle">
+          <div class="container">
+            <div class="body">
+              <div class="group-logo">
+                <img src="./image/logo.png" alt="" />
+              </div>
+              <div class="group-search">
+                <form action="">
+                  <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+                  <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+              </div>
+              <div class="group-icon">
+                <div class="item-icon">
+                  <ion-icon name="heart-outline"></ion-icon>
+                  <div class="desc-item-icon">
+                    <p>3 item</p>
+                    <strong>Wishlist</strong>
+                  </div>
+                </div>
+                <div class="item-icon">
+                  <ion-icon name="cart-outline"></ion-icon>
+                  <div class="desc-item-icon">
+                    <p>3 item</p>
+                    <strong>Cart</strong>
+                  </div>
+                </div>
+                <div class="item-icon">
+                  <ion-icon name="people-outline"></ion-icon>
+                  <div class="desc-item-icon">
+                    <p>Account</p>
+                    <strong>Login</strong>
+                  </div>
+                  <ul class="account-dropdown">
+                    <li>
+                      <a href="#">
+                        <ion-icon name="person-add-outline"></ion-icon>
+                        <span>Thông tin tài khoản</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                        <span>Đăng xuất</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-bottom">
+          <div class="container">
+            <nav id="nav">
+              <ul>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Khuyến Mãi</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section id="banner">
+          <div class="slider-main">
+            <div class="slider-wrapper">
+              <div class="slide-container">
+                <img src="./image/banner2.jpg" alt="" class="img-item" />
+                <img src="./image/banner3.jpg" alt="" class="img-item" />
+                <img src="./image/banner4.jpg" alt="" class="img-item" />
+                <img src="./image/banner5.jpg" alt="" class="img-item" />
+              </div>
+              <div class="slide-controls">
+                <button type="button" id="pre">
+                  <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <button type="button" id="next">
+                  <i class="fa-solid fa-angle-right"></i>
+                </button>
+              </div>
+              <ul class="dots-slide">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer></footer>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./js/clients.js"></script>
+  </body>
+</html>
