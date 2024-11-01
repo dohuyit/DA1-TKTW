@@ -1,3 +1,64 @@
+// Tạo hàm chung cho slider
+function initSlider(
+  containerSelector,
+  itemSelector,
+  nextBtnSelector,
+  prevBtnSelector,
+  autoScrollTime = 2500
+) {
+  const container = document.querySelector(containerSelector);
+  const widthItem = document.querySelector(itemSelector).offsetWidth + 20;
+  const btnNext = document.querySelector(nextBtnSelector);
+  const btnPrev = document.querySelector(prevBtnSelector);
+
+  function scrollNext() {
+    if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
+      container.scrollLeft = 0;
+    } else {
+      container.scrollLeft += widthItem;
+    }
+  }
+
+  function scrollPrev() {
+    if (container.scrollLeft <= 0) {
+      container.scrollLeft = container.scrollWidth - container.offsetWidth;
+    } else {
+      container.scrollLeft -= widthItem;
+    }
+  }
+
+  let autoScrollInterval = setInterval(scrollNext, autoScrollTime);
+
+  container.addEventListener("mouseover", () =>
+    clearInterval(autoScrollInterval)
+  );
+  container.addEventListener(
+    "mouseout",
+    () => (autoScrollInterval = setInterval(scrollNext, autoScrollTime))
+  );
+
+  if (btnNext) btnNext.addEventListener("click", scrollNext);
+  if (btnPrev) btnPrev.addEventListener("click", scrollPrev);
+}
+
+// Khởi tạo các slider với hàm chung
+initSlider(
+  ".carousel-container",
+  ".carousel-item",
+  "#btn-next",
+  "#btn-pre",
+  1500
+);
+initSlider(".container-sale", ".cart-sale", "#btn-next", "#btn-pre", 2500);
+initSlider(
+  ".container-comment",
+  ".card-comment",
+  "#Next-comment",
+  "#Pre-comment",
+  2500
+);
+
+// Slider đặc biệt với điều hướng và dots
 function sliderShow() {
   const btnPre = document.getElementById("pre");
   const btnNext = document.getElementById("next");
@@ -5,133 +66,51 @@ function sliderShow() {
   const imgItem = document.querySelectorAll(".img-item");
   const dots = document.querySelectorAll(".dots-slide li");
 
-  var index = 0;
-  var lengthImg = imgItem.length - 1;
+  let index = 0;
+  const lengthImg = imgItem.length - 1;
 
-  let autoReload = setInterval(() => {
-    btnNext.click();
-  }, 2500);
+  let autoReload = setInterval(() => btnNext.click(), 2500);
 
   function reloadSlider() {
-    let checkleft = imgItem[index].offsetLeft;
-    slide.style.transform = `translateX(-${checkleft}px)`;
-
-    let lastActiveDot = document.querySelector(".dots-slide li.active");
-    lastActiveDot.classList.remove("active");
+    slide.style.transform = `translateX(-${imgItem[index].offsetLeft}px)`;
+    document.querySelector(".dots-slide li.active").classList.remove("active");
     dots[index].classList.add("active");
   }
 
-  dots.forEach((li, key) => {
-    li.addEventListener("click", function () {
+  dots.forEach((li, key) =>
+    li.addEventListener("click", () => {
       index = key;
       reloadSlider();
-    });
-  });
+    })
+  );
 
-  btnNext.onclick = function () {
-    if (index === lengthImg) {
-      index = 0;
-    } else {
-      index++;
-    }
+  btnNext.onclick = () => {
+    index = index === lengthImg ? 0 : index + 1;
     reloadSlider();
     clearInterval(autoReload);
   };
 
-  btnPre.onclick = function () {
-    if (index === 0) {
-      index = lengthImg;
-    } else {
-      index--;
-    }
+  btnPre.onclick = () => {
+    index = index === 0 ? lengthImg : index - 1;
     reloadSlider();
     clearInterval(autoReload);
   };
 }
+
 sliderShow();
 
-function sliderBanner() {
-  const container = document.querySelector(".carousel-container");
-  const widthItem = document.querySelector(".carousel-item").offsetWidth + 20;
-
-  function autoScroll() {
-    if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
-      container.scrollLeft = 0;
-    } else {
-      container.scrollLeft += widthItem;
-    }
-  }
-
-  let autoScrollInterval = setInterval(autoScroll, 1500);
-
-  container.addEventListener("mouseover", function () {
-    clearInterval(autoScrollInterval);
-  });
-
-  container.addEventListener("mouseout", function () {
-    autoScrollInterval = setInterval(autoScroll, 1500);
-  });
-}
-
-sliderBanner();
-
-function sliderSale() {
-  const container = document.querySelector(".container-sale");
-  const widthItem = document.querySelector(".cart-sale").offsetWidth + 20;
-
-  document.getElementById("btn-next").onclick = function () {
-    if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
-      container.scrollLeft = 0;
-    } else {
-      container.scrollLeft += widthItem;
-    }
-  };
-
-  document.getElementById("btn-pre").onclick = function () {
-    if (container.scrollLeft <= 0) {
-      container.scrollLeft = container.scrollWidth - container.offsetWidth;
-    } else {
-      container.scrollLeft -= widthItem;
-    }
-  };
-
-  function autoScroll() {
-    if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
-      container.scrollLeft = 0;
-    } else {
-      container.scrollLeft += widthItem;
-    }
-  }
-
-  let autoScrollInterval = setInterval(autoScroll, 3500);
-
-  container.addEventListener("mouseover", function () {
-    clearInterval(autoScrollInterval);
-  });
-
-  container.addEventListener("mouseout", function () {
-    autoScrollInterval = setInterval(autoScroll, 2500);
-  });
-}
-
-sliderSale();
-
-// Đặt thời gian kết thúc
+// Countdown timer
 const endTime = new Date("2024-12-31T23:59:59").getTime();
 
-// Hàm cập nhật thời gian đếm ngược
 function updateCountdown() {
   const now = new Date().getTime();
   const timeLeft = endTime - now;
-
-  // Tính toán giờ, phút, giây
   const hours = Math.floor(
     (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-  // Cập nhật nội dung HTML
   document.getElementById("hours").textContent = String(hours).padStart(2, "0");
   document.getElementById("minutes").textContent = String(minutes).padStart(
     2,
@@ -142,7 +121,6 @@ function updateCountdown() {
     "0"
   );
 
-  // Nếu hết thời gian, dừng đếm ngược
   if (timeLeft < 0) {
     clearInterval(countdownInterval);
     document.querySelector(".title-time-sale").textContent =
@@ -150,8 +128,5 @@ function updateCountdown() {
   }
 }
 
-// Cập nhật đếm ngược mỗi giây
 const countdownInterval = setInterval(updateCountdown, 1000);
-
-// Chạy hàm ngay lập tức để hiển thị thời gian đúng khi tải trang
 updateCountdown();
