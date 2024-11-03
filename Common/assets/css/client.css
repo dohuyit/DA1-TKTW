@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
@@ -280,7 +280,7 @@ main .slider-main {
 
 .item-brand-img img {
   width: 100%;
-  height: 470px;
+  height: 475px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -289,15 +289,17 @@ main .slider-main {
 }
 
 .item-brand-content .br-content-title {
-  padding: 10px 0;
+  padding: 10px 0 15px;
 }
 
 .item-brand-content .br-content-title h2 {
   font-size: 120px;
-  font-weight: 700;
+  font-weight: 800;
+  text-transform: uppercase;
   -webkit-text-stroke: 1px var(--color-hover); /* Outline color and thickness */
   color: transparent;
   opacity: 0.5;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .item-brand-content .br-content {

@@ -1,13 +1,15 @@
 // Tạo hàm chung cho slider
-function initSlider(
+export function initSlider(
   containerSelector,
   itemSelector,
   nextBtnSelector,
   prevBtnSelector,
-  autoScrollTime = 2500
+  autoScrollTime = 2500,
+  numberOffset
 ) {
   const container = document.querySelector(containerSelector);
-  const widthItem = document.querySelector(itemSelector).offsetWidth + 20;
+  const widthItem =
+    document.querySelector(itemSelector).offsetWidth + parseInt(numberOffset);
   const btnNext = document.querySelector(nextBtnSelector);
   const btnPrev = document.querySelector(prevBtnSelector);
 
@@ -47,15 +49,17 @@ initSlider(
   ".carousel-item",
   "#btn-next",
   "#btn-pre",
-  1500
+  1500,
+  20
 );
-initSlider(".container-sale", ".cart-sale", "#btn-next", "#btn-pre", 2500);
+initSlider(".container-sale", ".cart-sale", "#btn-next", "#btn-pre", 2500, 20);
 initSlider(
   ".container-comment",
   ".card-comment",
   "#Next-comment",
   "#Pre-comment",
-  2500
+  2500,
+  20
 );
 
 // Slider đặc biệt với điều hướng và dots
