@@ -1,41 +1,677 @@
-<svg
-  version="1.1"
-  id="Capa_1"
-  xmlns="http://www.w3.org/2000/svg"
-  x="0px"
-  y="0px"
-  viewBox="0 0 512 512"
-  style="enable-background: new 0 0 512 512"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  xml:space="preserve"
->
-  <g>
-    <g>
-      <path
-        d="M501.905,10.593C489.743-1.57,468.721-2.766,441.099,7.133c-18.995,6.81-38.919,18.222-48.451,27.754l-76.55,76.55
-                L64.116,71.859L0,135.975l209.501,82.059l-67.266,67.266l-95.472,5.591L0.984,336.67l103.609,49.994L75.567,415.69l21.24,21.24
-                l28.987-28.987l50.043,103.56l45.768-45.769l5.592-95.472l68.395-68.395l82.043,209.459l64.115-64.116l-39.57-251.933
-                l75.43-75.431c9.532-9.531,20.945-29.455,27.755-48.451C515.264,43.781,514.068,22.754,501.905,10.593z M53.706,124.751
-                l20.846-20.846l215.268,33.811l-57.136,57.136L53.706,124.751z M409.705,436.776l-20.845,20.846l-70.087-178.935l57.128-57.128
-                L409.705,436.776z M477.088,61.262c-5.739,16.012-15.224,31.853-20.718,37.347L197.88,357.101l-5.592,95.472l-7.797,7.797
-                l-36.202-74.918l26.113-26.113l-21.24-21.24l-26.07,26.068L52.137,328l7.788-7.788l95.472-5.591L413.888,56.128
-                c5.495-5.495,21.336-14.977,37.348-20.718c18.176-6.516,27.82-5.186,29.429-3.577C482.272,33.441,483.604,43.083,477.088,61.262z"
-      ></path>
-    </g>
-  </g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-  <g></g>
-</svg>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/category.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>BEKAT - NHÓM 3</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+      <div class="header-top">
+        <div class="container">
+          <p>Chào mừng đến với website của chúng tôi 🎉</p>
+        </div>
+      </div>
+      <div class="header-middle">
+        <div class="container">
+          <div class="body">
+            <div class="group-logo">
+              <img src="./image/logo.png" alt="" />
+            </div>
+            <div class="group-search">
+              <form action="">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
+            <div class="group-icon">
+              <div class="item-icon">
+                <ion-icon name="heart-outline"></ion-icon>
+                <div class="desc-item-icon">
+                  <p>3 item</p>
+                  <strong>Wishlist</strong>
+                </div>
+              </div>
+              <div class="item-icon">
+                <ion-icon name="cart-outline"></ion-icon>
+                <div class="desc-item-icon">
+                  <p>3 item</p>
+                  <strong>Cart</strong>
+                </div>
+              </div>
+              <div class="item-icon">
+                <ion-icon name="people-outline"></ion-icon>
+                <div class="desc-item-icon">
+                  <p>Account</p>
+                  <strong>Login</strong>
+                </div>
+                <ul class="account-dropdown">
+                  <li>
+                    <a href="#">
+                      <ion-icon name="person-add-outline"></ion-icon>
+                      <span>Thông tin tài khoản</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <ion-icon name="log-out-outline"></ion-icon>
+                      <span>Đăng xuất</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="container">
+          <nav id="nav">
+            <ul>
+              <li><a href="#">Trang chủ</a></li>
+              <li><a href="#">Sản phẩm</a></li>
+              <li><a href="#">Khuyến Mãi</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Liên Hệ</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="title-main">
+        <div class="container">
+          <h1>
+            <span>Trang Chủ</span> <span>/</span><strong>Nike</strong>
+          </h1>
+        </div>
+      </section>
+      <section id="carousel-brand">
+        <div class="container">
+          <div class="wrapper-brand">
+            <div class="container-brand">
+              <div class="list-brand">
+                <div class="item-brand">
+                  <img src="./image/adidas-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
+                </div>
+                <div class="item-brand">
+                  <img src="./image/Nike-chinh-hang-tai-Sneaker-Daily.jpg" alt="" />
+                </div>
+                <div class="item-brand">
+                  <img src="./image/Jordan-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
+                </div>
+                <div class="item-brand">
+                  <img src="./image/mlb-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
+                </div>
+                <div class="item-brand">
+                  <img src="./image/puma.jpg" alt="" />
+                </div>
+                <div class="item-brand">
+                  <img src="./image/mcqueen.jpg" alt="" />
+                </div>
+                <div class="item-brand">
+                  <img src="./image/converse.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-category-main">
+        <div class="container">
+          <div class="body-category-products">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar">
+              <h2>Category</h2>
+              <ul class="list-cate">
+                <li><a href="#">Nike</a></li>
+                <li><a href="#">Addidas</a></li>
+                <li><a href="#">Puma</a></li>
+                <li><a href="#">MLB</a></li>
+              </ul>
+
+              <h2>Size</h2>
+              <ul class="list-size">
+                <li><a href="#">36</a></li>
+                <li><a href="#">37</a></li>
+                <li><a href="#">38</a></li>
+                <li><a href="#">39</a></li>
+                <li><a href="#">40</a></li>
+                <li><a href="#">41</a></li>
+                <li><a href="#">41</a></li>
+                <li><a href="#">43</a></li>
+              </ul>
+
+              <h2>Color</h2>
+              <div class="color-options">
+                <span class="color black"></span>
+                <span class="color white"></span>
+                <span class="color red"></span>
+                <!-- Add more colors as needed -->
+              </div>
+            </aside>
+
+            <!-- Product Listing Section -->
+            <div class="product-list">
+              <!-- Toolbar for View Toggle and Sort Options -->
+              <div class="toolbar">
+                <div class="group-btn-layout">
+                  <div class="btn-grid-layout" id="btn-four">
+                    <img src="./image/four.svg" alt="">
+                  </div>
+                  <div class="btn-grid-layout" id="btn-three">
+                    <img src="./image/three.svg" alt="">
+                  </div>
+                  <div class="btn-grid-layout" id="btn-two">
+                    <img src="./image/two.svg" alt="">
+                  </div>
+                </div>
+                <select>
+                  <option value="" hidden selected>Sắp xếp</option>
+                  <option>Bán chạy nhất</option>
+                  <option>Mới nhất</option>
+                  <option>Giá giảm dần</option>
+                  <option>Giá tăng dần</option>
+                </select>
+              </div>
+
+              <!-- Product Cards -->
+              <div class="products-body columns-4" id="products-body">
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-product">
+                    <div class="badge-product">
+                      <span>H</span>
+                      <span>O</span>
+                      <span>T</span>
+                    </div>
+                    <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                  </div>
+                  <div class="content-product">
+                    <div class="top-content">
+                      <span>Nike</span>
+                      <span>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </span>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="heading-card">
+                        <a href="#">Nike G.T. Cut Academy EP</a>
+                      </h3>
+                      <div class="box-price">
+                        <span>2,649,000đ</span>
+                        <span>6,500,000đ</span>
+                      </div>
+                      <div class="tag-card">
+                        <img src="./image/sale-online 1.svg" alt="" />
+                        <p>Giá độc quyền online</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <div class="cotainer">
+        <div class="footer-main">
+          <!-- Logo and Description -->
+          <div class="footer-section footer-about">
+            <img src="./image/logo-footer.png" alt="Kosi Logo" class="footer-logo" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et
+              massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
+              sapien fringilla.
+            </p>
+            <div class="footer-socials">
+              <svg class="icon icon-twitter" width="12" height="10" viewBox="0 0 12 10" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.37397 8.94447C8.28489 8.82591 2.81084 1.72174 2.32012 1.07006H3.819C4.22713 1.6116 8.58451 7.2778 9.84046 8.94447H8.37397ZM0.00012207 10H1.56055C2.34522 9.22365 4.13643 7.45449 5.06605 6.53587C5.4928 7.11488 6.82244 8.74713 7.73911 9.99847C7.88243 9.99847 11.6908 9.99847 12.0001 9.99847C11.3693 9.1617 8.25736 5.30748 7.42572 4.20453C8.68897 2.95701 10.2964 1.36913 11.6819 0C11.558 0 10.1247 0 10.1223 0C9.9182 0.201927 7.46135 2.62888 6.82973 3.25302C6.52607 2.84687 4.41499 0.0650145 4.36884 0H0.203375C0.57506 0.493346 3.968 4.99465 4.43686 5.61726C4.08947 5.96757 0.543479 9.45082 0.00012207 10Z"
+                  fill="currentColor"></path>
+              </svg>
+              <svg class="icon icon-facebook" width="10" height="10" viewBox="0 0 10 10" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10.0001 5.01253C10.0001 2.24561 7.76006 0 5.00006 0C2.24006 0 6.10352e-05 2.24561 6.10352e-05 5.01253C6.10352e-05 7.4386 1.72006 9.45865 4.00006 9.92481V6.51629H3.00006V5.01253H4.00006V3.7594C4.00006 2.79198 4.78506 2.00501 5.75006 2.00501H7.00006V3.50877H6.00006C5.72506 3.50877 5.50006 3.73434 5.50006 4.01003V5.01253H7.00006V6.51629H5.50006V10C8.02506 9.74937 10.0001 7.61404 10.0001 5.01253Z"
+                  fill="currentColor"></path>
+              </svg>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-instagram"
+                viewBox="0 0 18 18">
+                <path fill="currentColor"
+                  d="M8.77 1.58c2.34 0 2.62.01 3.54.05.86.04 1.32.18 1.63.3.41.17.7.35 1.01.66.3.3.5.6.65 1 .12.32.27.78.3 1.64.05.92.06 1.2.06 3.54s-.01 2.62-.05 3.54a4.79 4.79 0 01-.3 1.63c-.17.41-.35.7-.66 1.01-.3.3-.6.5-1.01.66-.31.12-.77.26-1.63.3-.92.04-1.2.05-3.54.05s-2.62 0-3.55-.05a4.79 4.79 0 01-1.62-.3c-.42-.16-.7-.35-1.01-.66-.31-.3-.5-.6-.66-1a4.87 4.87 0 01-.3-1.64c-.04-.92-.05-1.2-.05-3.54s0-2.62.05-3.54c.04-.86.18-1.32.3-1.63.16-.41.35-.7.66-1.01.3-.3.6-.5 1-.65.32-.12.78-.27 1.63-.3.93-.05 1.2-.06 3.55-.06zm0-1.58C6.39 0 6.09.01 5.15.05c-.93.04-1.57.2-2.13.4-.57.23-1.06.54-1.55 1.02C1 1.96.7 2.45.46 3.02c-.22.56-.37 1.2-.4 2.13C0 6.1 0 6.4 0 8.77s.01 2.68.05 3.61c.04.94.2 1.57.4 2.13.23.58.54 1.07 1.02 1.56.49.48.98.78 1.55 1.01.56.22 1.2.37 2.13.4.94.05 1.24.06 3.62.06 2.39 0 2.68-.01 3.62-.05.93-.04 1.57-.2 2.13-.41a4.27 4.27 0 001.55-1.01c.49-.49.79-.98 1.01-1.56.22-.55.37-1.19.41-2.13.04-.93.05-1.23.05-3.61 0-2.39 0-2.68-.05-3.62a6.47 6.47 0 00-.4-2.13 4.27 4.27 0 00-1.02-1.55A4.35 4.35 0 0014.52.46a6.43 6.43 0 00-2.13-.41A69 69 0 008.77 0z">
+                </path>
+                <path fill="currentColor"
+                  d="M8.8 4a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 7.43a2.92 2.92 0 110-5.85 2.92 2.92 0 010 5.85zM13.43 5a1.05 1.05 0 100-2.1 1.05 1.05 0 000 2.1z">
+                </path>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Policy Sections -->
+          <div class="footer-section footer-policies">
+            <h3>VỀ BEKAT</h3>
+            <ul>
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="#">Hệ thống cửa hàng</a></li>
+              <li><a href="#">Thông tin liên hệ</a></li>
+              <li><a href="#">Các điều khoản và điều kiện</a></li>
+            </ul>
+          </div>
+          <div class="footer-section footer-policies">
+            <h3>Hỗ trợ khách hàng</h3>
+            <ul>
+              <li><a href="#">Chính Sách giao hàng</a></li>
+              <li><a href="#">Chính Sách đổi trả</a></li>
+              <li><a href="#">Chính Sách bảo mật</a></li>
+              <li><a href="#">Hỗ trợ và giải đáp thắc mắc</a></li>
+              <li><a href="#">Hướng dẫn mua hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-section footer-policies">
+            <h3>Thông tin và địa chỉ</h3>
+            <ul>
+              <li><a href="#">SĐT: 0123456789</a></li>
+              <li><a href="#">Email: BEKAT@gmail.com</a></li>
+            </ul>
+          </div>
+
+          <!-- Instagram Section -->
+          <div class="footer-section footer-instagram">
+            <h3>Follow @Instagram</h3>
+            <div class="footer-instagram-gallery">
+              <img src="./image/instagram1.jpg" alt="" />
+              <img src="./image/instagram2.jpg" alt="" />
+              <img src="./image/instagram3.jpg" alt="" />
+              <img src="./image/instagram4.jpg" alt="" />
+              <img src="./image/instagram5.jpg" alt="" />
+              <img src="./image/instagram6.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+          <p>Copyright © 2014-2024 BEKAT.vn All Rights Reserved.</p>
+          <div class="footer-payment">
+            <svg class="icon icon--full-color" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img"
+              width="38" height="24" aria-labelledby="pi-visa">
+              <title id="pi-visa">Visa</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
+              </path>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
+              <path
+                d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
+                fill="#142688"></path>
+            </svg>
+            <svg class="icon icon--full-color" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img"
+              width="38" height="24" aria-labelledby="pi-master">
+              <title id="pi-master">Mastercard</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
+              </path>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
+              <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
+              <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
+              <path fill="#FF5F00"
+                d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"></path>
+            </svg>
+            <svg class="icon icon--full-color" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-labelledby="pi-american_express" viewBox="0 0 38 24" width="38" height="24">
+              <title id="pi-american_express">American Express</title>
+              <path fill="#000" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3Z"
+                opacity=".07"></path>
+              <path fill="#006FCF" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32Z">
+              </path>
+              <path fill="#FFF"
+                d="M22.012 19.936v-8.421L37 11.528v2.326l-1.732 1.852L37 17.573v2.375h-2.766l-1.47-1.622-1.46 1.628-9.292-.02Z">
+              </path>
+              <path fill="#006FCF"
+                d="M23.013 19.012v-6.57h5.572v1.513h-3.768v1.028h3.678v1.488h-3.678v1.01h3.768v1.531h-5.572Z"></path>
+              <path fill="#006FCF"
+                d="m28.557 19.012 3.083-3.289-3.083-3.282h2.386l1.884 2.083 1.89-2.082H37v.051l-3.017 3.23L37 18.92v.093h-2.307l-1.917-2.103-1.898 2.104h-2.321Z">
+              </path>
+              <path fill="#FFF" d="M22.71 4.04h3.614l1.269 2.881V4.04h4.46l.77 2.159.771-2.159H37v8.421H19l3.71-8.421Z">
+              </path>
+              <path fill="#006FCF"
+                d="m23.395 4.955-2.916 6.566h2l.55-1.315h2.98l.55 1.315h2.05l-2.904-6.566h-2.31Zm.25 3.777.875-2.09.873 2.09h-1.748Z">
+              </path>
+              <path fill="#006FCF"
+                d="M28.581 11.52V4.953l2.811.01L32.84 9l1.456-4.046H37v6.565l-1.74.016v-4.51l-1.644 4.494h-1.59L30.35 7.01v4.51h-1.768Z">
+              </path>
+            </svg>
+            <svg class="icon icon--full-color" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" width="38"
+              height="24" role="img" aria-labelledby="pi-paypal">
+              <title id="pi-paypal">PayPal</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
+              </path>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
+              <path fill="#003087"
+                d="M23.9 8.3c.2-1 0-1.7-.6-2.3-.6-.7-1.7-1-3.1-1h-4.1c-.3 0-.5.2-.6.5L14 15.6c0 .2.1.4.3.4H17l.4-3.4 1.8-2.2 4.7-2.1z">
+              </path>
+              <path fill="#3086C8"
+                d="M23.9 8.3l-.2.2c-.5 2.8-2.2 3.8-4.6 3.8H18c-.3 0-.5.2-.6.5l-.6 3.9-.2 1c0 .2.1.4.3.4H19c.3 0 .5-.2.5-.4v-.1l.4-2.4v-.1c0-.2.3-.4.5-.4h.3c2.1 0 3.7-.8 4.1-3.2.2-1 .1-1.8-.4-2.4-.1-.5-.3-.7-.5-.8z">
+              </path>
+              <path fill="#012169"
+                d="M23.3 8.1c-.1-.1-.2-.1-.3-.1-.1 0-.2 0-.3-.1-.3-.1-.7-.1-1.1-.1h-3c-.1 0-.2 0-.2.1-.2.1-.3.2-.3.4l-.7 4.4v.1c0-.3.3-.5.6-.5h1.3c2.5 0 4.1-1 4.6-3.8v-.2c-.1-.1-.3-.2-.5-.2h-.1z">
+              </path>
+            </svg>
+            <svg class="icon icon--full-color" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img"
+              width="38" height="24" aria-labelledby="pi-diners_club">
+              <title id="pi-diners_club">Diners Club</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
+              </path>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
+              <path
+                d="M12 12v3.7c0 .3-.2.3-.5.2-1.9-.8-3-3.3-2.3-5.4.4-1.1 1.2-2 2.3-2.4.4-.2.5-.1.5.2V12zm2 0V8.3c0-.3 0-.3.3-.2 2.1.8 3.2 3.3 2.4 5.4-.4 1.1-1.2 2-2.3 2.4-.4.2-.4.1-.4-.2V12zm7.2-7H13c3.8 0 6.8 3.1 6.8 7s-3 7-6.8 7h8.2c3.8 0 6.8-3.1 6.8-7s-3-7-6.8-7z"
+                fill="#3086C8"></path>
+            </svg>
+            <svg class="icon icon--full-color" viewBox="0 0 38 24" width="38" height="24" role="img"
+              aria-labelledby="pi-discover" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <title id="pi-discover">Discover</title>
+              <path fill="#000" opacity=".07"
+                d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"></path>
+              <path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32z" fill="#fff"></path>
+              <path
+                d="M3.57 7.16H2v5.5h1.57c.83 0 1.43-.2 1.96-.63.63-.52 1-1.3 1-2.11-.01-1.63-1.22-2.76-2.96-2.76zm1.26 4.14c-.34.3-.77.44-1.47.44h-.29V8.1h.29c.69 0 1.11.12 1.47.44.37.33.59.84.59 1.37 0 .53-.22 1.06-.59 1.39zm2.19-4.14h1.07v5.5H7.02v-5.5zm3.69 2.11c-.64-.24-.83-.4-.83-.69 0-.35.34-.61.8-.61.32 0 .59.13.86.45l.56-.73c-.46-.4-1.01-.61-1.62-.61-.97 0-1.72.68-1.72 1.58 0 .76.35 1.15 1.35 1.51.42.15.63.25.74.31.21.14.32.34.32.57 0 .45-.35.78-.83.78-.51 0-.92-.26-1.17-.73l-.69.67c.49.73 1.09 1.05 1.9 1.05 1.11 0 1.9-.74 1.9-1.81.02-.89-.35-1.29-1.57-1.74zm1.92.65c0 1.62 1.27 2.87 2.9 2.87.46 0 .86-.09 1.34-.32v-1.26c-.43.43-.81.6-1.29.6-1.08 0-1.85-.78-1.85-1.9 0-1.06.79-1.89 1.8-1.89.51 0 .9.18 1.34.62V7.38c-.47-.24-.86-.34-1.32-.34-1.61 0-2.92 1.28-2.92 2.88zm12.76.94l-1.47-3.7h-1.17l2.33 5.64h.58l2.37-5.64h-1.16l-1.48 3.7zm3.13 1.8h3.04v-.93h-1.97v-1.48h1.9v-.93h-1.9V8.1h1.97v-.94h-3.04v5.5zm7.29-3.87c0-1.03-.71-1.62-1.95-1.62h-1.59v5.5h1.07v-2.21h.14l1.48 2.21h1.32l-1.73-2.32c.81-.17 1.26-.72 1.26-1.56zm-2.16.91h-.31V8.03h.33c.67 0 1.03.28 1.03.82 0 .55-.36.85-1.05.85z"
+                fill="#231F20"></path>
+              <path d="M20.16 12.86a2.931 2.931 0 100-5.862 2.931 2.931 0 000 5.862z" fill="url(#pi-paint0_linear)">
+              </path>
+              <path opacity=".65" d="M20.16 12.86a2.931 2.931 0 100-5.862 2.931 2.931 0 000 5.862z"
+                fill="url(#pi-paint1_linear)"></path>
+              <path
+                d="M36.57 7.506c0-.1-.07-.15-.18-.15h-.16v.48h.12v-.19l.14.19h.14l-.16-.2c.06-.01.1-.06.1-.13zm-.2.07h-.02v-.13h.02c.06 0 .09.02.09.06 0 .05-.03.07-.09.07z"
+                fill="#231F20"></path>
+              <path
+                d="M36.41 7.176c-.23 0-.42.19-.42.42 0 .23.19.42.42.42.23 0 .42-.19.42-.42 0-.23-.19-.42-.42-.42zm0 .77c-.18 0-.34-.15-.34-.35 0-.19.15-.35.34-.35.18 0 .33.16.33.35 0 .19-.15.35-.33.35z"
+                fill="#231F20"></path>
+              <path d="M37 12.984S27.09 19.873 8.976 23h26.023a2 2 0 002-1.984l.024-3.02L37 12.985z" fill="#F48120">
+              </path>
+              <defs>
+                <linearGradient id="pi-paint0_linear" x1="21.657" y1="12.275" x2="19.632" y2="9.104"
+                  gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F89F20"></stop>
+                  <stop offset=".25" stop-color="#F79A20"></stop>
+                  <stop offset=".533" stop-color="#F68D20"></stop>
+                  <stop offset=".62" stop-color="#F58720"></stop>
+                  <stop offset=".723" stop-color="#F48120"></stop>
+                  <stop offset="1" stop-color="#F37521"></stop>
+                </linearGradient>
+                <linearGradient id="pi-paint1_linear" x1="21.338" y1="12.232" x2="18.378" y2="6.446"
+                  gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F58720"></stop>
+                  <stop offset=".359" stop-color="#E16F27"></stop>
+                  <stop offset=".703" stop-color="#D4602C"></stop>
+                  <stop offset=".982" stop-color="#D05B2E"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="./js/category.js"></script>
+</body>
+
+</html>

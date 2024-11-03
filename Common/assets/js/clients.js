@@ -1,50 +1,6 @@
-// Tạo hàm chung cho slider
-export function initSlider(
-  containerSelector,
-  itemSelector,
-  nextBtnSelector,
-  prevBtnSelector,
-  autoScrollTime = 2500,
-  numberOffset
-) {
-  const container = document.querySelector(containerSelector);
-  const widthItem =
-    document.querySelector(itemSelector).offsetWidth + parseInt(numberOffset);
-  const btnNext = document.querySelector(nextBtnSelector);
-  const btnPrev = document.querySelector(prevBtnSelector);
-
-  function scrollNext() {
-    if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
-      container.scrollLeft = 0;
-    } else {
-      container.scrollLeft += widthItem;
-    }
-  }
-
-  function scrollPrev() {
-    if (container.scrollLeft <= 0) {
-      container.scrollLeft = container.scrollWidth - container.offsetWidth;
-    } else {
-      container.scrollLeft -= widthItem;
-    }
-  }
-
-  let autoScrollInterval = setInterval(scrollNext, autoScrollTime);
-
-  container.addEventListener("mouseover", () =>
-    clearInterval(autoScrollInterval)
-  );
-  container.addEventListener(
-    "mouseout",
-    () => (autoScrollInterval = setInterval(scrollNext, autoScrollTime))
-  );
-
-  if (btnNext) btnNext.addEventListener("click", scrollNext);
-  if (btnPrev) btnPrev.addEventListener("click", scrollPrev);
-}
-
-// Khởi tạo các slider với hàm chung
-initSlider(
+import { functionCarousel } from "./function.js";
+const carousel = new functionCarousel();
+carousel.initSlider(
   ".carousel-container",
   ".carousel-item",
   "#btn-next",
@@ -52,8 +8,17 @@ initSlider(
   1500,
   20
 );
-initSlider(".container-sale", ".cart-sale", "#btn-next", "#btn-pre", 2500, 20);
-initSlider(
+
+carousel.initSlider(
+  ".container-sale",
+  ".cart-sale",
+  "#btn-next",
+  "#btn-pre",
+  2500,
+  20
+);
+
+carousel.initSlider(
   ".container-comment",
   ".card-comment",
   "#Next-comment",
