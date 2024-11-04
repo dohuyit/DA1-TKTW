@@ -7,8 +7,8 @@
 :root {
   --color-header: #222222;
   --color-head-card: #111;
-  /* --color-hover: #b8920b; */
-  --color-hover: #f16e36;
+  --color-hover: rgb(201, 33, 39);
+  /* --color-hover: #f16e36; */
 }
 
 html {
