@@ -1,0 +1,40 @@
+.info-box.bg-warning {
+  color: #fff !important;
+}
+
+aside {
+  background: #fff;
+  color: black;
+}
+
+.nav-pills nav .nav-link {
+  color: #000000d5 !important;
+}
+
+.nav-pills nav .nav-link.active {
+  color: #ffffff !important;
+  background-color: chocolate !important;
+}
+
+.card-infor-header {
+  transition: 0.5s ease;
+}
+
+.card-infor-header:hover {
+  transform: translateY(-10%);
+}
+
+.dataTables_filter input {
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 35px 8px 15px;
+  font-size: 14px;
+  transition: all 0.3s;
+  width: 250px;
+}
+
+.dataTables_filter input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
