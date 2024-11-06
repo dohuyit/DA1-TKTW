@@ -55,9 +55,9 @@
                                                     <td><?= $dm['ten_danh_muc'] ?></td>
                                                     <td><?= $dm['mo_ta'] ?></td>
                                                     <td>
-                                                        <a href="<?= BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc=' . $dm['id'] ?>"> <button class="btn btn-warning">Sửa</button></a>
+                                                        <a href="<?= BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc=' . $dm['id'] ?>"> <button class="btn btn-warning text-white"><i class="fas fa-edit"></i></button></a>
 
-                                                        <a href="<?= BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="btn btn-danger">Xóa</button></a>
+                                                        <a href="<?= BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $dm['id'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
