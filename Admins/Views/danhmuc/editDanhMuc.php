@@ -52,6 +52,7 @@
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Cập nhật danh mục</button>
                                     </div>
+                                </form>
                             </div>
                             <!-- /.container-fluid -->
             </section>
