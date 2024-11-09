@@ -8,10 +8,12 @@ require_once './Common/PDO.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './Controllers/HomeController.php';
 require_once './Controllers/SanPhamController.php';
+require_once './Controllers/TaikhoanController.php';
 
 // Require toàn bộ file Models
 require_once './Models/TrangChu.php';
 require_once './Models/SanPham.php';
+require_once './Models/TaiKhoan.php';
 
 
 
@@ -22,4 +24,11 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // route
     '/' => (new HomeController())->home(),
+
+    // route auth
+    'form-login' => (new TaikhoanController())->formLogin(),
+    'check-login' => (new TaikhoanController())->postLogin(),
+    'logout' => (new TaiKhoanController())->logout(),
+    'form-register' => (new TaiKhoanController())->formRegister(),
+    'register' => (new TaiKhoanController())->postRegister(),
 };

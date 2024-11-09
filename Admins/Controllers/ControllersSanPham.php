@@ -242,57 +242,54 @@ class AdminSanPhamController
 
             // Khai báo mảng để lưu ảnh thêm mới hoặc thay thế ảnh cũ
             $upload_file = [];
-            foreach ($img_array['name'] as $key => $value) {
-                if ($img_array['error'][$key] == UPLOAD_ERR_OK) {
-                    $new_file = uploadFileAlbum($img_array, './uploads/', $key);
-                    if ($new_file) {
-                        $uploadFile[] = [
-                            'id' => $current_img_ids[$key] ?? null,
-                            'file' => $new_file
-                        ];
-                    }
-                }
-            }
-            // Lưu ảnh và db và xóa ảnh cũ nếu có
-            foreach ($upload_file as $file_info) {
-                if ($file_info['id']) {
-                    $old_file = $this->modelSanPham->getDetailAnhSanPham($file_info['id'])['link_hinh_anh'];
-
-                    // Cập nhật ảnh cũ
-                    $this->modelSanPham->updateAnhSanPham($file_info['id'], $file_info['file']);
-
-                    // Xoa anh cu
-                    deleteFile($old_file);
-                } else {
-                    $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $file_info['file']);
-                }
-            }
             // foreach ($img_array['name'] as $key => $value) {
-            //     $current_img_id = $current_img_ids[$key] ?? null;
-            //     $upload_file[] = [
-            //         'id' => $current_img_id,
-            //         'file' => $img_array['error'][$key] == UPLOAD_ERR_OK ? uploadFileAlbum($img_array, './uploads/', $key) : null // Include null for empty file input
-            //     ];
+            //     if ($img_array['error'][$key] == UPLOAD_ERR_OK) {
+            //         $new_file = uploadFileAlbum($img_array, './uploads/', $key);
+            //         if ($new_file) {
+            //             $uploadFile[] = [
+            //                 'id' => $current_img_ids[$key] ?? null,
+            //                 'file' => $new_file
+            //             ];
+            //         }
+            //     }
             // }
-
+            // // Lưu ảnh và db và xóa ảnh cũ nếu có
             // foreach ($upload_file as $file_info) {
-            //     if ($file_info['id'] && $file_info['file']) { // Update only if ID exists and a new file is uploaded
+            //     if ($file_info['id']) {
             //         $old_file = $this->modelSanPham->getDetailAnhSanPham($file_info['id'])['link_hinh_anh'];
+
+            //         // Cập nhật ảnh cũ
             //         $this->modelSanPham->updateAnhSanPham($file_info['id'], $file_info['file']);
+
+            //         // Xoa anh cu
             //         deleteFile($old_file);
-            //     } else if (!$file_info['id']) { // Insert new image
+            //     } else {
             //         $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $file_info['file']);
             //     }
             // }
+            foreach ($img_array['name'] as $key => $value) {
+                $current_img_id = $current_img_ids[$key] ?? null;
+                $upload_file[] = [
+                    'id' => $current_img_id,
+                    'file' => $img_array['error'][$key] == UPLOAD_ERR_OK ? uploadFileAlbum($img_array, './uploads/', $key) : null
+                ];
+            }
 
-            // Xu ly xoa anh
+            foreach ($upload_file as $file_info) {
+                if ($file_info['id'] && $file_info['file']) {
+                    $old_file = $this->modelSanPham->getDetailAnhSanPham($file_info['id'])['link_hinh_anh'];
+                    $this->modelSanPham->updateAnhSanPham($file_info['id'], $file_info['file']);
+                    deleteFile($old_file);
+                } else if (!$file_info['id']) {
+                    $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $file_info['file']);
+                }
+            }
+
             foreach ($listAnhSanPhamCurrent as $anhSP) {
                 $anh_id = $anhSP['id'];
                 if (in_array($anh_id, $img_delete)) {
-                    // Xoa anh trong db
-                    $this->modelSanPham->destroyAnhSanPham($anh_id);
 
-                    // Xoa file
+                    $this->modelSanPham->destroyAnhSanPham($anh_id);
                     deleteFile($anhSP['link_hinh_anh']);
                 }
             }

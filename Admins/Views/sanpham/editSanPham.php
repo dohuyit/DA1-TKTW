@@ -140,8 +140,8 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="card card-infor">
-                                <div class="card-header">
+                            <div class="card card-info">
+                                <div class="card-header ">
                                     <h3 class="card-title text-light">Album ảnh sản phẩm</h3>
                                 </div>
                                 <div class="card-body p-0">

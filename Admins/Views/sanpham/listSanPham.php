@@ -56,7 +56,7 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $key + 1 ?></td>
-                                                    <td><img src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="Lỗi hình ảnh" width="120" height="120"></td>
+                                                    <td><img src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="Lỗi hình ảnh" width="100"></td>
                                                     <td><?= $sp['ten_san_pham'] ?></td>
                                                     <td><?= $sp['gia_san_pham'] ?></td>
                                                     <td><?= $sp['so_luong'] ?></td>

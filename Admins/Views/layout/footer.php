@@ -38,7 +38,7 @@
                 responsive: true,
                 lengthChange: false,
                 autoWidth: false,
-                pageLength: 7,
+                pageLength: 5,
                 buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
                 language: {
                     search: "_INPUT_", // Bỏ chữ "Search:"

@@ -8,7 +8,7 @@
         <div class="container">
             <div class="body">
                 <div class="group-logo">
-                    <img src="./image/logo.png" alt="" />
+                    <img src="Common/assets/image/logo.png" alt="" />
                 </div>
                 <div class="group-search">
                     <form action="">
@@ -33,24 +33,31 @@
                     </div>
                     <div class="item-icon">
                         <ion-icon name="people-outline"></ion-icon>
-                        <div class="desc-item-icon">
-                            <p>Account</p>
-                            <strong>Login</strong>
-                        </div>
-                        <ul class="account-dropdown">
-                            <li>
-                                <a href="#">
-                                    <ion-icon name="person-add-outline"></ion-icon>
-                                    <span>Thông tin tài khoản</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <ion-icon name="log-out-outline"></ion-icon>
-                                    <span>Đăng xuất</span>
-                                </a>
-                            </li>
-                        </ul>
+                        <?php if (isset($_SESSION['user_client'])): ?>
+                            <div class="desc-item-icon">
+                                <p>Xin chào</p>
+                                <strong><?= $_SESSION['user_client']['ho_ten'] ?></strong>
+                            </div>
+                            <ul class="account-dropdown">
+                                <li>
+                                    <a href="#">
+                                        <ion-icon name="person-add-outline"></ion-icon>
+                                        <span>Thông tin tài khoản</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= BASE_URL . '?act=logout' ?>">
+                                        <ion-icon name="log-out-outline"></ion-icon>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php else : ?>
+                            <a href="<?= BASE_URL . '?act=form-login' ?>" class="desc-item-icon">
+                                <p>Account</p>
+                                <strong>Login</strong>
+                            </a>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

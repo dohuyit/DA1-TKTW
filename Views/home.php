@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <?php if (isset($_SESSION['thongBao'])): ?>
+        <script>
+            alert('<?= $_SESSION['thongBao']; ?>');
+        </script>
+        <?php unset($_SESSION['thongBao']); ?>
+    <?php endif; ?>
     <div class="wrapper">
         <?php require_once "layout/header.php" ?>
         <main>
@@ -20,10 +26,10 @@
                 <div class="slider-main">
                     <div class="slider-wrapper">
                         <div class="slide-container">
-                            <img src="./image/banner2.jpg" alt="" class="img-item" />
-                            <img src="./image/banner3.jpg" alt="" class="img-item" />
-                            <img src="./image/banner4.jpg" alt="" class="img-item" />
-                            <img src="./image/banner5.jpg" alt="" class="img-item" />
+                            <img src="Common/assets/image/banner2.jpg" alt="" class="img-item" />
+                            <img src="Common/assets/image/banner3.jpg" alt="" class="img-item" />
+                            <img src="Common/assets/image/banner4.jpg" alt="" class="img-item" />
+                            <img src="Common/assets/image/banner5.jpg" alt="" class="img-item" />
                         </div>
                         <div class="slide-controls">
                             <button type="button" id="pre">
@@ -46,7 +52,7 @@
                 <div class="container">
                     <div class="body-brand">
                         <div class="item-brand-img">
-                            <img src="./image/Best_price_update_581_574_VI.jpg" alt="" />
+                            <img src="Common/assets/image/Best_price_update_581_574_VI.jpg" alt="" />
                         </div>
                         <div class="item-brand-content">
                             <div class="br-content-title">
@@ -57,25 +63,25 @@
                                 <div class="carousel-container">
                                     <div class="carousel-list">
                                         <div class="carousel-item">
-                                            <img src="./image/adidas-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
+                                            <img src="Common/assets/image/adidas-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="./image/Nike-chinh-hang-tai-Sneaker-Daily.jpg" alt="" />
+                                            <img src="Common/assets/image/Nike-chinh-hang-tai-Sneaker-Daily.jpg" alt="" />
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="./image/Jordan-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
+                                            <img src="Common/assets/image/Jordan-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="./image/mlb-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
+                                            <img src="Common/assets/image/mlb-chinh-hang-tai-Sneaker-Daily.jpg.webp" alt="" />
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="./image/puma.jpg" alt="" />
+                                            <img src="Common/assets/image/puma.jpg" alt="" />
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="./image/mcqueen.jpg" alt="" />
+                                            <img src="Common/assets/image/mcqueen.jpg" alt="" />
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="./image/converse.jpg" alt="" />
+                                            <img src="Common/assets/image/converse.jpg" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -98,126 +104,44 @@
                     <div class="content-sale">
                         <div class="container-sale">
                             <div class="list-products-sale">
-                                <div class="cart-sale">
-                                    <div class="main-cart">
-                                        <div class="img-group">
-                                            <span class="sale-tag">50%</span>
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <?php foreach ($listProductsSale as $sale) : ?>
+                                    <div class="cart-sale">
+                                        <div class="main-cart">
+                                            <div class="img-group">
+                                                <span class="sale-tag">Sale</span>
+                                                <img src="<?= $sale["hinh_anh"] ?>" alt="" />
+                                            </div>
+                                            <div class="content-group">
+                                                <h3><?= $sale["ten_san_pham"] ?></h3>
+                                                <p class="price">
+                                                    <?php if ($sale["gia_khuyen_mai"] > 0): ?>
+                                                        <span class="sale-price"><?= formatPrice($sale["gia_khuyen_mai"]) ?></span>
+                                                        <span class="original-price"><?= formatPrice($sale["gia_san_pham"]) ?></span>
+                                                    <?php else: ?>
+                                                        <span class="sale-price"><?= formatPrice($sale["gia_san_pham"]) ?></span>
+                                                    <?php endif; ?>
+                                                </p>
+
+                                                <p class="desc">
+                                                    <?= $sale["mo_ta"] ?>
+                                                </p>
+                                                <div class="btn-sale">
+                                                    <a href="#">
+                                                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                                        <span>Add to cart</span>
+                                                    </a>
+                                                    <a href="#"><ion-icon name="heart-outline"></ion-icon></a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="content-group">
-                                            <h3>Jordan Spizike Low</h3>
-                                            <p class="price">2.232.299đ</p>
-                                            <p class="desc">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                elit. Nihil, porro. Lorem ipsum, dolor sit amet
-                                                consectetur adipisicing elit. Nihil, porro.
-                                            </p>
-                                            <div class="group-btn">
-                                                <a href="#" class="btn btn-add-cart">
-                                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                                    <span>Add to cart</span>
-                                                </a>
-                                                <a href="#" class="btn btn-favourite"><ion-icon name="heart-outline"></ion-icon></a>
+                                        <div class="footer-cart">
+                                            <div class="content-countdown">
+                                                <ion-icon name="time-outline"></ion-icon>
+                                                <span>Mua Ngay!</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="footer-cart">
-                                        <div class="content-countdown">
-                                            <ion-icon name="time-outline"></ion-icon>
-                                            <span>Mua Ngay!</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-sale">
-                                    <div class="main-cart">
-                                        <div class="img-group">
-                                            <span class="sale-tag">50%</span>
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                        </div>
-                                        <div class="content-group">
-                                            <h3>Jordan Spizike Low</h3>
-                                            <p class="price">2.232.299đ</p>
-                                            <p class="desc">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                elit. Nihil, porro. Lorem ipsum, dolor sit amet
-                                                consectetur adipisicing elit. Nihil, porro.
-                                            </p>
-                                            <div class="group-btn">
-                                                <a href="#" class="btn btn-add-cart">
-                                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                                    <span>Add to cart</span>
-                                                </a>
-                                                <a href="#" class="btn btn-favourite"><ion-icon name="heart-outline"></ion-icon></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="footer-cart">
-                                        <div class="content-countdown">
-                                            <ion-icon name="time-outline"></ion-icon>
-                                            <span>Mua Ngay!</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-sale">
-                                    <div class="main-cart">
-                                        <div class="img-group">
-                                            <span class="sale-tag">50%</span>
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                        </div>
-                                        <div class="content-group">
-                                            <h3>Jordan Spizike Low</h3>
-                                            <p class="price">2.232.299đ</p>
-                                            <p class="desc">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                elit. Nihil, porro. Lorem ipsum, dolor sit amet
-                                                consectetur adipisicing elit. Nihil, porro.
-                                            </p>
-                                            <div class="group-btn">
-                                                <a href="#" class="btn btn-add-cart">
-                                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                                    <span>Add to cart</span>
-                                                </a>
-                                                <a href="#" class="btn btn-favourite"><ion-icon name="heart-outline"></ion-icon></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="footer-cart">
-                                        <div class="content-countdown">
-                                            <ion-icon name="time-outline"></ion-icon>
-                                            <span>Mua Ngay!</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-sale">
-                                    <div class="main-cart">
-                                        <div class="img-group">
-                                            <span class="sale-tag">50%</span>
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                        </div>
-                                        <div class="content-group">
-                                            <h3>Jordan Spizike Low</h3>
-                                            <p class="price">2.232.299đ</p>
-                                            <p class="desc">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                elit. Nihil, porro. Lorem ipsum, dolor sit amet
-                                                consectetur adipisicing elit. Nihil, porro.
-                                            </p>
-                                            <div class="group-btn">
-                                                <a href="#" class="btn btn-add-cart">
-                                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                                    <span>Add to cart</span>
-                                                </a>
-                                                <a href="#" class="btn btn-favourite"><ion-icon name="heart-outline"></ion-icon></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="footer-cart">
-                                        <div class="content-countdown">
-                                            <ion-icon name="time-outline"></ion-icon>
-                                            <span>Mua Ngay!</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach ?>
                             </div>
                         </div>
                         <div class="directive">
@@ -234,14 +158,14 @@
             <section id="banner-child">
                 <div class="body">
                     <div class="item-banner-child">
-                        <div class="img-banner"><img src="./image/ba2.jpg" alt="" /></div>
+                        <div class="img-banner"><img src="Common/assets/image/ba2.jpg" alt="" /></div>
                         <div class="content-banner">
                             <h3>Giày Nữ Cao Cấp</h3>
                             <a href="#">Shop now</a>
                         </div>
                     </div>
                     <div class="item-banner-child">
-                        <div class="img-banner"><img src="./image/ba1.jpg" alt="" /></div>
+                        <div class="img-banner"><img src="Common/assets/image/ba1.jpg" alt="" /></div>
                         <div class="content-banner">
                             <h3>Giày Nam Cao Cấp</h3>
                             <a href="#">Shop now</a>
@@ -556,13 +480,13 @@
                             </div>
                         </div>
                         <div class="group-img">
-                            <img src="./image/bn-2-10_630x.png" alt="" />
+                            <img src="Common/assets/image/bn-2-10_630x.png" alt="" />
                         </div>
                     </div>
                 </div>
             </section>
             <section id="banner-child-second">
-                <img src="./image/banner-child5.jpg" alt="" />
+                <img src="Common/assets/image/banner-child5.jpg" alt="" />
                 <div class="content-banner">
                     <div class="badge-banner">Tính Năng</div>
                     <h2>Top Yêu Thích Từ NGười Mua</h2>
@@ -601,7 +525,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -636,7 +560,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -671,7 +595,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -706,7 +630,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -741,7 +665,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -776,7 +700,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -811,7 +735,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -846,7 +770,7 @@
                                     <span>O</span>
                                     <span>T</span>
                                 </div>
-                                <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
+                                <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
                             </div>
                             <div class="content-product">
                                 <div class="top-content">
@@ -878,8 +802,8 @@
                 </div>
             </section>
             <section id="comment">
-                <img src="./image/sub-right.png" alt="" class="sub-right" />
-                <img src="./image/sub-left.png" alt="" class="sub-left" />
+                <img src="Common/assets/image/sub-right.png" alt="" class="sub-right" />
+                <img src="Common/assets/image/sub-left.png" alt="" class="sub-left" />
                 <div class="container">
                     <div class="title-box-comment">
                         <h2><strong>Bình luận</strong> sản phẩm</h2>
@@ -1069,7 +993,7 @@
                                     <div class="infor-user">
                                         <div class="left">
                                             <div class="content">
-                                                <img src="./image/auth.png" alt="" />
+                                                <img src="Common/assets/image/auth.png" alt="" />
                                                 <div class="desc-second">
                                                     <h4>Đỗ Huy</h4>
                                                     <p>huy2005@gmail.com</p>

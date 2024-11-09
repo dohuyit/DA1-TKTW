@@ -3,7 +3,7 @@
         <div class="footer-main">
             <!-- Logo and Description -->
             <div class="footer-section footer-about">
-                <img src="./image/logo-footer.png" alt="Kosi Logo" class="footer-logo" />
+                <img src="Common/assets/image/logo-footer.png" alt="Kosi Logo" class="footer-logo" />
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et
                     massa mi. Aliquam in hendrerit urna. Pellentesque sit amet

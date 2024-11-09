@@ -2,18 +2,21 @@
 class Homecontroller
 {
     public $modelSanPham;
+    public $modelHomeClient;
+
     public function __construct()
     {
         $this->modelSanPham = new SanPham();
+        $this->modelHomeClient = new TrangChuClient();
     }
 
     public function home()
     {
         // $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
-        // $listtop10 = $this->modelSanPham->top10();
+        $listProductsSale = $this->modelHomeClient->productsSale();
 
         // $listSanPham = $this->modelSanPham->getAllSanPham();
-        require_once('./views/home.php');
+        require_once('./Views/home.php');
     }
 }
