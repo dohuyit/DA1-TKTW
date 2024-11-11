@@ -112,7 +112,7 @@
                                                 <img src="<?= $sale["hinh_anh"] ?>" alt="" />
                                             </div>
                                             <div class="content-group">
-                                                <h3><?= $sale["ten_san_pham"] ?></h3>
+                                                <h3><a href="<?=BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sale['id']?>"><?= $sale["ten_san_pham"] ?></a></h3>
                                                 <p class="price">
                                                     <?php if ($sale["gia_khuyen_mai"] > 0): ?>
                                                         <span class="sale-price"><?= formatPrice($sale["gia_khuyen_mai"]) ?></span>
