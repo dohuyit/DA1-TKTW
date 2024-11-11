@@ -112,7 +112,7 @@
                                                 <img src="<?= $sale["hinh_anh"] ?>" alt="" />
                                             </div>
                                             <div class="content-group">
-                                                <h3><a href="<?=BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sale['id']?>"><?= $sale["ten_san_pham"] ?></a></h3>
+                                                <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sale['id'] ?>"><?= $sale["ten_san_pham"] ?></a></h3>
                                                 <p class="price">
                                                     <?php if ($sale["gia_khuyen_mai"] > 0): ?>
                                                         <span class="sale-price"><?= formatPrice($sale["gia_khuyen_mai"]) ?></span>
@@ -191,8 +191,12 @@
                                                     <span><?= $bestSeller['luot_xem'] ?></span>
                                                 </div>
                                                 <div class="box-price">
-                                                    <span><?= formatPrice($bestSeller['gia_khuyen_mai']) ?></span>
-                                                    <span><?= formatPrice($bestSeller['gia_san_pham']) ?></span>
+                                                    <?php if ($bestSeller['gia_khuyen_mai'] > 0) : ?>
+                                                        <span class="price-sale"><?= formatPrice($bestSeller['gia_khuyen_mai']) ?></span>
+                                                        <span class="price-old"><?= formatPrice($bestSeller['gia_san_pham']) ?></span>
+                                                    <?php else : ?>
+                                                        <span class="price-old"><?= formatPrice($bestSeller['gia_san_pham']) ?></span>
+                                                    <?php endif ?>
                                                 </div>
                                                 <div class="box-controls">
                                                     <span><ion-icon name="heart-outline"></ion-icon></span>
@@ -259,57 +263,70 @@
                     <div class="products-header">
                         <h2>Tất cả <strong>sản phẩm</strong></h2>
                         <div class="filter-category">
-                            <a href="#" class="filter-link active">Tất cả</a>
+                            <!-- Link "Tất cả" -->
+                            <a href="<?= BASE_URL . '?act=productCate' ?>" class="filter-link <?= !isset($danh_muc_id) ? 'active' : '' ?>">Tất cả</a>
                             <span>/</span>
+
+                            <!-- Danh sách các danh mục -->
                             <?php foreach ($listDanhMuc as $index => $danhMuc): ?>
-                                <a href="<?= BASE_URL . '?act=/&id_danh_muc=' . $danhMuc['id'] ?>" class="filter-link"><?= $danhMuc['ten_danh_muc'] ?></a>
+                                <a href="<?= BASE_URL . '?act=productCate&id_danh_muc=' . $danhMuc['id'] ?>#all-products" class="filter-link <?= (isset($danh_muc_id) && $danh_muc_id == $danhMuc['id']) ? 'active' : '' ?>">
+                                    <?= $danhMuc['ten_danh_muc'] ?>
+                                </a>
                                 <?php if ($index < count($listDanhMuc) - 1): ?>
                                     <span>/</span>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="products-body">
-                        <?php foreach ($productByCate as $products) : ?>
-                            <div class="card-product">
-                                <div class="img-product">
-                                    <div class="badge-product">
-                                        <span>H</span>
-                                        <span>O</span>
-                                        <span>T</span>
-                                    </div>
-                                    <img src="<?= $products['hinh_anh'] ?>" alt="" />
-                                </div>
-                                <div class="content-product">
-                                    <div class="top-content">
-                                        <span><?= $products['ten_danh_muc'] ?></span>
-                                        <span>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </span>
-                                    </div>
-                                    <div class="main-content">
-                                        <h3 class="heading-card">
-                                            <a href="#"><?= $products['ten_san_pham'] ?></a>
-                                        </h3>
-                                        <div class="box-price">
-                                            <span><?= formatPrice($products['gia_khuyen_mai']) ?></span>
-                                            <span><?= formatPrice($products['gia_san_pham']) ?></span>
+                    <?php if (!empty($productByCate)) : ?>
+                        <div class="products-body">
+                            <?php foreach ($productByCate as $products) : ?>
+                                <div class="card-product">
+                                    <div class="img-product">
+                                        <div class="badge-product">
+                                            <span>H</span><span>O</span><span>T</span>
                                         </div>
-                                        <div class="tag-card">
-                                            <img src="Common/assets/image/sale-online 1.svg" alt="" />
-                                            <p>Giá độc quyền online</p>
+                                        <img src="<?= $products['hinh_anh'] ?>" alt="" />
+                                    </div>
+                                    <div class="content-product">
+                                        <div class="top-content">
+                                            <span><?= $products['ten_danh_muc'] ?></span>
+                                            <span>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                            </span>
+                                        </div>
+                                        <div class="main-content">
+                                            <h3 class="heading-card">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $products['id'] ?>"><?= $products['ten_san_pham'] ?></a>
+                                            </h3>
+                                            <div class="box-price">
+                                                <span><?= formatPrice($products['gia_khuyen_mai']) ?></span>
+                                                <span><?= formatPrice($products['gia_san_pham']) ?></span>
+                                            </div>
+                                            <div class="tag-card">
+                                                <img src="Common/assets/image/sale-online 1.svg" alt="" />
+                                                <p>Giá độc quyền online</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="products-body error">
+                            <div class="no-products">
+                                <ion-icon name="alert-circle-outline"></ion-icon>
+                                <p>Rất tiếc, hiện không có sản phẩm nào phù hợp!</p>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </section>
+
             <section id="comment">
                 <img src="Common/assets/image/sub-right.png" alt="" class="sub-right" />
                 <img src="Common/assets/image/sub-left.png" alt="" class="sub-left" />

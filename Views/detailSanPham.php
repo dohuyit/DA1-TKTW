@@ -19,7 +19,7 @@
             <section id="title-main">
                 <div class="container">
                     <h1>
-                        <span>Trang Chủ</span> <span>/</span><strong>Tên sản phẩm</strong>
+                        <span>Trang Chủ</span> <span>/</span><strong><?= $sanPham['ten_san_pham'] ?></strong>
                     </h1>
                 </div>
             </section>
@@ -28,33 +28,34 @@
                     <div class="body">
                         <div class="box-img-product">
                             <div class="thumbnail-container">
-                                <img src="./image/main.jpg" alt="Thumbnail 1" class="item-thumbnail active" />
-                                <img src="./image/left.png" alt="Thumbnail 2" class="item-thumbnail" />
-                                <img src="./image/top.png" alt="Thumbnail 3" class="item-thumbnail" />
-                                <img src="./image/bottom.png" alt="Thumbnail 4" class="item-thumbnail" />
+                                <?php foreach ($listAnhSanPham as $key => $anhSanPham) : ?>
+                                    <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="Thumbnail 1" class="item-thumbnail active" />
+                                <?php endforeach; ?>
+
                             </div>
                             <div class="main-image">
-                                <img id="displayed-image" src="<?=$sanPham['hinh_anh']?>" alt="Main Image" />
+
+                                <img id="displayed-image" src="<?= $sanPham['hinh_anh'] ?>" alt="Main Image" />
                             </div>
                         </div>
                         <div class="box-infor-product">
                             <div class="product-header">
                                 <div class="logo">
-                                    <img src="./image/logo-head.png" alt="Logo PNJ" />
-                                    <h1><?=$sanPham['ten_san_pham']?></h1>
+                                    <img src="Common/assets/image/logo-head.png" alt="Logo PNJ" />
+                                    <h1><?= $sanPham['ten_san_pham'] ?></h1>
                                 </div>
                                 <div class="title-subtle">
-                                    <p class="product-code">Mã: NIKE0001</p>
+                                    <p class="product-code">Mã: <?= $sanPham['ten_danh_muc'] . rand(1000, 9000) ?></p>
                                     <p class="rating">
                                         <span><ion-icon name="eye-outline"></ion-icon></span>
-                                        <span><?=$sanPham['luot_xem']?></span>
+                                        <span><?= $sanPham['luot_xem'] ?></span>
                                     </p>
                                 </div>
                             </div>
 
                             <div class="price-section">
                                 <div class="main-price">
-                                    <span class="price"><?=formatPrice($sanPham['gia_san_pham'])?></span>
+                                    <span class="price"><?= formatPrice($sanPham['gia_san_pham']) ?></span>
                                     <p class="note">
                                         (Giá sản phẩm thay đổi tùy size giày và màu sắc)
                                     </p>
@@ -73,7 +74,7 @@
 
                             <div class="consult">
                                 <p>
-                                    Còn hàng -
+                                    <?= $sanPham['trang_thai'] == 1 ? "Còn hàng" : "Sale" ?> -
                                     <a href="#">Nhấn để được tư vấn và nhận ưu đãi</a>
                                 </p>
                             </div>
@@ -221,9 +222,9 @@
                                     <img src="Common/assets/image/table-size.jpeg" alt="" />
                                 </div>
                                 <div class="box-desc">
-                                    <h3><?=$sanPham['ten_san_pham']?></h3>
+                                    <h3><?= $sanPham['ten_san_pham'] ?></h3>
                                     <p>
-                                    <?=$sanPham['mo_ta']?>
+                                        <?= $sanPham['mo_ta'] ?>
                                     </p>
                                     <h3>Thông số</h3>
                                     <ul>
@@ -283,216 +284,48 @@
                     <div class="body-similar">
                         <div class="container-product-similar">
                             <div class="list-product-similar">
-                                <div class="card-product">
-                                    <div class="img-product">
-                                        <div class="badge-product">
-                                            <span>H</span>
-                                            <span>O</span>
-                                            <span>T</span>
-                                        </div>
-                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                    </div>
-                                    <div class="content-product">
-                                        <div class="top-content">
-                                            <span>Nike</span>
-                                            <span>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h3 class="heading-card">
-                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                            </h3>
-                                            <div class="box-price">
-                                                <span>2,649,000đ</span>
-                                                <span>6,500,000đ</span>
+                                <?php foreach ($listSanPhamCungDanhMuc as $sanPham) : ?>
+                                    <div class="card-product">
+                                        <div class="img-product">
+                                            <div class="badge-product">
+                                                <span>H</span>
+                                                <span>O</span>
+                                                <span>T</span>
                                             </div>
-                                            <div class="tag-card">
-                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                <p>Giá độc quyền online</p>
+                                            <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="" />
+                                        </div>
+                                        <div class="content-product">
+                                            <div class="top-content">
+                                                <span><?= $sanPham['ten_danh_muc'] ?></span>
+                                                <span>
+                                                    <ion-icon name="star"></ion-icon>
+                                                    <ion-icon name="star"></ion-icon>
+                                                    <ion-icon name="star"></ion-icon>
+                                                    <ion-icon name="star"></ion-icon>
+                                                    <ion-icon name="star"></ion-icon>
+                                                </span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-product">
-                                    <div class="img-product">
-                                        <div class="badge-product">
-                                            <span>H</span>
-                                            <span>O</span>
-                                            <span>T</span>
-                                        </div>
-                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                    </div>
-                                    <div class="content-product">
-                                        <div class="top-content">
-                                            <span>Nike</span>
-                                            <span>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h3 class="heading-card">
-                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                            </h3>
-                                            <div class="box-price">
-                                                <span>2,649,000đ</span>
-                                                <span>6,500,000đ</span>
-                                            </div>
-                                            <div class="tag-card">
-                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                <p>Giá độc quyền online</p>
+                                            <div class="main-content">
+                                                <h3 class="heading-card">
+                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                                                </h3>
+                                                <div class="box-price">
+                                                    <?php if ($sanPham['gia_khuyen_mai'] > 0) : ?>
+                                                        <span class="price-old"><?= formatPrice($sanPham['gia_san_pham']) ?></span>
+                                                        <span class="price-sale"><?= formatPrice($sanPham['gia_khuyen_mai']) ?></span>
+
+                                                    <?php else : ?>
+                                                        <span class="price-old"><?= formatPrice($sanPham['gia_san_pham']) ?></span>
+                                                    <?php endif ?>
+                                                </div>
+                                                <div class="tag-card">
+                                                    <img src="./image/sale-online 1.svg" alt="" />
+                                                    <p>Giá độc quyền online</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-product">
-                                    <div class="img-product">
-                                        <div class="badge-product">
-                                            <span>H</span>
-                                            <span>O</span>
-                                            <span>T</span>
-                                        </div>
-                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                    </div>
-                                    <div class="content-product">
-                                        <div class="top-content">
-                                            <span>Nike</span>
-                                            <span>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h3 class="heading-card">
-                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                            </h3>
-                                            <div class="box-price">
-                                                <span>2,649,000đ</span>
-                                                <span>6,500,000đ</span>
-                                            </div>
-                                            <div class="tag-card">
-                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                <p>Giá độc quyền online</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-product">
-                                    <div class="img-product">
-                                        <div class="badge-product">
-                                            <span>H</span>
-                                            <span>O</span>
-                                            <span>T</span>
-                                        </div>
-                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                    </div>
-                                    <div class="content-product">
-                                        <div class="top-content">
-                                            <span>Nike</span>
-                                            <span>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h3 class="heading-card">
-                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                            </h3>
-                                            <div class="box-price">
-                                                <span>2,649,000đ</span>
-                                                <span>6,500,000đ</span>
-                                            </div>
-                                            <div class="tag-card">
-                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                <p>Giá độc quyền online</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-product">
-                                    <div class="img-product">
-                                        <div class="badge-product">
-                                            <span>H</span>
-                                            <span>O</span>
-                                            <span>T</span>
-                                        </div>
-                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                    </div>
-                                    <div class="content-product">
-                                        <div class="top-content">
-                                            <span>Nike</span>
-                                            <span>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h3 class="heading-card">
-                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                            </h3>
-                                            <div class="box-price">
-                                                <span>2,649,000đ</span>
-                                                <span>6,500,000đ</span>
-                                            </div>
-                                            <div class="tag-card">
-                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                <p>Giá độc quyền online</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-product">
-                                    <div class="img-product">
-                                        <div class="badge-product">
-                                            <span>H</span>
-                                            <span>O</span>
-                                            <span>T</span>
-                                        </div>
-                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                    </div>
-                                    <div class="content-product">
-                                        <div class="top-content">
-                                            <span>Nike</span>
-                                            <span>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                                <ion-icon name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h3 class="heading-card">
-                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                            </h3>
-                                            <div class="box-price">
-                                                <span>2,649,000đ</span>
-                                                <span>6,500,000đ</span>
-                                            </div>
-                                            <div class="tag-card">
-                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                <p>Giá độc quyền online</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <div class="directive-control">
@@ -515,7 +348,167 @@
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script type="module" src="./js/detail.js"></script>
+    <script type="module" src="Common/assets/js/detail.js"></script>
+    <script>
+        // =============================TAB COMMENT =================//
+        // Hàm hiển thị form comment
+        function enableCommentForm() {
+            const commentButton = document.getElementById("btn-comment");
+            const innerOverlayComment = document.getElementById("innerOverlayComment");
+
+            if (commentButton && innerOverlayComment) {
+                commentButton.addEventListener("click", function() {
+                    innerOverlayComment.style.display = "flex";
+                    document.body.classList.add("no-scroll");
+                });
+
+                innerOverlayComment.addEventListener("click", function(event) {
+                    if (event.target === innerOverlayComment) {
+                        innerOverlayComment.style.display = "none";
+                        document.body.classList.remove("no-scroll");
+                    }
+                });
+            }
+        }
+        //========================================================//
+        // Dữ liệu nội dung cho mỗi tab
+        const tabContents = {
+            description: `
+      <div id="description" class="section-content">
+                  <div class="box-img">
+                    <img src="Common/assets/image/table-size.jpeg" alt="" />
+                  </div>
+                  <div class="box-desc">
+                    <h3>
+                    <?= $sanPham['ten_san_pham'] ?>
+                    </h3>
+                    <p>
+                    <?= $sanPham['mo_ta'] ?>
+                    </p>
+                    <h3>Thông số</h3>
+                    <ul>
+                      <li>
+                        Thiết kế Upper bằng nylon nhẹ nhàng và thoáng khí kết
+                        hợp lớp phủ da lộn bền bỉ
+                      </li>
+                      <li>
+                        Lót giày bằng bọt cao cấp mang lại sự thoải mái vượt
+                        trội
+                      </li>
+                      <li>Đế giữa EVA nhẹ nhàng và thoải mái</li>
+                      <li>
+                        Đế ngoài hoàn toàn bằng cao su cho độ bám linh hoạt và
+                        độ bền bỉ
+                      </li>
+                      <li>Kích cỡ thông thường</li>
+                      <li>Loại dây cột tiêu chuẩn</li>
+                    </ul>
+                  </div>
+                </div>
+  `,
+            "care-instructions": `
+      <div id="care-instructions" class="section-content">
+                  <ul>
+                    <li>Bảo quản giày ở nơi thoáng mát và khô ráo</li>
+                    <li>
+                      Tránh ánh nắng trực tiếp để ngăn mất màu và biến dạng
+                    </li>
+                    <li>Sử dụng túi giày để tránh bụi và giữ giày luôn mới</li>
+                    <li>
+                      Tránh nước và độ ẩm cao, (đặc biệt là đối với chất liệu
+                      da/ da lộn) để hạn chế tình trạng phai màu và bong tróc.
+                    </li>
+                    <li>
+                      Sử dụng các sản phẩm chăm sóc giày chuyên dụng để vệ sinh
+                      giày
+                    </li>
+                    <li>
+                      Sử dụng bình xịt chống thấm nước để bảo vệ đôi giày của
+                      bạn khỏi nước mưa, bùn đất hoặc những vết bẩn khác
+                    </li>
+                    <li>
+                      Sử dụng bóng khử mùi hoặc xịt khử mùi để ngăn ngừa vi
+                      khuẩn gây mùi
+                    </li>
+                  </ul>
+                </div>
+  `,
+            comments: `
+      <div id="comments" class="section-content">
+                  <div class="wrapper-comment">
+                    <div class="list-comment">
+                      <div class="item-comment">
+                        <!-- <p class="text-empty">Chưa có bình luận</p> -->
+                        <div class="title-comment">
+                          <span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                          </span>
+                          <p>2025-11-3</p>
+                        </div>
+                        <p class="text-comments">
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. In minima deleniti, ipsum, nihil debitis nulla
+                          ipsa amet animi quisquam accusantium nobis labore
+                          quidem praesentium cum ab perspiciatis. Et, dolores.
+                          Quibusdam?
+                        </p>
+                        <div class="footer-comment">
+                          <img src="./image/auth.png" alt="" />
+                          <div class="content">
+                            <p>
+                              <span>Đỗ Huy</span>
+                              <span
+                                ><ion-icon name="shield-checkmark"></ion-icon
+                              ></span>
+                            </p>
+                            <p>huy@gmail.com</p>
+                          </div>
+                        </div>
+                      </div>
+                      <button id="btn-comment">
+                        <span>Viết bình luận</span>
+                        <span><i class="fa-solid fa-pen-to-square"></i></span>
+                      </button>
+                      <!-- <p class="text-login-form-comment">
+                        Vui lòng <a href="index.php?action=login">đăng nhập</a> để
+                        viết bình luận!!!
+                      </p> -->
+                    </div>
+                    
+                  </div>
+                </div>
+  `,
+        };
+
+        // Lấy các tab và nội dung hiển thị
+        const tabs = document.querySelectorAll(".header-tab .list-tab li");
+        const contentDisplay = document.getElementById("content-display");
+
+        // Thêm sự kiện click cho từng tab
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                // Loại bỏ class active từ tất cả các tab
+                tabs.forEach((t) => t.classList.remove("active"));
+
+                // Thêm class active cho tab được chọn
+                tab.classList.add("active");
+
+                // Lấy dữ liệu nội dung dựa trên data-content của tab
+                const contentKey = tab.getAttribute("data-content");
+                contentDisplay.innerHTML = tabContents[contentKey];
+
+                // Kích hoạt lại sự kiện cho nút comment khi nội dung tab thay đổi
+                enableCommentForm();
+            });
+        });
+
+        // Kích hoạt sự kiện comment form lần đầu
+        enableCommentForm();
+    </script>
 </body>
 
 </html>

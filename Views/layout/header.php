@@ -8,7 +8,7 @@
         <div class="container">
             <div class="body">
                 <div class="group-logo">
-                    <img src="Common/assets/image/logo.png" alt="" />
+                    <a href="<?= BASE_URL ?>"><img src="Common/assets/image/logo.png" alt="" /></a>
                 </div>
                 <div class="group-search">
                     <form action="">
@@ -66,12 +66,58 @@
     <div class="header-bottom">
         <div class="container">
             <nav id="nav">
-                <ul>
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="#">Sản phẩm</a></li>
-                    <li><a href="#">Khuyến Mãi</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
+                <ul class="list-nav">
+                    <li><a href="<?= BASE_URL ?>" class="nav-link">Trang chủ</a></li>
+                    <li>
+                        <a href="#" class="nav-link">Sản phẩm</a>
+                        <div class="navsubtle-hover-wrap">
+                            <div class="wrap-left">
+                                <ul class="list-data">
+                                    <h3>Giày</h3>
+                                    <div class="content">
+                                        <?php foreach ($listDanhMuc as $danhMuc) : ?>
+                                            <li><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>"><?= $danhMuc['ten_danh_muc'] ?></a></li>
+                                        <?php endforeach ?>
+                                    </div>
+                                </ul>
+                                <ul class="list-data">
+                                    <h3>Quần Áo</h3>
+                                    <div class="content">
+                                        <li><a href="#">Hodie & Sweater</a></li>
+                                        <li><a href="#">Jackets & Outerwear</a></li>
+                                        <li><a href="#">T-shirts</a></li>
+                                        <li><a href="#">Tanktops</a></li>
+                                    </div>
+                                </ul>
+                                <ul class="list-data">
+                                    <h3>Thương hiệu</h3>
+                                    <div class="content">
+                                        <li><a href="#">Nike</a></li>
+                                        <li><a href="#">Addidas</a></li>
+                                        <li><a href="#">Puma</a></li>
+                                        <li><a href="#">Converse</a></li>
+                                        <li><a href="#">Fila</a></li>
+                                        <li><a href="#">Pegasus</a></li>
+                                    </div>
+                                </ul>
+                                <ul class="list-data">
+                                    <h3>Thể thao</h3>
+                                    <div class="content">
+                                        <li><a href="#">Basketball</a></li>
+                                        <li><a href="#">Pickleball</a></li>
+                                        <li><a href="#">Golf</a></li>
+                                        <li><a href="#">Soccer</a></li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="wrap-right">
+                                <img src="Common/assets/image/tab-hover.jpg" alt="">
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#" class="nav-link">Khuyến Mãi</a></li>
+                    <li><a href="#" class="nav-link">Blog</a></li>
+                    <li><a href="#" class="nav-link">Liên Hệ</a></li>
                 </ul>
             </nav>
         </div>

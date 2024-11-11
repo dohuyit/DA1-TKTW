@@ -7,7 +7,6 @@ require_once './Common/PDO.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './Controllers/HomeController.php';
-require_once './Controllers/SanPhamController.php';
 require_once './Controllers/TaikhoanController.php';
 
 // Require toàn bộ file Models
@@ -24,6 +23,7 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // route
     '/' => (new HomeController())->home(),
+    "productCate" => (new Homecontroller)->filterCateByHome(),
 
     // route auth
     'form-login' => (new TaikhoanController())->formLogin(),
@@ -33,7 +33,7 @@ match ($act) {
     'register' => (new TaiKhoanController())->postRegister(),
 
     // Sản phẩm
-   'chi-tiet-san-pham' =>(new HomeController())->chiTietSanPham(),
-   'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
-//    'gui-binh-luan' =>(new HomeController())->guiBinhLuan(),
+    'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),
+    'san-pham-theo-danh-muc' => (new HomeController())->sanPhamDanhMuc(),
+    //    'gui-binh-luan' =>(new HomeController())->guiBinhLuan(),
 };
