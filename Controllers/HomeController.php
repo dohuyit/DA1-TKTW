@@ -13,6 +13,7 @@ class Homecontroller
     public function home()
     {
         // $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+        var_dump('abc');
 
         $listProductsSale = $this->modelHomeClient->productsSale();
 
