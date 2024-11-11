@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/detail.css" />
+    <link rel="stylesheet" href="Common/assets/css/reset.css" />
+    <link rel="stylesheet" href="Common/assets/css/detail.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,27 +34,27 @@
                                 <img src="./image/bottom.png" alt="Thumbnail 4" class="item-thumbnail" />
                             </div>
                             <div class="main-image">
-                                <img id="displayed-image" src="./image/main.jpg" alt="Main Image" />
+                                <img id="displayed-image" src="<?=$sanPham['hinh_anh']?>" alt="Main Image" />
                             </div>
                         </div>
                         <div class="box-infor-product">
                             <div class="product-header">
                                 <div class="logo">
                                     <img src="./image/logo-head.png" alt="Logo PNJ" />
-                                    <h1>Jordan Stadium 90</h1>
+                                    <h1><?=$sanPham['ten_san_pham']?></h1>
                                 </div>
                                 <div class="title-subtle">
                                     <p class="product-code">Mã: NIKE0001</p>
                                     <p class="rating">
                                         <span><ion-icon name="eye-outline"></ion-icon></span>
-                                        <span>100 Lượt xem</span>
+                                        <span><?=$sanPham['luot_xem']?></span>
                                     </p>
                                 </div>
                             </div>
 
                             <div class="price-section">
                                 <div class="main-price">
-                                    <span class="price">4,109,000₫</span>
+                                    <span class="price"><?=formatPrice($sanPham['gia_san_pham'])?></span>
                                     <p class="note">
                                         (Giá sản phẩm thay đổi tùy size giày và màu sắc)
                                     </p>
@@ -218,20 +218,12 @@
                         <div id="content-display" class="tab-content">
                             <div id="description" class="section-content">
                                 <div class="box-img">
-                                    <img src="./image/table-size.jpeg" alt="" />
+                                    <img src="Common/assets/image/table-size.jpeg" alt="" />
                                 </div>
                                 <div class="box-desc">
-                                    <h3>Jordan Stadium 90</h3>
+                                    <h3><?=$sanPham['ten_san_pham']?></h3>
                                     <p>
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        Nemo qui maxime eligendi, rem atque, numquam corporis,
-                                        nulla quam magni dolorum aspernatur illo laborum
-                                        repellendus provident deleniti consequuntur consectetur
-                                        soluta illum. Praesentium quam deserunt tempora vel dolore
-                                        qui illo nemo distinctio! In quos enim accusantium unde
-                                        minus dolore magnam facilis? Aperiam nemo ullam
-                                        repudiandae doloribus itaque provident animi ad quod
-                                        eaque! Enim accusantium saepe in temporibus maiores.
+                                    <?=$sanPham['mo_ta']?>
                                     </p>
                                     <h3>Thông số</h3>
                                     <ul>
