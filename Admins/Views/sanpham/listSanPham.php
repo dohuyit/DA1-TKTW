@@ -60,8 +60,13 @@
                                                     <td><?= $sp['ten_san_pham'] ?></td>
                                                     <td><?= $sp['gia_san_pham'] ?></td>
                                                     <td><?= $sp['so_luong'] ?></td>
-                                                    <td><?= $sp['danh_muc_id'] ?></td>
-                                                    <td><?= $sp['trang_thai'] ?></td>
+                                                    <td><?= $sp['ten_danh_muc'] ?></td>
+                                                    <td>
+                                                        <div class="badge <?= $sp['trang_thai'] == 2 ? 'badge-danger' : 'badge-primary' ?>">
+                                                            <?= $sp['trang_thai'] == 2 ? 'Đang sale' : 'Mặc định' ?>
+                                                        </div>
+                                                    </td>
+
                                                     <td>
                                                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sp['id'] ?>"> <button class="btn btn-warning text-white"><i class="fas fa-edit"></i></button></a>
                                                         <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sp['id'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></button></a>

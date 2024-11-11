@@ -26,13 +26,13 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="#" class="nav-link">
+                             <a href="<?= BASE_URL_ADMIN . '?act=form-them-san-pham' ?>" class="nav-link">
                                  <i class="fas fa-minus"></i>
                                  <p class="m-3">Thêm sản phẩm</p>
                              </a>
                          </li>
                          <li class="nav-item">
-                             <a href="#" class="nav-link">
+                             <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="nav-link">
                                  <i class="fas fa-minus"></i>
                                  <p class="m-3">Danh sách sản phẩm</p>
                              </a>

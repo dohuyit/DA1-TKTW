@@ -851,6 +851,7 @@ main .slider-main {
   object-fit: cover;
   transition: 0.5s ease-in;
   cursor: pointer;
+  transform: scaleX(-1);
 }
 
 .item-bsl .img-item img:hover {

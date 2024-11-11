@@ -130,7 +130,7 @@
 
                                         <div class="form-group col-12">
                                             <label>Mô tả</label>
-                                            <textarea name="mo_ta" class="form-control" placeholder="Nhập mô tả" rows="10"><?= isset($_SESSION['old_data']['mo_ta']) ? $_SESSION['old_data']['mo_ta'] : '' ?></textarea>
+                                            <textarea name="mo_ta" class="form-control" placeholder="Nhập mô tả" rows="10"></textarea>
                                         </div>
 
                                         <?php if (isset($_SESSION['errors']['label'])) { ?>

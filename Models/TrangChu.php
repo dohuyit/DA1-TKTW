@@ -26,7 +26,7 @@ class TrangChuClient
 
     public function getAllProductsByView()
     {
-        $sql = "SELECT * FROM san_phams WHERE view DESC LIMIT 8";
+        $sql = "SELECT * FROM san_phams WHERE luot_xem LIMIT 8";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
