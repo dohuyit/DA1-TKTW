@@ -57,7 +57,7 @@
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <img src="assets/dist/img/user2-160x160.jpg" class="img-circle mr-2" alt="User Image"
                     style="width: 30px; height: 30px" />
-                <span class="text-dark">Xin chào, Đỗ Quốc Huy</span>
+                <span class="text-dark">Xin chào,<?=$_SESSION['user_admin'][1] ?> </span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right mt-2" style="width: 200px">
@@ -65,7 +65,7 @@
                     <i class="fas fa-user mr-2"></i> Thông tin chi tiết
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="<?= BASE_URL_ADMIN . '?act=logout-admin'?>" class="dropdown-item">
                     <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
                 </a>
             </div>

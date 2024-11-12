@@ -3,11 +3,13 @@ class TaikhoanController
 {
     public $modelSanPham;
     public $modelTaiKhoan;
+    
 
     public function __construct()
     {
         $this->modelSanPham = new SanPham();
         $this->modelTaiKhoan = new TaiKhoan();
+       
     }
 
     public function formLogin()

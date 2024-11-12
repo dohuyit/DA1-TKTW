@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
     <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
     <link rel="stylesheet" href="assets/dist/css/admin.css" />
+    <link rel="stylesheet" href="assets/dist/css/formLogin.css" />
+    
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css" />
 </head>
