@@ -8,11 +8,13 @@ require_once './Common/PDO.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './Controllers/HomeController.php';
 require_once './Controllers/TaikhoanController.php';
+require_once './Controllers/GioHangDonHangController.php';
 
 // Require toàn bộ file Models
 require_once './Models/TrangChu.php';
 require_once './Models/SanPham.php';
 require_once './Models/TaiKhoan.php';
+require_once './Models/GioHang.php';
 
 
 
@@ -36,4 +38,8 @@ match ($act) {
     'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),
     'san-pham-theo-danh-muc' => (new HomeController())->sanPhamDanhMuc(),
     //    'gui-binh-luan' =>(new HomeController())->guiBinhLuan(),
+
+    // route giỏ hàng
+    'them-gio-hang' => (new GioHangDonHangController)->addGioHang(),
+    'gio-hang' => (new GioHangDonHangController)->gioHang(),
 };

@@ -185,7 +185,7 @@
                                     <?php foreach ($listSanPhamByView as $bestSeller) : ?>
                                         <div class="item-bsl">
                                             <div class="desc-item">
-                                                <h3><?= $bestSeller['ten_san_pham'] ?></h3>
+                                                <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $bestSeller['id'] ?>"><?= $bestSeller['ten_san_pham'] ?></a></h3>
                                                 <div class="box-watch">
                                                     <span>Lượt xem</span>
                                                     <span><?= $bestSeller['luot_xem'] ?></span>

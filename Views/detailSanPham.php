@@ -25,7 +25,7 @@
             </section>
             <section id="product-main">
                 <div class="container">
-                    <div class="body">
+                    <form action="<?= BASE_URL . '?act=them-gio-hang' ?>" class="body" method="post">
                         <div class="box-img-product">
                             <div class="thumbnail-container">
                                 <?php foreach ($listAnhSanPham as $key => $anhSanPham) : ?>
@@ -104,6 +104,7 @@
                             <div class="quantity">
                                 <label for="">Số Lượng</label>
                                 <div class="btn-quantity">
+                                    <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
                                     <input type="number" id="product-quantity" value="1" min="1" />
                                     <div class="control">
                                         <button class="btn-increase">
@@ -120,13 +121,13 @@
                                     <span>Mua Ngay</span>
                                     <span><ion-icon name="arrow-forward-circle-outline"></ion-icon></span>
                                 </a>
-                                <a href="#" class="add-to-cart">
+                                <button type="submit" class="add-to-cart">
                                     <span>Thêm vào giỏ hàng</span>
                                     <span><ion-icon name="cart-outline"></ion-icon></span>
-                                </a>
+                                </button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
             <section id="feature-icon">

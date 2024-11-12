@@ -126,9 +126,9 @@
                                                 <td class="price">4,109,000₫</td>
                                                 <td class="quantity">
                                                     <div class="quantity-control">
-                                                        <button class="decrease">-</button>
+                                                        <span class="decrease">-</span>
                                                         <input type="text" value="1" class="quantity-input">
-                                                        <button class="increase">+</button>
+                                                        <span class="increase">+</span>
                                                     </div>
                                                 </td>
                                                 <td class="total-wrap">
@@ -149,9 +149,9 @@
                                                 <td class="price">4,109,000₫</td>
                                                 <td class="quantity">
                                                     <div class="quantity-control">
-                                                        <button class="decrease">-</button>
+                                                        <span class="decrease">-</span>
                                                         <input type="text" value="1" class="quantity-input">
-                                                        <button class="increase">+</button>
+                                                        <span class="increase">+</span>
                                                     </div>
                                                 </td>
                                                 <td class="total-wrap">
@@ -172,9 +172,9 @@
                                                 <td class="price">4,109,000₫</td>
                                                 <td class="quantity">
                                                     <div class="quantity-control">
-                                                        <button class="decrease">-</button>
+                                                        <span class="decrease">-</span>
                                                         <input type="text" value="1" class="quantity-input">
-                                                        <button class="increase">+</button>
+                                                        <span class="increase">+</span>
                                                     </div>
                                                 </td>
                                                 <td class="total-wrap">
@@ -411,7 +411,7 @@
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script type="module" src="./js/cart.js"></script>
+    <script type="module" src="Common/assets/js/cart.js"></script>
 </body>
 
 </html>

@@ -387,7 +387,7 @@ main .slider-main {
   content: "";
   width: 30px;
   height: 30px;
-  background-image: url(/Common/assets/image/top-shape.png);
+  background-image: url(../image/top-shape.png);
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
@@ -399,7 +399,7 @@ main .slider-main {
   content: "";
   width: 30px;
   height: 30px;
-  background-image: url(/Common/assets/image/top-shape.png);
+  background-image: url(../image/top-shape.png);
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
@@ -824,9 +824,10 @@ main .slider-main {
   padding: 15px 0 15px 15px;
 }
 
-.item-bsl .desc-item h3 {
-  font-size: 14px;
+.item-bsl .desc-item h3 a {
+  font-size: 15px;
   font-weight: 600;
+  color: #000;
 }
 
 .item-bsl .box-watch {

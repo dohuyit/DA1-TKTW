@@ -157,16 +157,86 @@ body {
 }
 
 .header-bottom {
-  padding: 20px 0;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px 0 10px;
 }
 
-#nav ul {
+#nav .list-nav {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-#nav ul li a {
+
+#nav .list-nav li:nth-child(2) {
+  position: relative;
+}
+
+.navsubtle-hover-wrap {
+  position: absolute;
+  top: 200%;
+  z-index: 10000;
+  left: -126%;
+  width: 1340px;
+  height: 500px;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+  background-color: #fff;
+  padding: 40px 25px;
+  display: grid;
+  grid-template-columns: 65% 30%;
+  justify-content: space-between;
+}
+
+#nav ul li:nth-child(2):hover .navsubtle-hover-wrap {
+  height: 400px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.navsubtle-hover-wrap .wrap-left {
+  display: grid;
+  grid-template-columns: repeat(4, 24%);
+  gap: 20px;
+}
+
+.navsubtle-hover-wrap .wrap-left .list-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.navsubtle-hover-wrap .wrap-left h3 {
+  font-size: 20px;
+  padding: 8px 0 15px;
+  border-bottom: 3px solid #000;
+  color: #000;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.list-data .content {
+  margin-top: 15px;
+}
+
+.list-data .content li a {
+  display: inline-block;
+  font-size: 16px;
+  padding: 8px 0;
+  color: #1b1b1b;
+  transition: 0.5s ease;
+}
+
+.list-data .content li a:hover {
+  color: var(--color-hover);
+}
+
+.navsubtle-hover-wrap .wrap-right img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+#nav .list-nav li .nav-link {
   font-size: 16px;
   color: var(--color-head-card);
   font-weight: 600;
@@ -174,11 +244,11 @@ body {
   transition: 0.5s ease;
 }
 
-#nav ul li a:hover {
+#nav .list-nav li .nav-link:hover {
   color: var(--color-hover);
 }
 
-#nav ul li a::after {
+#nav .list-nav li .nav-link::after {
   content: "";
   position: absolute;
   top: 120%;
@@ -191,7 +261,7 @@ body {
   transition: 0.5s ease-in;
 }
 
-#nav ul li a:hover::after {
+#nav .list-nav li .nav-link:hover::after {
   width: 100%;
 }
 /* END-HEADER */
@@ -381,7 +451,10 @@ table .quantity input {
   text-align: center;
 }
 
-table .quantity button {
+table .quantity span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   font-size: 18px;
