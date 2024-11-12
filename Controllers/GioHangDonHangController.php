@@ -24,8 +24,8 @@ class GioHangDonHangController
 
                 // lẤy dl giỏ hàng
                 $gioHang = $this->modelGioHang->getGioHangFromUser($mail['id']);
-                var_dump($gioHang);
-                die;
+                // var_dump($gioHang);
+                // die;
                 if (!$gioHang) {
                     $gioHangId = $this->modelGioHang->addGioHang($mail['id']);
                     // var_dump($gioHangId);
@@ -42,6 +42,11 @@ class GioHangDonHangController
 
                 $san_pham_id = $_POST['san_pham_id'];
                 $so_luong = $_POST['so_luong'];
+
+                // var_dump($_POST['san_pham_id']);
+                // var_dump($_POST['so_luong']);
+                // die;
+
 
                 $checkSanPham = false;
                 foreach ($chiTietGioHang as $detail) {

@@ -45,13 +45,13 @@ match ($act) {
     'sua-album-anh-san-pham' => (new AdminSanPhamController())->postEditAnhSanPham(),
 
     // route don hang
-    'don-hang' =>(new AdminDonHangController())->danhSachDonHang(),
+    'don-hang' => (new AdminDonHangController())->danhSachDonHang(),
     'chi-tiet-don-hang' => (new AdminDonHangController())->detailDonHang(),
     'form-sua-don-hang' => (new AdminDonHangController())->formEditDonHang(),
     'sua-don-hang' => (new AdminDonHangController())->postEditDonHang(),
     'chi-tiet-don-hang' => (new AdminDonHangController())->detailDonHang(),
 
-// route quản lý tài khoản
+    // route quản lý tài khoản
     // Quản lý tài khoản quản trị
     'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController)->danhSachQuanTri(),
     'form-them-quan-tri' => (new AdminTaiKhoanController)->formAddQuanTri(),
@@ -69,11 +69,9 @@ match ($act) {
     'chi-tiet-khach-hang' => (new AdminTaiKhoanController)->detailKhachHang(),
 
 
-     // route auth
-     'login-admin' =>(new AdminTaiKhoanController)->formLogin(),
-     'check-login-admin' =>(new AdminTaiKhoanController)->login(),
- 
-     'logout-admin' =>(new AdminTaiKhoanController)->logout(),
-    
-};
+    // route auth
+    'login-admin' => (new AdminTaiKhoanController)->formLogin(),
+    'check-login-admin' => (new AdminTaiKhoanController)->login(),
 
+    'logout-admin' => (new AdminTaiKhoanController)->logout(),
+};

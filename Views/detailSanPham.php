@@ -105,7 +105,7 @@
                                 <label for="">Số Lượng</label>
                                 <div class="btn-quantity">
                                     <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
-                                    <input type="number" id="product-quantity" value="1" min="1" />
+                                    <input type="number" id="product-quantity" value="1" min="1" name="so_luong" />
                                     <div class="control">
                                         <button class="btn-increase">
                                             <ion-icon name="caret-up-outline"></ion-icon>

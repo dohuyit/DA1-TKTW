@@ -117,75 +117,34 @@
                                             <th>Tổng tiền</th>
                                         </thead>
                                         <tbody>
-                                            <tr class="item-product-cart">
-                                                <td class="img"><img src="./image/main.jpg" alt=""></td>
-                                                <td class="name">
-                                                    <p> Jordan Stadium 90</p>
-                                                    <p>Nike</p>
-                                                </td>
-                                                <td class="price">4,109,000₫</td>
-                                                <td class="quantity">
-                                                    <div class="quantity-control">
-                                                        <span class="decrease">-</span>
-                                                        <input type="text" value="1" class="quantity-input">
-                                                        <span class="increase">+</span>
-                                                    </div>
-                                                </td>
-                                                <td class="total-wrap">
-                                                    <div class="content">
-                                                        <span>4,109,000₫</span>
-                                                        <p>
-                                                            <ion-icon name="trash-outline"></ion-icon>
-                                                        </p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="item-product-cart">
-                                                <td class="img"><img src="./image/main.jpg" alt=""></td>
-                                                <td class="name">
-                                                    <p> Jordan Stadium 90</p>
-                                                    <p>Nike</p>
-                                                </td>
-                                                <td class="price">4,109,000₫</td>
-                                                <td class="quantity">
-                                                    <div class="quantity-control">
-                                                        <span class="decrease">-</span>
-                                                        <input type="text" value="1" class="quantity-input">
-                                                        <span class="increase">+</span>
-                                                    </div>
-                                                </td>
-                                                <td class="total-wrap">
-                                                    <div class="content">
-                                                        <span>4,109,000₫</span>
-                                                        <p>
-                                                            <ion-icon name="trash-outline"></ion-icon>
-                                                        </p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="item-product-cart">
-                                                <td class="img"><img src="./image/main.jpg" alt=""></td>
-                                                <td class="name">
-                                                    <p> Jordan Stadium 90</p>
-                                                    <p>Nike</p>
-                                                </td>
-                                                <td class="price">4,109,000₫</td>
-                                                <td class="quantity">
-                                                    <div class="quantity-control">
-                                                        <span class="decrease">-</span>
-                                                        <input type="text" value="1" class="quantity-input">
-                                                        <span class="increase">+</span>
-                                                    </div>
-                                                </td>
-                                                <td class="total-wrap">
-                                                    <div class="content">
-                                                        <span>4,109,000₫</span>
-                                                        <p>
-                                                            <ion-icon name="trash-outline"></ion-icon>
-                                                        </p>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <?php foreach ($chiTietGioHang as $itemGioHang) : ?>
+                                                <tr class="item-product-cart">
+                                                    <td class="img">
+                                                        <img src="<?= $itemGioHang['hinh_anh'] ?>" alt="">
+                                                    </td>
+                                                    <td class="name">
+                                                        <p> <?= $itemGioHang['ten_san_pham'] ?></p>
+                                                        <p><?= $itemGioHang['ten_danh_muc'] ?></p>
+                                                    </td>
+                                                    <td class="price">4,109,000₫</td>
+                                                    <td class="quantity">
+                                                        <div class="quantity-control">
+                                                            <span class="decrease">-</span>
+                                                            <input type="text" value="1" class="quantity-input">
+                                                            <span class="increase">+</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="total-wrap">
+                                                        <div class="content">
+                                                            <span>4,109,000₫</span>
+                                                            <p>
+                                                                <ion-icon name="trash-outline"></ion-icon>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+
                                         </tbody>
                                     </table>
                                 </div>

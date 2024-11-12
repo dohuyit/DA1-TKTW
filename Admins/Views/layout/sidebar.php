@@ -18,7 +18,30 @@
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-socks"></i>
+                         <i class="fas fa-user-friends"></i>
+                         <p>
+                             Quản lí người dùng
+                             <i class="fas fa-angle-right right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= BASE_URL_ADMIN . '?act=list-tai-khoan-quan-tri' ?>" class="nav-link">
+                                 <i class="fas fa-minus"></i>
+                                 <p class="m-3">Tài khoản quản trị</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang' ?>" class="nav-link">
+                                 <i class="fas fa-minus"></i>
+                                 <p class="m-3">Tài khoản khách hàng</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <li class="nav-item">
+                     <a href="#" class="nav-link">
+                         <i class="fas fa-boxes"></i>
                          <p>
                              Quản lí sản phẩm
                              <i class="fas fa-angle-right right"></i>
@@ -41,7 +64,7 @@
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-                         <i class="nav-icon fas fa-socks"></i>
+                         <i class="fas fa-layer-group"></i>
                          <p>
                              Quản lí danh mục
                              <i class="fas fa-angle-right right"></i>
@@ -58,6 +81,23 @@
                              <a href="<?= BASE_URL_ADMIN . '?act=danh-muc' ?>" class="nav-link">
                                  <i class="fas fa-minus"></i>
                                  <p class="m-3">Danh sách danh mục</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <li class="nav-item">
+                     <a href="#" class="nav-link">
+                         <i class="fas fa-shopping-cart"></i>
+                         <p>
+                             Quản lí đơn hàng
+                             <i class="fas fa-angle-right right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= BASE_URL_ADMIN . '?act=don-hang' ?>" class="nav-link">
+                                 <i class="fas fa-minus"></i>
+                                 <p class="m-3">Danh sách đơn hàng</p>
                              </a>
                          </li>
                      </ul>

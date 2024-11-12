@@ -9,6 +9,12 @@ aside {
 
 .nav-pills nav .nav-link {
   color: #000000d5 !important;
+  margin-bottom: 15px !important;
+  gap: 10px;
+}
+
+.nav-pills nav .nav-link p {
+  margin-left: 15px;
 }
 
 .nav-pills nav .nav-link.active {
