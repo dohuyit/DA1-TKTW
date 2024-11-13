@@ -56,6 +56,8 @@ class Homecontroller
         }
     }
 
+
+
     public function sanPhamDanhMuc()
     {
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();

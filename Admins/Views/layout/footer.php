@@ -38,7 +38,7 @@
                 responsive: true,
                 lengthChange: false,
                 autoWidth: false,
-                pageLength: 5,
+                pageLength: 7,
                 buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
                 language: {
                     search: "_INPUT_", // Bỏ chữ "Search:"
@@ -47,7 +47,8 @@
             })
             .buttons()
             .container()
-            .appendTo("#example1_wrapper .col-md-6:eq(0)");
+            .appendTo("#example1_wrapper .col-md-6:eq(0)")
+            .destroy();
         $("#example2").DataTable({
             paging: true,
             lengthChange: false,
