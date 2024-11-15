@@ -308,6 +308,8 @@ class AdminSanPhamController
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
         $listBinhLuan = $this->modelBinhLuan->getBinhLuanFromSanPham($id);
+        // var_dump($listBinhLuan);
+        // die;
         if (isset($sanPham)) {
             require_once './views/sanpham/detailSanPham.php';
         } else {

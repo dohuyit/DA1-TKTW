@@ -1,5 +1,6 @@
 <?php
-class AdminBinhLuanController{
+class AdminBinhLuanController
+{
     public $modelDanhMuc;
     public $modelBinhLuan;
 
@@ -43,19 +44,16 @@ class AdminBinhLuanController{
     {
         //  var_dump($_POST);die();
         $id_binh_luan = $_POST['id_binh_luan'];
-        // $name_view = $_POST['name_view'];
-        $xoa = $this->modelBinhLuan->deleteBinhLuan($id_binh_luan);
-        // var_dump($xoa);die();
-
-
+        // var_dump($id_binh_luan);
+        // die;
         $binhLuan = $this->modelBinhLuan->getDetailBinhLuan($id_binh_luan);
-       
-        // die();
-        // $status = $this->modelBinhLuan->updateTrangThaiBinhLuan($id_binh_luan, $trang_thai_update);
+        // var_dump($binhLuan['san_pham_id']);
+        // die;
+        $xoa = $this->modelBinhLuan->deleteBinhLuan($id_binh_luan);
         header('Location:' . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $binhLuan['san_pham_id']);
     }
 
-    
+
     public function xoaBinhLuanKhachHang()
     {
         //  var_dump($_POST);die();
@@ -68,11 +66,9 @@ class AdminBinhLuanController{
 
 
         $binhLuan = $this->modelBinhLuan->getDetailBinhLuan($id_binh_luan);
-       
+
         // die();
         // $status = $this->modelBinhLuan->updateTrangThaiBinhLuan($id_binh_luan, $trang_thai_update);
         header("Location: " . BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $tai_khoan_id);
-
     }
 }
-

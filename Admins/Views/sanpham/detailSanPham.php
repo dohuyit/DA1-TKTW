@@ -84,44 +84,47 @@
                           <th>Người bình luận</th>
                           <th>Nội dung</th>
                           <th>Ngày bình luận</th>
-                  
+
                           <th>Thao tác</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
-                          <tr>
-                            <td><?= $key + 1 ?></td>
-                            <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
-                            <td><?= $binhLuan['noi_dung'] ?></td>
-                            <td><?= $binhLuan['ngay_dang'] ?></td>
-                            <td>
-                              <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan' ?>" method="POST">
-                                <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
-       
-                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
-                                      Xóa
-                                    </button>
-                                    
+                        <?php if (!empty($listBinhLuan)): ?>
+                          <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
+                            <tr>
+                              <td><?= $key + 1 ?></td>
+                              <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
+                              <td><?= $binhLuan['noi_dung'] ?></td>
+                              <td><?= $binhLuan['ngay_dang'] ?></td>
+                              <td>
+                                <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan' ?>" method="POST">
+                                  <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
+
+                                  <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                    Xóa
+                                  </button>
+
                                   </a>
-                                 
 
-                                </div>
 
-                              </form>
 
-                            </td>
-                          </tr> 
-                        <?php } ?>
-                      </tbody>
-                    </table>
                   </div>
-                </div>
 
+                  </form>
+
+                  </td>
+                  </tr>
+                <?php } ?>
+              <?php endif ?>
+              </tbody>
+              </table>
+                </div>
               </div>
-              <!-- /.card-body -->
+
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
 
   </section>
   <!-- /.content -->
@@ -132,49 +135,6 @@
 
 <!-- /.control-sidebar -->
 </div>
-<script>
-  $(function() {
-    $("#example1").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-  var faqs_row = 0;
-
-  function addfaqs() {
-
-    html = '<tr id="faqs-row' + faqs_row + '">';
-    html += '<td><input type="text" class="form-control" placeholder="User name"></td>';
-    html += '<td><input type="text" placeholder="Product name" class="form-control"></td>';
-    html += '<td class="text-danger mt-10"> 18.76% <i class="fa fa-arrow-down"></i></td>';
-    html += '<td class="mt-10"><button class="badge badge-danger" onclick="$(\'#faqs-row' + faqs_row + '\').remove();"><i class="fa fa-trash"></i> Delete</button></td>';
-
-    html += '</tr>';
-
-    $('#faqs tbody').append(html);
-
-    faqs_row++;
-  }
-  $(document).ready(function() {
-    $('.product-image-thumb').on('click', function() {
-      var $image_element = $(this).find('img')
-      $('.product-image').prop('src', $image_element.attr('src'))
-      $('.product-image-thumb.active').removeClass('active')
-      $(this).addClass('active')
-    })
-  })
-</script>
 </body>
 
 </html>
