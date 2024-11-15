@@ -33,7 +33,7 @@ class AdminTaiKhoanController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Lấy ra dl
-          
+
             $ho_ten = $_POST['ho_ten'];
             $email = $_POST['email'];
 
@@ -244,8 +244,8 @@ class AdminTaiKhoanController
 
     public function formLogin()
     {
-        if(isset($_SESSION['user_admin'])){
-            header('Location:'.BASE_URL_ADMIN);
+        if (isset($_SESSION['user_admin'])) {
+            header('Location:' . BASE_URL_ADMIN);
             exit();
         }
         require_once './Views/auth/formLogin.php';
@@ -311,15 +311,20 @@ class AdminTaiKhoanController
     //     }
     // }
 
-  
-    
+
+
 
     public function logout()
     {
         if (isset($_SESSION['user_admin'])) {
             unset($_SESSION['user_admin']);
-            header('Location:' . BASE_URL_ADMIN . '?act=login-admin');
+            header('Location:' . BASE_URL_ADMIN . '?act=view-logout');
         }
+    }
+
+    public function tabLogout()
+    {
+        require_once './Views/auth/viewLogout.php';
     }
 
     public function formEditCaNhanQuanTri()
@@ -345,7 +350,7 @@ class AdminTaiKhoanController
             $user  = $this->modelTaiKhoan->getTaiKhoanformEmail($_SESSION['user_admin']);
 
             $checkPass = password_verify($old_pass, $user['mat_khau']);
-            
+
             //var_dump('ok');die();
             $errors = [];
             if (!$checkPass) {
@@ -445,8 +450,6 @@ class AdminTaiKhoanController
                 exit();
             }
         }
-        
-
     }
 
 
@@ -497,8 +500,4 @@ class AdminTaiKhoanController
             }
         }
     }
-
-
-
-
 } //end

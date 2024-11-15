@@ -24,10 +24,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6">
-                    <img src="../<?=$khachHang['anh_dai_dien']?>" alt="" style="width: 70%;">
+                    <img src="../<?= $khachHang['anh_dai_dien'] ?>" alt="" style="width: 70%;">
                 </div>
 
-               
+
 
                 <div class="col-6">
                     <div class="container">
@@ -160,27 +160,27 @@
                                     <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
-                                            <td><a target="_blank"  href="<?= BASE_URL_ADMIN. '?act=chi-tiet-san-pham&id_san_pham='. $binhLuan['san_pham_id']?>"><?= $binhLuan['ten_san_pham'] ?></a></td>
+                                            <td><a target="_blank" href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $binhLuan['san_pham_id'] ?>"><?= $binhLuan['ten_san_pham'] ?></a></td>
                                             <td><?= $binhLuan['noi_dung'] ?></td>
                                             <td><?= $binhLuan['ngay_dang'] ?></td>
-                                      
+
                                             <td>
-                                            <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan-khach-hang' ?>" method="POST">
-                                                <input type="hidden" name="id_binh_luan" value="<?=$binhLuan['id']?>">
-                                                <input type="hidden" name="tai_khoan_id" value="<?=$binhLuan['tai_khoan_id']?>">
+                                                <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan-khach-hang' ?>" method="POST">
+                                                    <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
+                                                    <input type="hidden" name="tai_khoan_id" value="<?= $binhLuan['tai_khoan_id'] ?>">
 
-                                                <input type="hidden" name="name_view" value="detail_khach">
-                                            <div class="btn-group">
-                                                
-                                            <button class="btn btn-danger" type="submit"  onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
-                                                   Xóa
-                                                
-                                                </button>
-                                      
+                                                    <input type="hidden" name="name_view" value="detail_khach">
+                                                    <div class="btn-group">
 
-                                            </div>
+                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                                            Xóa
 
-                                            </form>
+                                                        </button>
+
+
+                                                    </div>
+
+                                                </form>
 
                                             </td>
                                         </tr>
@@ -203,7 +203,7 @@
 
 <!-- /.control-sidebar -->
 </div>
-<script>
+<!-- <script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
@@ -245,7 +245,7 @@
             }
         });
     });
-</script>
+</script> -->
 </body>
 
 </html>

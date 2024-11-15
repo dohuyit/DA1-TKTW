@@ -24,7 +24,7 @@ require_once './Models/AdminBinhLuan.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
-if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin' && $act !== 'view-logout') {
     checkLoginAdmin();
 }
 match ($act) {
@@ -84,5 +84,5 @@ match ($act) {
    'update-trang-thai-binh-luan' => (new AdminBinhLuanController())->updateTrangThaiBinhLuan(),
    'xoa-binh-luan' => (new AdminBinhLuanController())->xoaBinhLuan(),
    'xoa-binh-luan-khach-hang' => (new AdminBinhLuanController())->xoaBinhLuanKhachHang(),
-
+    'view-logout' => (new AdminTaiKhoanController)->tabLogout()
 };

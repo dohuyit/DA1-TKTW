@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+
 </head>
 
 <body>
@@ -21,8 +22,7 @@
             <div class="login-right">
                 <div class="login-header">
                     <h2>
-                        <span>Welcome To</span>
-                        <img src="../Common/assets/image/logo.png" alt="">
+                        <img src="../Common/assets/image/logo-form.png" alt="">
                     </h2>
                     <p>Đăng nhập để trải nghiệm dịch vụ của chúng tôi</p>
                 </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="input-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="xin mời nhập mật khẩu" name="password">
+                        <input type="password" id="password" placeholder="Xin mời nhập mật khẩu" name="password">
                     </div>
                     <div class="options">
                         <label>

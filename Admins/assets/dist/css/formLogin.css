@@ -6,12 +6,16 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --color-main: #1fdca6;
+}
+
 .wrapper-form {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f5f8fc;
+  background-color: #4cb0db;
 }
 
 .login-container {
@@ -52,10 +56,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .login-header h2 img {
-  width: 120px;
+  width: 200px;
 }
 
 .login-header p {
@@ -78,14 +83,14 @@
 .input-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #dcdcdc;
-  border-radius: 5px;
   outline: none;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
   transition: all 0.3s ease;
 }
 
 .input-group input:focus {
-  border-color: #36b3a6;
+  border: 2px solid var(--color-main);
 }
 
 .options {
@@ -96,7 +101,7 @@
 }
 
 .options a {
-  color: #36b3a6;
+  color: var(--color-main);
   text-decoration: none;
   font-size: 14px;
 }
@@ -108,7 +113,7 @@
 .btn-login {
   width: 100%;
   padding: 12px;
-  background-color: #36b3a6;
+  background-color: var(--color-main);
   border: none;
   color: #fff;
   font-size: 16px;
@@ -118,7 +123,7 @@
 }
 
 .btn-login:hover {
-  background-color: #2c9788;
+  background-color: var(--color-main);
 }
 
 .signup-text {
@@ -128,7 +133,7 @@
 }
 
 .signup-text a {
-  color: #36b3a6;
+  color: var(--color-main);
   text-decoration: none;
 }
 
@@ -154,5 +159,5 @@
 }
 
 .social-icons a:hover {
-  color: #36b3a6;
+  color: var(--color-main);
 }

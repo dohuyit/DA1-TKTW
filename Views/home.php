@@ -337,204 +337,40 @@
                     <div class="content-box-comment">
                         <div class="container-comment">
                             <div class="list-comment">
-                                <div class="card-comment">
-                                    <div class="infor-desc">
-                                        <div class="top">
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                            <h3>NIKE</h3>
-                                        </div>
-                                        <div class="infor-main">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Aliquam, eius. Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit. Aliquam, eius.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="infor-user">
-                                        <div class="left">
-                                            <div class="content">
-                                                <img src="./image/auth.png" alt="" />
-                                                <div class="desc-second">
-                                                    <h4>Đỗ Huy</h4>
-                                                    <p>huy2005@gmail.com</p>
-                                                </div>
+                                <?php foreach ($listBinhLuan as $itemBinhLuan) : ?>
+                                    <div class="card-comment">
+                                        <div class="infor-desc">
+                                            <div class="top">
+                                                <img src="<?= $itemBinhLuan['hinh_anh'] ?>" alt="" />
+                                                <h3><?= $itemBinhLuan['ten_danh_muc'] ?></h3>
+                                            </div>
+                                            <div class="infor-main">
+                                                <p>
+                                                    <?= $itemBinhLuan['noi_dung'] ?>
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="right">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-comment">
-                                    <div class="infor-desc">
-                                        <div class="top">
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                            <h3>NIKE</h3>
-                                        </div>
-                                        <div class="infor-main">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Aliquam, eius. Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit. Aliquam, eius.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="infor-user">
-                                        <div class="left">
-                                            <div class="content">
-                                                <img src="./image/auth.png" alt="" />
-                                                <div class="desc-second">
-                                                    <h4>Đỗ Huy</h4>
-                                                    <p>huy2005@gmail.com</p>
+                                        <div class="infor-user">
+                                            <div class="left">
+                                                <div class="content">
+                                                    <img src="<?= $itemBinhLuan['anh_dai_dien'] ?? 'Common/assets/image/avt-default.jpg' ?>" alt="" />
+                                                    <div class="desc-second">
+                                                        <h4><?= $itemBinhLuan['ho_ten'] ?></h4>
+                                                        <p><?= $itemBinhLuan['gioi_tinh'] == 1 ? "Nam" : "Nữ" ?></p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="right">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-comment">
-                                    <div class="infor-desc">
-                                        <div class="top">
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                            <h3>NIKE</h3>
-                                        </div>
-                                        <div class="infor-main">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Aliquam, eius. Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit. Aliquam, eius.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="infor-user">
-                                        <div class="left">
-                                            <div class="content">
-                                                <img src="./image/auth.png" alt="" />
-                                                <div class="desc-second">
-                                                    <h4>Đỗ Huy</h4>
-                                                    <p>huy2005@gmail.com</p>
-                                                </div>
+                                            <div class="right">
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
                                             </div>
                                         </div>
-                                        <div class="right">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-comment">
-                                    <div class="infor-desc">
-                                        <div class="top">
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                            <h3>NIKE</h3>
-                                        </div>
-                                        <div class="infor-main">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Aliquam, eius. Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit. Aliquam, eius.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="infor-user">
-                                        <div class="left">
-                                            <div class="content">
-                                                <img src="./image/auth.png" alt="" />
-                                                <div class="desc-second">
-                                                    <h4>Đỗ Huy</h4>
-                                                    <p>huy2005@gmail.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-comment">
-                                    <div class="infor-desc">
-                                        <div class="top">
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                            <h3>NIKE</h3>
-                                        </div>
-                                        <div class="infor-main">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Aliquam, eius. Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit. Aliquam, eius.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="infor-user">
-                                        <div class="left">
-                                            <div class="content">
-                                                <img src="./image/auth.png" alt="" />
-                                                <div class="desc-second">
-                                                    <h4>Đỗ Huy</h4>
-                                                    <p>huy2005@gmail.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-comment">
-                                    <div class="infor-desc">
-                                        <div class="top">
-                                            <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png" alt="" />
-                                            <h3>NIKE</h3>
-                                        </div>
-                                        <div class="infor-main">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Aliquam, eius. Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit. Aliquam, eius.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="infor-user">
-                                        <div class="left">
-                                            <div class="content">
-                                                <img src="Common/assets/image/auth.png" alt="" />
-                                                <div class="desc-second">
-                                                    <h4>Đỗ Huy</h4>
-                                                    <p>huy2005@gmail.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
+
                             </div>
                         </div>
                         <div class="directive-control">
