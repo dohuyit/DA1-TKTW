@@ -21,7 +21,7 @@ require_once './Models/AdminTaiKhoan.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
-if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin' && $act !== 'view-logout') {
     checkLoginAdmin();
 }
 match ($act) {
@@ -74,4 +74,5 @@ match ($act) {
     'check-login-admin' => (new AdminTaiKhoanController)->login(),
 
     'logout-admin' => (new AdminTaiKhoanController)->logout(),
+    'view-logout' => (new AdminTaiKhoanController)->tabLogout()
 };

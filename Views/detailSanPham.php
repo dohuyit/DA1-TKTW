@@ -250,22 +250,16 @@
                         </div>
                     </div>
                     <div class="inner-overlay-comment" id="innerOverlayComment">
-                        <form action="" method="POST" class="container-comment">
-                            <!-- <input
-                          type="hidden"
-                          name="id"
-                          value="<?= $productById['id'] ?>"
-                        /> -->
+                        <form action="<?= BASE_URL . '?act=gui-binh-luan' ?>" method="POST" class="container-comment">
                             <h3>Viết bình luận</h3>
                             <div class="icon">
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
+                                <?php for ($i = 0; $i < 5; $i++) : ?>
+                                    <ion-icon name="star"></ion-icon>
+                                <?php endfor; ?>
                             </div>
+                            <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
                             <div class="box-comment">
-                                <textarea name="content_comments" id="comment" cols="30" rows="10"
+                                <textarea name="noi_dung" id="comment" cols="30" rows="10"
                                     placeholder="Viết bình luận của bạn"></textarea>
                             </div>
                             <button type="submit">Gửi bình luận</button>
@@ -438,46 +432,51 @@
       <div id="comments" class="section-content">
                   <div class="wrapper-comment">
                     <div class="list-comment">
-                      <div class="item-comment">
-                        <!-- <p class="text-empty">Chưa có bình luận</p> -->
+                    <?php if (empty($listBinhLuan)): ?>
+                       <p class="text-empty">
+                          <i class="fa-solid fa-comment-slash"></i>
+                          <span>Sản phẩm chưa có bình luận!</span>
+                       </p>
+                    <?php else: ?>    
+                    <?php foreach ($listBinhLuan as $binhLuan) : ?>
+                    <div class="item-comment">
                         <div class="title-comment">
                           <span>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                            <?php for ($i = 0; $i < 5; $i++) : ?>
+                              <i class="fa-solid fa-star"></i>
+                            <?php endfor; ?>
                           </span>
-                          <p>2025-11-3</p>
+                          <p><?= $binhLuan['ngay_dang'] ?></p>
                         </div>
                         <p class="text-comments">
-                          Lorem ipsum dolor, sit amet consectetur adipisicing
-                          elit. In minima deleniti, ipsum, nihil debitis nulla
-                          ipsa amet animi quisquam accusantium nobis labore
-                          quidem praesentium cum ab perspiciatis. Et, dolores.
-                          Quibusdam?
+                        <?= $binhLuan['noi_dung'] ?>
                         </p>
                         <div class="footer-comment">
-                          <img src="./image/auth.png" alt="" />
+                          <img src="Common/assets/image/auth.png" alt="" />
                           <div class="content">
                             <p>
-                              <span>Đỗ Huy</span>
+                              <span><?= $binhLuan['ho_ten'] ?></span>
                               <span
                                 ><ion-icon name="shield-checkmark"></ion-icon
                               ></span>
                             </p>
-                            <p>huy@gmail.com</p>
+                            <p><?= $binhLuan['email'] ?></p>
                           </div>
                         </div>
                       </div>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                      <?php if (isset($_SESSION['user_client'])) : ?>
                       <button id="btn-comment">
                         <span>Viết bình luận</span>
                         <span><i class="fa-solid fa-pen-to-square"></i></span>
                       </button>
-                      <!-- <p class="text-login-form-comment">
-                        Vui lòng <a href="index.php?action=login">đăng nhập</a> để
-                        viết bình luận!!!
-                      </p> -->
+                      <?php else : ?>
+                      <div class="text-login-prompt">
+                        <i class="fa-solid fa-user-lock"></i>
+                        <p>Bạn cần <a href="<?= BASE_URL . '?act=form-login' ?>">đăng nhập</a> để viết bình luận!</p>
+                      </div>
+                      <?php endif; ?>
                     </div>
                     
                   </div>

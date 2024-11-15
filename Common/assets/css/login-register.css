@@ -116,13 +116,14 @@ form
   border: 1px solid #8d8e8f;
   border-radius: 9px;
   outline: none;
+  transition: 0.5s ease;
 }
 
 form .item-form :is(input[type="text"], input[type="password"])::placeholder {
   color: #7e7c7c;
 }
 
-form .item-form :is(input[type="text"], input[type="password"]):focus {
+form .item-form :is(input[type="email"], input[type="password"]):focus {
   border: 2px solid var(--cololr-main);
 }
 
