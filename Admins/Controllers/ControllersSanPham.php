@@ -3,10 +3,12 @@ class AdminSanPhamController
 {
     public $modelDanhMuc;
     public $modelSanPham;
+    public $modelBinhLuan;
     public function __construct()
     {
         $this->modelDanhMuc = new AdminDanhMuc();
         $this->modelSanPham = new AdminSanPham();
+        $this->modelBinhLuan = new AdminBinhLuan();
     }
 
     public function danhsachSanPham()
@@ -294,6 +296,22 @@ class AdminSanPhamController
                 }
             }
             header("Location: " . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham= ' . $san_pham_id);
+            exit();
+        }
+    }
+
+    public function detailSanPham()
+    {
+        // hiển thị form nhập
+        // Lấy ra thông tin của sản phẩm cần sửa
+        $id = $_GET['id_san_pham'];
+        $sanPham = $this->modelSanPham->getDetailSanPham($id);
+        $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+        $listBinhLuan = $this->modelBinhLuan->getBinhLuanFromSanPham($id);
+        if (isset($sanPham)) {
+            require_once './views/sanpham/detailSanPham.php';
+        } else {
+            header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
             exit();
         }
     }

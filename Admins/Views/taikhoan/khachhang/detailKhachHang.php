@@ -127,7 +127,7 @@
                 </div>
 
 
-                <div class="col-12">
+                <!-- <div class="col-12">
                     <hr>
                     <h2>Lịch sử bình luận</h2>
                     <div class="card-body">
@@ -189,8 +189,7 @@
                             </table>
                         </div>
                     </div>
-                    <!-- /.col -->
-                </div>
+                </div> -->
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->

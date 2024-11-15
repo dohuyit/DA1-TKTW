@@ -11,12 +11,15 @@ require_once './Controllers/ControllersSanPham.php';
 require_once './Controllers/ControllersHome.php';
 require_once './Controllers/ControllersTaiKhoan.php';
 require_once './Controllers/ControllersDonHang.php';
+require_once './Controllers/ControllersBinhLuan.php';
+
 
 // Require toàn bộ file Models
 require_once './Models/AdminDanhMuc.php';
 require_once './Models/AdminSanPham.php';
 require_once './Models/AdminDonHang.php';
 require_once './Models/AdminTaiKhoan.php';
+require_once './Models/AdminBinhLuan.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -43,6 +46,8 @@ match ($act) {
     'sua-san-pham' => (new AdminSanPhamController())->postEditSanPham(),
     'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
     'sua-album-anh-san-pham' => (new AdminSanPhamController())->postEditAnhSanPham(),
+   'chi-tiet-san-pham' => (new AdminSanPhamController())->detailSanPham(),
+
 
     // route don hang
     'don-hang' => (new AdminDonHangController())->danhSachDonHang(),
@@ -74,4 +79,10 @@ match ($act) {
     'check-login-admin' => (new AdminTaiKhoanController)->login(),
 
     'logout-admin' => (new AdminTaiKhoanController)->logout(),
+
+//      // route bình luậnupdateTrangThaiBinhLuan
+   'update-trang-thai-binh-luan' => (new AdminBinhLuanController())->updateTrangThaiBinhLuan(),
+   'xoa-binh-luan' => (new AdminBinhLuanController())->xoaBinhLuan(),
+   'xoa-binh-luan-khach-hang' => (new AdminBinhLuanController())->xoaBinhLuanKhachHang(),
+
 };

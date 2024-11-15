@@ -68,6 +68,7 @@
                                                     </td>
 
                                                     <td>
+                                                        <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id'] ?>"> <button class="btn btn-primary text-white"><i class="fas fa-eye"></i></button></a>
                                                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sp['id'] ?>"> <button class="btn btn-warning text-white"><i class="fas fa-edit"></i></button></a>
                                                         <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sp['id'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></button></a>
                                                     </td>
