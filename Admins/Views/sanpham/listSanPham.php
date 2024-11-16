@@ -60,9 +60,9 @@
                                                     <td><?= $sp['ten_san_pham'] ?></td>
                                                     <td><?= $sp['gia_san_pham'] ?></td>
                                                     <td><?= $sp['so_luong'] ?></td>
-                                                    <td><?= $sp['ten_danh_muc'] ?></td>
+                                                    <td><span class="btn btn-outline-success rounded"><?= $sp['ten_danh_muc'] ?></span></td>
                                                     <td>
-                                                        <div class="badge <?= $sp['trang_thai'] == 2 ? 'badge-danger' : 'badge-primary' ?>">
+                                                        <div class="badge <?= $sp['trang_thai'] == 2 ? 'badge-danger' : 'badge-info' ?> py-2">
                                                             <?= $sp['trang_thai'] == 2 ? 'Đang sale' : 'Mặc định' ?>
                                                         </div>
                                                     </td>

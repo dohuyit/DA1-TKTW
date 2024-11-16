@@ -3,13 +3,12 @@ class TaikhoanController
 {
     public $modelSanPham;
     public $modelTaiKhoan;
-    
+
 
     public function __construct()
     {
         $this->modelSanPham = new SanPham();
         $this->modelTaiKhoan = new TaiKhoan();
-       
     }
 
     public function formLogin()
@@ -77,6 +76,7 @@ class TaikhoanController
     {
         if (isset($_SESSION['user_client'])) {
             unset($_SESSION['user_client']);
+            unset($_SESSION['products-cart']);
             $_SESSION['thongBao'] = "Đăng xuất thành công";
             header('Location:' . BASE_URL);
         }

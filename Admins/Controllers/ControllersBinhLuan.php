@@ -47,7 +47,7 @@ class AdminBinhLuanController
         // var_dump($id_binh_luan);
         // die;
         $binhLuan = $this->modelBinhLuan->getDetailBinhLuan($id_binh_luan);
-        // var_dump($binhLuan['san_pham_id']);
+        // var_dump($binhLuan);
         // die;
         $xoa = $this->modelBinhLuan->deleteBinhLuan($id_binh_luan);
         header('Location:' . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $binhLuan['san_pham_id']);

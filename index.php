@@ -43,4 +43,6 @@ match ($act) {
     // route giỏ hàng
     'them-gio-hang' => (new GioHangDonHangController)->addGioHang(),
     'gio-hang' => (new GioHangDonHangController)->gioHang(),
+    'cap-nhat-gio-hang' => (new GioHangDonHangController)->updateGioHang(),
+    'xoa-san-pham-gio-hang' => (new GioHangDonHangController)->xoaItemGioHang(),
 };

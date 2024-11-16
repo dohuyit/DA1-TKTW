@@ -105,7 +105,9 @@
                         <div class="container-sale">
                             <div class="list-products-sale">
                                 <?php foreach ($listProductsSale as $sale) : ?>
-                                    <div class="cart-sale">
+                                    <form action="<?= BASE_URL . '?act=them-gio-hang' ?>" class="cart-sale" method="post">
+                                        <input type="hidden" name="so_luong" value="1">
+                                        <input type="hidden" name="san_pham_id" value="<?= $sale['id'] ?>">
                                         <div class="main-cart">
                                             <div class="img-group">
                                                 <span class="sale-tag">Sale</span>
@@ -126,10 +128,10 @@
                                                     <?= $sale["mo_ta"] ?>
                                                 </p>
                                                 <div class="btn-sale">
-                                                    <a href="#">
+                                                    <button type="submit">
                                                         <ion-icon name="checkmark-circle-outline"></ion-icon>
                                                         <span>Add to cart</span>
-                                                    </a>
+                                                    </button>
                                                     <a href="#"><ion-icon name="heart-outline"></ion-icon></a>
                                                 </div>
                                             </div>
@@ -140,7 +142,7 @@
                                                 <span>Mua Ngay!</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 <?php endforeach ?>
                             </div>
                         </div>
@@ -183,7 +185,9 @@
                             <div class="container-product-bsl">
                                 <div class="list-product-bsl">
                                     <?php foreach ($listSanPhamByView as $bestSeller) : ?>
-                                        <div class="item-bsl">
+                                        <form action="<?= BASE_URL . '?act=them-gio-hang' ?>" class="item-bsl" method="post">
+                                            <input type="hidden" name="so_luong" value="1">
+                                            <input type="hidden" name="san_pham_id" value="<?= $bestSeller['id'] ?>">
                                             <div class="desc-item">
                                                 <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $bestSeller['id'] ?>"><?= $bestSeller['ten_san_pham'] ?></a></h3>
                                                 <div class="box-watch">
@@ -204,10 +208,10 @@
                                                     <span><ion-icon name="eye-outline"></ion-icon></span>
                                                 </div>
                                                 <div class="box-action">
-                                                    <a href="#" class="btn-add-cart">
+                                                    <button type="submit" class="btn-add-cart">
                                                         <span>add to cart</span>
                                                         <span><ion-icon name="cart-outline"></ion-icon></span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div class="img-item">
@@ -222,7 +226,7 @@
                                                     <img src="<?= $bestSeller['hinh_anh'] ?>" alt="" />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     <?php endforeach ?>
 
                                 </div>

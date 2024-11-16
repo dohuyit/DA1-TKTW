@@ -55,3 +55,28 @@ export class functionCarousel {
     if (btnPrev) btnPrev.addEventListener("click", scrollPrev);
   }
 }
+
+export class functionQuatity {
+  quatityInput(containerQuatity, btnDecrease, btnIncrease, inputQuatity) {
+    document.querySelectorAll(containerQuatity).forEach((control) => {
+      const decreaseButton = control.querySelector(btnDecrease);
+      const increaseButton = control.querySelector(btnIncrease);
+      const quantityInput = control.querySelector(inputQuatity);
+
+      // Sự kiện giảm số lượng
+      decreaseButton.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          // Giới hạn không cho xuống dưới 1
+          quantityInput.value = currentValue - 1;
+        }
+      });
+
+      // Sự kiện tăng số lượng
+      increaseButton.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+      });
+    });
+  }
+}

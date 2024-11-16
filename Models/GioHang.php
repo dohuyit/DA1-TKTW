@@ -25,9 +25,10 @@ class GioHang
     public function getDetailGioHang($id)
     {
         try {
-            $sql = "SELECT chi_tiet_gio_hangs.*, san_phams.ten_san_pham, san_phams.hinh_anh, san_phams.gia_san_pham, san_phams.gia_khuyen_mai
+            $sql = "SELECT chi_tiet_gio_hangs.*, san_phams.ten_san_pham, san_phams.hinh_anh, san_phams.gia_san_pham, san_phams.gia_khuyen_mai,danh_mucs.ten_danh_muc
               FROM chi_tiet_gio_hangs
               INNER JOIN san_phams ON chi_tiet_gio_hangs.san_pham_id = san_phams.id
+              INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
               WHERE chi_tiet_gio_hangs.gio_hang_id = :gio_hang_id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(
@@ -117,4 +118,17 @@ class GioHang
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
+    // // Model/GioHang.php
+    // public function getTongSoLuongSanPham($userId)
+    // {
+    //     $sql = "SELECT COUNT(DISTINCT chi_tiet_gio_hangs.san_pham_id) AS so_luong_san_pham 
+    //         FROM chi_tiet_gio_hangs 
+    //         JOIN gio_hangs ON chi_tiet_gio_hangs.gio_hang_id = gio_hangs.id 
+    //         WHERE gio_hangs.tai_khoan_id = ?";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute([$userId]);
+    //     $result = $stmt->fetch();
+    //     return $result['so_luong_san_pham'] ?? 0; // Trả về 0 nếu không có sản phẩm
+    // }
 }

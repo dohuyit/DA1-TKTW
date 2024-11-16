@@ -80,7 +80,7 @@ class SanPham
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':id' => $id]);
         $result = $stmt->fetch();
-        return $result['danh_muc_id'];
+        return $result['ten_danh_muc'];
     }
     public function getListSanPhamdDanhMuc($id, $danh_muc_id)
     {
@@ -143,5 +143,15 @@ class SanPham
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
+    }
+
+    public function getDanhMucById($id)
+    {
+        $sql = "SELECT * FROM danh_mucs WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+        ]);
+        return $stmt->fetch();
     }
 }

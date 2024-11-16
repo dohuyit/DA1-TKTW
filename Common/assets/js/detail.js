@@ -1,4 +1,5 @@
 import { functionCarousel } from "./function.js";
+import { functionQuatity } from "./function.js";
 const carousel = new functionCarousel();
 carousel.initSlider(
   ".container-product-similar",
@@ -7,6 +8,14 @@ carousel.initSlider(
   "#Next-product",
   2500,
   20
+);
+
+const fnQuantity = new functionQuatity();
+fnQuantity.quatityInput(
+  ".btn-quantity",
+  ".decrease",
+  ".increase",
+  ".quantity-input"
 );
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,4 +55,3 @@ function enableCommentForm() {
   }
 }
 //========================================================//
-

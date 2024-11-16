@@ -323,6 +323,7 @@ main #title-main {
   border-radius: 8px;
   height: 100%;
   object-fit: cover;
+  background-color: #dddddd;
 }
 
 .thumbnail-container {
@@ -337,6 +338,7 @@ main #title-main {
   object-fit: cover;
   cursor: pointer;
   border-radius: 8px;
+  background-color: #dddddd;
   transition: transform 0.2s ease-in;
 }
 
@@ -486,13 +488,13 @@ main #title-main {
   display: flex;
   align-items: center;
   margin: 15px 0 0;
+  width: max-content;
+  border: 1px solid #00000048;
 }
 
 .quantity .btn-quantity input {
   height: 50px;
   width: 50px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  /* border: 1px solid #00000048; */
   border: none;
   border-right: none;
   padding: 0 12px;
@@ -507,20 +509,21 @@ main #title-main {
   flex-direction: column;
 }
 
-.btn-quantity .control button {
+.btn-quantity .control span {
   height: 25px;
   width: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  /* border: 1px solid #0000007c; */
-  border: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #00000048;
+  border-right: none;
+  cursor: pointer;
 }
 
-.btn-quantity .control button ion-icon {
+.btn-quantity .control span ion-icon {
   color: var(--color-hover);
+  font-size: 18px;
 }
 
 .btn-action {
@@ -543,6 +546,7 @@ main #title-main {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
   box-shadow: 0 4.53333px 11.3333px 3px #f16e364a;
 }
 
@@ -1026,12 +1030,12 @@ body.no-scroll {
   content: "";
   position: absolute;
   top: 65%;
-  left: 10%;
-  width: 80%;
-  height: 80px;
+  left: 5%;
+  width: 90%;
+  height: 35px;
   border-radius: 50%;
-  background-color: #00000050;
-  filter: blur(19px);
+  background-color: #00000082;
+  filter: blur(7px);
   z-index: -1;
 }
 

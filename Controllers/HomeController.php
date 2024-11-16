@@ -92,12 +92,13 @@ class Homecontroller
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
         if (isset($_GET['danh_muc_id']) && $_GET['danh_muc_id'] > 0) {
             $iddm = $_GET['danh_muc_id'];
+            $titleDanhMuc = $this->modelSanPham->getDanhMucById($iddm);
+            // var_dump($titleDanhMuc);
+            // die;
             $sanPhamByDanhMuc = $this->modelSanPham->sanPhamTheoDanhMuc($iddm);
             // var_dump($spdm);die();
 
-
             $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-            //    var_dump($listDanhMuc);die();
             require_once './Views/categorySanPham.php';
         } else {
             header("Location: " . BASE_URL);

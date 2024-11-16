@@ -19,7 +19,7 @@
             <section id="title-main">
                 <div class="container">
                     <h1>
-                        <span>Trang Chủ</span> <span>/</span><strong>Nike</strong>
+                        <span>Trang Chủ</span> <span>/</span><strong><?= $titleDanhMuc['ten_danh_muc'] ?></strong>
                     </h1>
                 </div>
             </section>

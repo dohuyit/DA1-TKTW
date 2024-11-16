@@ -66,12 +66,12 @@
             <div class="footer-section footer-instagram">
                 <h3>Follow @Instagram</h3>
                 <div class="footer-instagram-gallery">
-                    <img src="./image/instagram1.jpg" alt="" />
-                    <img src="./image/instagram2.jpg" alt="" />
-                    <img src="./image/instagram3.jpg" alt="" />
-                    <img src="./image/instagram4.jpg" alt="" />
-                    <img src="./image/instagram5.jpg" alt="" />
-                    <img src="./image/instagram6.jpg" alt="" />
+                    <img src="Common/assets/image/instagram1.jpg" alt="" />
+                    <img src="Common/assets/image/instagram2.jpg" alt="" />
+                    <img src="Common/assets/image/instagram3.jpg" alt="" />
+                    <img src="Common/assets/image/instagram4.jpg" alt="" />
+                    <img src="Common/assets/image/instagram5.jpg" alt="" />
+                    <img src="Common/assets/image/instagram6.jpg" alt="" />
                 </div>
             </div>
         </div>

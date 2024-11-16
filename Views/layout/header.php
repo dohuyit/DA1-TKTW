@@ -26,10 +26,15 @@
                     </div>
                     <div class="item-icon">
                         <ion-icon name="cart-outline"></ion-icon>
-                        <div class="desc-item-icon">
-                            <p>3 item</p>
+                        <a href="<?= BASE_URL . '?act=gio-hang' ?>" class="desc-item-icon">
+                            <p>
+                                <?= isset($_SESSION['products-cart'])
+                                    ? $_SESSION['products-cart'] . ' items'
+                                    : '0 items';
+                                ?>
+                            </p>
                             <strong>Cart</strong>
-                        </div>
+                        </a>
                     </div>
                     <div class="item-icon">
                         <ion-icon name="people-outline"></ion-icon>
