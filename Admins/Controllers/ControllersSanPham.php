@@ -17,6 +17,23 @@ class AdminSanPhamController
         require_once './views/sanpham/listSanPham.php';
     }
 
+    public function capNhatTrangThai()
+    {
+        // Lấy dữ liệu từ request
+        $data = json_decode(file_get_contents('php://input'), true);
+        // var_dump($data);
+        // die;
+        $idSanPham = $data['id_san_pham'];
+        $trangThai = $data['trang_thai'];
+
+        // Gọi model để cập nhật trạng thái sản phẩm
+        $result = $this->modelSanPham->updateTrangThai($idSanPham, $trangThai);
+
+        // Trả về kết quả
+        echo json_encode(['success' => $result]);
+    }
+
+
     public function formAddSanPham()
     {
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();

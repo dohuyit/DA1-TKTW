@@ -187,7 +187,7 @@
                                     <div class="total-price">
                                         <span>Tổng giá trị đơn hàng</span><strong><?= formatPrice($tongGioHang) ?></strong>
                                     </div>
-                                    <a href="#" class="btn-action-cart">
+                                    <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn-action-cart">
                                         <span>Tiếp tục thanh toán</span>
                                         <span><ion-icon name="arrow-forward-outline"></ion-icon></span>
                                     </a>
@@ -237,150 +237,47 @@
                                     <div class="wrapper-products">
                                         <div class="container-products">
                                             <div class="list-products">
-                                                <div class="card-product">
-                                                    <div class="img-product">
-                                                        <div class="badge-product">
-                                                            <span>H</span>
-                                                            <span>O</span>
-                                                            <span>T</span>
-                                                        </div>
-                                                        <img src="Common/assets/image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="content-product">
-                                                        <div class="top-content">
-                                                            <span>Nike</span>
-                                                            <span>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                            </span>
-                                                        </div>
-                                                        <div class="main-content">
-                                                            <h3 class="heading-card">
-                                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                                            </h3>
-                                                            <div class="box-price">
-                                                                <span>2,649,000đ</span>
-                                                                <span>6,500,000đ</span>
+                                                <?php foreach ($listSanPhamByView as $productView) : ?>
+                                                    <div class="card-product">
+                                                        <div class="img-product">
+                                                            <div class="badge-product">
+                                                                <span>H</span>
+                                                                <span>O</span>
+                                                                <span>T</span>
                                                             </div>
-                                                            <div class="tag-card">
-                                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                                <p>Giá độc quyền online</p>
+                                                            <img src="<?= $productView['hinh_anh'] ?>"
+                                                                alt="" />
+                                                        </div>
+                                                        <div class="content-product">
+                                                            <div class="top-content">
+                                                                <span><?= $productView['ten_danh_muc'] ?></span>
+                                                                <span>
+                                                                    <?php for ($i = 0; $i < 5; $i++) : ?>
+                                                                        <ion-icon name="star"></ion-icon>
+                                                                    <?php endfor; ?>
+                                                                </span>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-product">
-                                                    <div class="img-product">
-                                                        <div class="badge-product">
-                                                            <span>H</span>
-                                                            <span>O</span>
-                                                            <span>T</span>
-                                                        </div>
-                                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="content-product">
-                                                        <div class="top-content">
-                                                            <span>Nike</span>
-                                                            <span>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                            </span>
-                                                        </div>
-                                                        <div class="main-content">
-                                                            <h3 class="heading-card">
-                                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                                            </h3>
-                                                            <div class="box-price">
-                                                                <span>2,649,000đ</span>
-                                                                <span>6,500,000đ</span>
-                                                            </div>
-                                                            <div class="tag-card">
-                                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                                <p>Giá độc quyền online</p>
+                                                            <div class="main-content">
+                                                                <h3 class="heading-card">
+                                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $productView['id'] ?>"><?= $productView['ten_san_pham'] ?></a>
+                                                                </h3>
+                                                                <div class="box-price">
+                                                                    <?php if ($productView['gia_khuyen_mai'] > 0) : ?>
+                                                                        <span class="price-old"><?= formatPrice($productView['gia_san_pham']) ?></span>
+                                                                        <span class="price-sale"><?= formatPrice($productView['gia_khuyen_mai']) ?></span>
+
+                                                                    <?php else : ?>
+                                                                        <span class="price-old"><?= formatPrice($productView['gia_san_pham']) ?></span>
+                                                                    <?php endif ?>
+                                                                </div>
+                                                                <div class="tag-card">
+                                                                    <img src="Common/assets/image/sale-online 1.svg" alt="" />
+                                                                    <p>Giá độc quyền online</p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card-product">
-                                                    <div class="img-product">
-                                                        <div class="badge-product">
-                                                            <span>H</span>
-                                                            <span>O</span>
-                                                            <span>T</span>
-                                                        </div>
-                                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="content-product">
-                                                        <div class="top-content">
-                                                            <span>Nike</span>
-                                                            <span>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                            </span>
-                                                        </div>
-                                                        <div class="main-content">
-                                                            <h3 class="heading-card">
-                                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                                            </h3>
-                                                            <div class="box-price">
-                                                                <span>2,649,000đ</span>
-                                                                <span>6,500,000đ</span>
-                                                            </div>
-                                                            <div class="tag-card">
-                                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                                <p>Giá độc quyền online</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-product">
-                                                    <div class="img-product">
-                                                        <div class="badge-product">
-                                                            <span>H</span>
-                                                            <span>O</span>
-                                                            <span>T</span>
-                                                        </div>
-                                                        <img src="./image/JORDAN+SPIZIKE+LOW+_GS_-removebg-preview.png"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="content-product">
-                                                        <div class="top-content">
-                                                            <span>Nike</span>
-                                                            <span>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                                <ion-icon name="star"></ion-icon>
-                                                            </span>
-                                                        </div>
-                                                        <div class="main-content">
-                                                            <h3 class="heading-card">
-                                                                <a href="#">Nike G.T. Cut Academy EP</a>
-                                                            </h3>
-                                                            <div class="box-price">
-                                                                <span>2,649,000đ</span>
-                                                                <span>6,500,000đ</span>
-                                                            </div>
-                                                            <div class="tag-card">
-                                                                <img src="./image/sale-online 1.svg" alt="" />
-                                                                <p>Giá độc quyền online</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>

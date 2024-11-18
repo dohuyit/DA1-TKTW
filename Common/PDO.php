@@ -21,6 +21,10 @@ function connectDB()
     }
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 // Thêm file
 function uploadFile($file, $folderUpload)
 {
@@ -94,4 +98,38 @@ function checkLoginAdmin()
 function formatPrice($price)
 {
     return number_format($price, 0, '.', ',') . "đ";
+}
+
+function sendMail($to, $subject, $content)
+{
+
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'huydonganh2005@gmail.com';
+        $mail->Password   = 'szrp ykhc xhvz getg';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port       = 465;
+        $mail->setFrom('huydonganh2005@gmail.com', 'dohuy');
+        $mail->addAddress($to, "Hi");
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $content;
+        $mail->smtpConnect(array(
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+                "allow_self_signed" => true,
+            )
+        ));
+        $mail->send();
+        // echo 'Gửi mail thành công!';
+    } catch (Exception $e) {
+        echo "Gửi mail thất bại. Mailer Error: {$mail->ErrorInfo}";
+    }
 }

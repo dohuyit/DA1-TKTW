@@ -48,7 +48,7 @@ class Homecontroller
         $id = $_GET['id_san_pham'];
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
+        $this->modelSanPham->updateLuotXemSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
         $listBinhLuan = $this->modelBinhLuan->getBinhLuanBySanPham($id);
         // var_dump($listBinhLuan);

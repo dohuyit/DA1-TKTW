@@ -21,6 +21,19 @@ class AdminSanPham
         }
     }
 
+    public function updateTrangThai($id, $trangThai)
+    {
+        $sql = "UPDATE san_phams SET trang_thai = :trang_thai WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        // $stmt->bindParam(':trang_thai', $trangThai, PDO::PARAM_INT);
+        // $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute([
+            ':trang_thai' => $trangThai,
+            ':id' => $id
+        ]);
+    }
+
+
     public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
     {
         try {

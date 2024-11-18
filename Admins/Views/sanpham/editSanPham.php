@@ -109,7 +109,7 @@
                                             <label>Trạng thái</label>
                                             <select class="form-control" name="trang_thai">
                                                 <option <?= $sanPham['trang_thai'] == 1 ? 'selected' : '' ?> value="1">Mặc định</option>
-                                                <option <?= $sanPham['trang_thai'] == 1 ? 'selected' : '' ?> value="2">Sale</option>
+                                                <option <?= $sanPham['trang_thai'] == 2 ? 'selected' : '' ?> value="2">Sale</option>
                                             </select>
                                             <?php if (isset($_SESSION['errors']['trang_thai'])) { ?>
                                                 <p class="text-danger"><?= $_SESSION['errors']['trang_thai'] ?></p>
