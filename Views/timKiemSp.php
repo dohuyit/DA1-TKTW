@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="Common/assets/css/reset.css" />
-  <link rel="stylesheet" href="Common/assets/css/category.css" />
+  <link rel="stylesheet" href="Common/assets/css/search.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,13 +13,13 @@
 </head>
 
 <body>
-    <div class="wrapper">
+  <div class="wrapper">
     <?php require_once "layout/header.php" ?>
     <main>
       <section id="title-main">
         <div class="container">
           <h1>
-          <span>Trang Chủ</span> <span>/</span><strong>Tất cả sản phẩm</strong>
+            <span>Trang Chủ</span> <span>/</span><strong>Tất cả sản phẩm</strong>
           </h1>
         </div>
       </section>
@@ -94,13 +94,13 @@
               <div class="toolbar">
                 <div class="group-btn-layout">
                   <div class="btn-grid-layout" id="btn-four">
-                    <img src="./image/four.svg" alt="">
+                    <img src="Common/assets/image/four.svg" alt="">
                   </div>
                   <div class="btn-grid-layout" id="btn-three">
-                    <img src="./image/three.svg" alt="">
+                    <img src="Common/assets/image/three.svg" alt="">
                   </div>
                   <div class="btn-grid-layout" id="btn-two">
-                    <img src="./image/two.svg" alt="">
+                    <img src="Common/assets/image/two.svg" alt="">
                   </div>
                 </div>
                 <select>
@@ -113,65 +113,74 @@
               </div>
 
               <!-- Product Cards -->
-              <div class="products-body columns-4" id="products-body">
-              <?php foreach ($listSanPhamTimKiem as $key => $sanPham) : ?>
-                <div class="card-product">
-                  <div class="img-product">
-                  <a href="<?=BASE_URL.'?act=chi-tiet-san-pham&id_san_pham=' .$sanPham['id']?>">
-                    <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
-                  </a>
-                    <div class="badge-product">
-                      <?php 
-                      $ngayNhap = new DateTime($sanPham['ngay_nhap']);
-                      $ngayHienTai = new DateTime();
-                      $tinhNgay = $ngayHienTai->diff($ngayNhap);
-                      if ($tinhNgay->days <= 7) {    ?>
-
-                          <div class="product-label new">
-                              <span>Mới</span>
-                          </div>
-                      <?php } ?>
-                      <?php if($sanPham['gia_khuyen_mai'] >0) { ?>
-                      <div class="product-label discount">
-                          <span>Giảm giá</span>
+              <?php if (!empty($listSanPhamTimKiem)) : ?>
+                <div class="products-body columns-4" id="products-body">
+                  <?php foreach ($listSanPhamTimKiem as $key => $sanPham) : ?>
+                    <div class="card-product">
+                      <div class="img-product">
+                        <div class="badge-product">
+                          <span>H</span>
+                          <span>O</span>
+                          <span>T</span>
+                        </div>
+                        <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="" />
                       </div>
-                      <?php }?>
-                    </div>
-                  <div class="content-product">
-                    <div class="top-content">
-                    <a href="<?=BASE_URL.'?act=chi-tiet-san-pham&id_san_pham=' .$sanPham['id']?>"><?= $sanPham['ten_san_pham']?></a>
-                    </div>
-                    <div class="main-content">
-                      <?php if($sanPham['gia_khuyen_mai'] >0){ ?>
-                        <span class="price-regular"><?=  formatPrice($sanPham['gia_khuyen_mai']).'đ';?></span>
-                        <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']). 'đ';?></del></span>
-                      <?php }else{ ?>
-                        <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']).'đ'?></span>
-                                                        
-                                                        
-                      <?php }    ?>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-              <?php endforeach;?>
-              </div>
-              
+                      <div class="content-product">
+                        <div class="top-content">
+                          <span><?= $sanPham['ten_danh_muc'] ?></span>
+                          <span>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                          </span>
+                        </div>
+                        <div class="main-content">
+                          <h3 class="heading-card">
+                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                          </h3>
+                          <div class="box-price">
+                            <?php if ($sanPham['gia_khuyen_mai'] > 0) : ?>
+                              <span class="price-old"><?= formatPrice($sanPham['gia_san_pham']) ?></span>
+                              <span class="price-sale"><?= formatPrice($sanPham['gia_khuyen_mai']) ?></span>
 
-                  
-                
-              
+                            <?php else : ?>
+                              <span class="price-old"><?= formatPrice($sanPham['gia_san_pham']) ?></span>
+                            <?php endif ?>
+                          </div>
+                          <div class="tag-card">
+                            <img src="Common/assets/image/sale-online 1.svg" alt="" />
+                            <p>Giá độc quyền online</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+
+              <?php else : ?>
+                <div class="no-results">
+                  <i class="fa-solid fa-exclamation"></i>
+                  <h2>Rất tiếc!</h2>
+                  <p>Không tìm thấy sản phẩm nào với từ khóa "<strong><?= htmlspecialchars($_POST['keyword']) ?></strong>".</p>
+                  <a href="<?= BASE_URL ?>" class="btn-back">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Quay lại trang chủ</span>
+                  </a>
+                </div>
+              <?php endif; ?>
             </div>
-          
-        </div>
+
+          </div>
       </section>
     </main>
     <?php require_once "layout/footer.php" ?>
-    </div>
-    
+  </div>
+
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script type="module" src="./js/category.js"></script>
+  <script type="module" src="Common/assets/js/category.js"></script>
 </body>
 
 </html>

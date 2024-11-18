@@ -102,17 +102,15 @@ class SanPham
     public function search($keyword)
     {
         try {
-            $sql = "SELECT * FROM san_phams
-            WHERE ten_san_pham LIKE :keyword
-            ORDER BY luot_xem DESC";
+            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM san_phams
+            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
+            WHERE ten_san_pham LIKE '%$keyword%'
+            ";
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([
-                ':keyword' => '%' . $keyword . '%', // Use LIKE with wildcards
-            ]);
-
+            $stmt->execute();
             return $stmt->fetchAll();
         } catch (Exception $e) {
-            throw new Exception("Error searching for products: " . $e->getMessage());
+            echo "Lỗi: " . $e->getMessage();
         }
     }
 

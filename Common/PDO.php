@@ -111,11 +111,11 @@ function sendMail($to, $subject, $content)
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'huydonganh2005@gmail.com';
-        $mail->Password   = 'szrp ykhc xhvz getg';
+        $mail->Username   = 'bekatstore205@gmail.com';
+        $mail->Password   = 'wdfa aqrd txgz fhnm';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
-        $mail->setFrom('huydonganh2005@gmail.com', 'dohuy');
+        $mail->setFrom('bekatstore205@gmail.com', 'bekat');
         $mail->addAddress($to, "Hi");
         $mail->isHTML(true);
         $mail->Subject = $subject;

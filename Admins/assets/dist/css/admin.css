@@ -265,13 +265,9 @@ aside {
 /* btn-swip */
 .toggle-border {
   width: max-content;
-  border: 2px solid #f0ebeb;
   border-radius: 130px;
   margin-bottom: 45px;
   padding: 1px 2px;
-  background: linear-gradient(to bottom right, white, rgba(220, 220, 220, 0.5)),
-    white;
-  box-shadow: 0 0 0 2px #fbfbfb;
   cursor: pointer;
   display: flex;
   align-items: center;

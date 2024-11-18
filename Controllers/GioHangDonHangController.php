@@ -223,7 +223,6 @@ class GioHangDonHangController
                 $content .= "</table>";
                 $content .= "<p>Chúng tôi sẽ sớm giao hàng đến cho bạn. Xin cảm ơn!</p>";
 
-                // Gửi email xác nhận
                 sendMail($email_nguoi_nhan, $subject, $content);
 
                 // Thông báo đặt hàng thành công và chuyển hướng

@@ -107,21 +107,18 @@ class Homecontroller
     public function timKiem()
     {
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
-        // $listtop10 = $this->modelSanPham->top10();
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $keyword = $_POST['keyword'] ?? '';
-
-            $listSanPhamTimKiem = $this->modelSanPham->search($keyword);
-            // var_dump($listSanPhamTimKiem);
+            $keyword = htmlspecialchars(trim($_POST['keyword']));
+            // var_dump($keyword);
             // die;
 
+            if (!empty($keyword)) {
+                $listSanPhamTimKiem = $this->modelSanPham->search($keyword);
+            } else {
+                $listSanPhamTimKiem = [];
+            }
             require_once './Views/timKiemSp.php';
-
-
-            //var_dump($timsp);die();
         }
     }
 }

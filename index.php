@@ -27,10 +27,13 @@ require_once './Models/DonHang.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
+// sendMail("huydonganh2005@gmail.com", "Chào mừng bạn", "Chào bạn");
+
 match ($act) {
     // route
     '/' => (new HomeController())->home(),
     "productCate" => (new Homecontroller)->filterCateByHome(),
+    'tim-kiem' => (new HomeController())->timKiem(),
 
     // route auth
     'form-login' => (new TaikhoanController())->formLogin(),
@@ -50,8 +53,6 @@ match ($act) {
     'cap-nhat-gio-hang' => (new GioHangDonHangController)->updateGioHang(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController)->xoaItemGioHang(),
 
-    // search
-    'tim-kiem' =>(new HomeController())->timKiem(),
     'thanh-toan' => (new GioHangDonHangController)->thanhToan(),
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'da-dat-hang' => (new GioHangDonHangController)->daDatHang(),
