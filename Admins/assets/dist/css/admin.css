@@ -290,7 +290,7 @@ aside {
   display: inline-block;
   width: 95px;
   height: 20px;
-  background: #13d162;
+  background: #ccc;
   border-radius: 80px;
   cursor: pointer;
   box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.3);
@@ -298,7 +298,7 @@ aside {
 }
 
 .toggle-border input[type="checkbox"]:checked + label {
-  background: #ccc;
+  background: #13d162;
 }
 
 .handle {
