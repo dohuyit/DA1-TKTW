@@ -402,6 +402,7 @@ main {
 
 .payment-method input {
   margin-right: 8px;
+  accent-color: var(--color-hover);
 }
 
 .main-group {
@@ -470,7 +471,7 @@ table .name p:last-child {
 }
 
 table .price {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-hover);
   font-weight: 600;
 }
@@ -486,24 +487,20 @@ table .quantity input {
   height: 30px;
   border: none;
   text-align: center;
+  outline: none;
+}
+
+table .quantity input::-webkit-inner-spin-button {
+  display: none;
 }
 
 table .total-wrap {
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 table .total-wrap .content {
-  display: flex;
-  justify-content: end;
-  align-items: start;
-  flex-direction: column;
-  gap: 45px;
   font-size: 15px;
   font-weight: bold;
-}
-
-table .total-wrap .content ion-icon {
-  font-size: 20px;
 }
 
 .checkout-box {
@@ -587,6 +584,8 @@ table .total-wrap .content ion-icon {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 30px;
+  outline: none;
+  border: none;
   border-radius: 10px;
 }
 

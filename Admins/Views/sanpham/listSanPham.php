@@ -62,10 +62,18 @@
                                                     <td><?= $sp['so_luong'] ?></td>
                                                     <td><span class="btn btn-outline-success rounded"><?= $sp['ten_danh_muc'] ?></span></td>
                                                     <td>
-                                                        <div class="badge <?= $sp['trang_thai'] == 2 ? 'badge-danger' : 'badge-info' ?> py-2">
-                                                            <?= $sp['trang_thai'] == 2 ? 'Đang sale' : 'Mặc định' ?>
+                                                        <div class="toggle-border">
+                                                            <input
+                                                                id="trangthai-<?= $sp['id'] ?>"
+                                                                type="checkbox"
+                                                                <?= $sp['trang_thai'] == 2 ? 'checked' : '' ?>
+                                                                onchange="updateTrangThai(<?= $sp['id'] ?>, this.checked)">
+                                                            <label for="trangthai-<?= $sp['id'] ?>">
+                                                                <div class="handle"></div>
+                                                            </label>
                                                         </div>
                                                     </td>
+
 
                                                     <td>
                                                         <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id'] ?>"> <button class="btn btn-primary text-white"><i class="fas fa-eye"></i></button></a>
@@ -91,6 +99,47 @@
         </div>
         <!-- /.content-wrapper -->
         <?php include './views/layout/footer.php' ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function showAlert() {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Bạn đã thay đổi thành công",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }
+
+            function updateTrangThai(id, isChecked) {
+                // Xác định giá trị trạng thái cần cập nhật
+                let trangThai = isChecked ? 2 : 1;
+
+                // Gửi yêu cầu AJAX tới server
+                fetch('<?= BASE_URL_ADMIN ?>?act=cap-nhat-trang-thai', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            id_san_pham: id,
+                            trang_thai: trangThai
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.success) {
+                            showAlert()
+                        } else {
+                            alert('Cập nhật trạng thái thất bại');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Lỗi:', error);
+                    });
+            }
+        </script>
 
 </body>
 

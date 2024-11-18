@@ -40,13 +40,14 @@ match ($act) {
 
     // route san pham
     'san-pham' => (new AdminSanPhamController())->danhsachSanPham(),
+    'cap-nhat-trang-thai' => (new AdminSanPhamController)->capNhatTrangThai(),
     'form-them-san-pham' => (new AdminSanPhamController())->formAddSanPham(),
     'them-san-pham' => (new AdminSanPhamController())->postAddSanPham(),
     'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
     'sua-san-pham' => (new AdminSanPhamController())->postEditSanPham(),
     'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
     'sua-album-anh-san-pham' => (new AdminSanPhamController())->postEditAnhSanPham(),
-   'chi-tiet-san-pham' => (new AdminSanPhamController())->detailSanPham(),
+    'chi-tiet-san-pham' => (new AdminSanPhamController())->detailSanPham(),
 
 
     // route don hang
@@ -80,9 +81,9 @@ match ($act) {
 
     'logout-admin' => (new AdminTaiKhoanController)->logout(),
 
-//      // route bình luậnupdateTrangThaiBinhLuan
-   'update-trang-thai-binh-luan' => (new AdminBinhLuanController())->updateTrangThaiBinhLuan(),
-   'xoa-binh-luan' => (new AdminBinhLuanController())->xoaBinhLuan(),
-   'xoa-binh-luan-khach-hang' => (new AdminBinhLuanController())->xoaBinhLuanKhachHang(),
+    //      // route bình luậnupdateTrangThaiBinhLuan
+    'update-trang-thai-binh-luan' => (new AdminBinhLuanController())->updateTrangThaiBinhLuan(),
+    'xoa-binh-luan' => (new AdminBinhLuanController())->xoaBinhLuan(),
+    'xoa-binh-luan-khach-hang' => (new AdminBinhLuanController())->xoaBinhLuanKhachHang(),
     'view-logout' => (new AdminTaiKhoanController)->tabLogout()
 };

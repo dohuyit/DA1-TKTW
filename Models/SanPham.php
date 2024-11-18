@@ -135,7 +135,7 @@ class SanPham
         try {
             $sql = "SELECT san_phams.*,danh_mucs.ten_danh_muc FROM san_phams
             INNER JOIN danh_mucs ON danh_mucs.id  = san_phams.danh_muc_id
-            WHERE san_phams.danh_muc_id = :id";
+            WHERE san_phams.danh_muc_id = :id LIMIT 8";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $id]);
 
@@ -153,5 +153,14 @@ class SanPham
             ':id' => $id,
         ]);
         return $stmt->fetch();
+    }
+
+    public function updateLuotXemSanPham($id)
+    {
+        $sql = "UPDATE san_phams SET luot_xem = luot_xem + 1 WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':id' => $id
+        ]);
     }
 }

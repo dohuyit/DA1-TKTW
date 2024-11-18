@@ -314,7 +314,7 @@
                                                     <?php endif ?>
                                                 </div>
                                                 <div class="tag-card">
-                                                    <img src="./image/sale-online 1.svg" alt="" />
+                                                    <img src="Common/assets/image/sale-online 1.svg" alt="" />
                                                     <p>Giá độc quyền online</p>
                                                 </div>
                                             </div>

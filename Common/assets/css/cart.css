@@ -717,7 +717,11 @@ table .total-wrap .content ion-icon {
   padding: 5px 0;
 }
 
-.content-product .box-price span:last-child {
+.content-product .box-price .price-old {
+  color: var(--color-head-card);
+}
+
+.content-product .box-price .price-sale {
   font-size: 12px;
   font-weight: bold;
   color: var(--color-hover);

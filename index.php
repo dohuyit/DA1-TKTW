@@ -3,6 +3,10 @@ session_start();
 
 // Require file Common
 require_once './Common/env.php'; // Khai báo biến môi trường
+
+require_once './Common/PHPMailer/src/Exception.php'; // các hàm của thư viện php
+require_once './Common/PHPMailer/src/PHPMailer.php';
+require_once './Common/PHPMailer/src/SMTP.php';
 require_once './Common/PDO.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
@@ -16,12 +20,12 @@ require_once './Models/SanPham.php';
 require_once './Models/BinhLuan.php';
 require_once './Models/TaiKhoan.php';
 require_once './Models/GioHang.php';
+require_once './Models/DonHang.php';
 
 
 
 // Route
 $act = $_GET['act'] ?? '/';
-
 
 match ($act) {
     // route
@@ -45,4 +49,7 @@ match ($act) {
     'gio-hang' => (new GioHangDonHangController)->gioHang(),
     'cap-nhat-gio-hang' => (new GioHangDonHangController)->updateGioHang(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController)->xoaItemGioHang(),
+    'thanh-toan' => (new GioHangDonHangController)->thanhToan(),
+    'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
+    'da-dat-hang' => (new GioHangDonHangController)->daDatHang(),
 };
