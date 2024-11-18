@@ -104,4 +104,24 @@ class Homecontroller
             header("Location: " . BASE_URL);
         }
     }
+    public function timKiem()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        // $listtop10 = $this->modelSanPham->top10();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $keyword = $_POST['keyword'] ?? '';
+
+            $listSanPhamTimKiem = $this->modelSanPham->search($keyword);
+            // var_dump($listSanPhamTimKiem);
+            // die;
+
+            require_once './Views/timKiemSp.php';
+
+
+            //var_dump($timsp);die();
+        }
+    }
 }

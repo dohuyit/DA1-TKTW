@@ -11,7 +11,7 @@
                     <a href="<?= BASE_URL ?>"><img src="Common/assets/image/logo.png" alt="" /></a>
                 </div>
                 <div class="group-search">
-                    <form action="">
+                    <form action="<?= BASE_URL . '?act=tim-kiem'?>" method="post">
                         <input type="text" placeholder="Tìm kiếm sản phẩm..." />
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
