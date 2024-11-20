@@ -26,7 +26,7 @@
                         <h1>Đơn Hàng Hoàn Tất!</h1>
                         <p>Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ sớm giao hàng đến bạn.</p>
                         <div class="btn">
-                            <a href="#">
+                            <a href="<?= BASE_URL . '?act=thong-tin-don-hang' ?>">
                                 <span>Thông tin đơn hàng</span>
                                 <i class="fa-solid fa-dolly"></i>
                             </a>

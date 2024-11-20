@@ -587,6 +587,7 @@ table .total-wrap .content {
   outline: none;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .btn-action-cart ion-icon {

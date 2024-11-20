@@ -56,4 +56,6 @@ match ($act) {
     'thanh-toan' => (new GioHangDonHangController)->thanhToan(),
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'da-dat-hang' => (new GioHangDonHangController)->daDatHang(),
+    'thong-tin-don-hang' => (new GioHangDonHangController)->thongTinDonHang(),
+    'chi-tiet-don-hang' => (new GioHangDonHangController)->chiTietDonHang(),
 };

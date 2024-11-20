@@ -182,6 +182,10 @@ class GioHangDonHangController
             // Lấy thông tin giỏ hàng
             $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
             $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            // echo "<pre>";
+            // var_dump($chiTietGioHang);
+            // echo "</pre>";
+            // die;
 
             // Thêm đơn hàng vào database
             $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
@@ -225,6 +229,7 @@ class GioHangDonHangController
 
                 sendMail($email_nguoi_nhan, $subject, $content);
 
+
                 // Thông báo đặt hàng thành công và chuyển hướng
                 $_SESSION['flash'] = true;
                 $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
@@ -237,7 +242,34 @@ class GioHangDonHangController
 
     public function daDatHang()
     {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
         require_once './Views/hoanThanhDonHang.php';
+    }
+
+    public function thongTinDonHang()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+        $tai_khoan_id = $user['id'];
+        $listDonHang = $this->modelDonHang->getAllDonHang($tai_khoan_id);
+        require_once './Views/thongTinDonHang.php';
+    }
+
+    public function chiTietDonHang()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+        $id_don_hang = $_GET['don_hang_id'];
+        $donHangInfor = $this->modelDonHang->getAllDonHang($tai_khoan_id = null, $id_don_hang);
+        // echo "<pre>";
+        // var_dump($donHangInfor);
+        // echo "</pre>";
+        // die;
+        $DetailDonHang = $this->modelDonHang->getDetailDonHang($id_don_hang);
+        // var_dump($DetailDonHang);
+        // die;
+        require_once './Views/chiTietDonHang.php';
     }
 
     public function xoaItemGioHang()

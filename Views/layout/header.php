@@ -45,7 +45,7 @@
                             </div>
                             <ul class="account-dropdown">
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= BASE_URL . '?act=thong-tin-don-hang' ?>">
                                         <ion-icon name="person-add-outline"></ion-icon>
                                         <span>Thông tin tài khoản</span>
                                     </a>

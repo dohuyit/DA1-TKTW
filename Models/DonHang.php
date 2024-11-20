@@ -56,21 +56,55 @@ class DonHang
         }
     }
 
-    public function getAllDonHang($id)
+    public function getAllDonHang($tai_khoan_id = null, $don_hang_id = null)
     {
         try {
-            $sql = "SELECT don_hangs.*,trang_thai_don_hangs.ten_trang_thai  FROM don_hangs 
-            INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id 
-      
-              WHERE don_hangs.id = :id";
+            // Bắt đầu câu SQL
+            $sql = "SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai 
+                FROM don_hangs
+                INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id";
+
+            // Thêm điều kiện WHERE nếu có tham số
+            $conditions = [];
+            $params = [];
+            if ($tai_khoan_id !== null) {
+                $conditions[] = "don_hangs.tai_khoan_id = :tai_khoan_id";
+                $params[':tai_khoan_id'] = $tai_khoan_id;
+            }
+            if ($don_hang_id !== null) {
+                $conditions[] = "don_hangs.id = :don_hang_id";
+                $params[':don_hang_id'] = $don_hang_id;
+            }
+
+            // Ghép các điều kiện
+            if (!empty($conditions)) {
+                $sql .= " WHERE " . implode(" AND ", $conditions);
+            }
+
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute(
-                [
-                    ':id' => $id
-                ]
-            );
-            $donHang =  $stmt->fetchAll();
+            $stmt->execute($params);
+            $donHang = $stmt->fetchAll();
             return $donHang;
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+
+    public function getDetailDonHang($id)
+    {
+        try {
+            $sql = "SELECT 
+                    chi_tiet_don_hangs.*,
+                    san_phams.ten_san_pham,
+                    san_phams.hinh_anh
+                FROM chi_tiet_don_hangs
+                INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+                WHERE chi_tiet_don_hangs.don_hang_id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            $details = $stmt->fetchAll();
+            return $details;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
