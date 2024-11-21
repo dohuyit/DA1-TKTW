@@ -41,6 +41,8 @@ match ($act) {
     'logout' => (new TaiKhoanController())->logout(),
     'form-register' => (new TaiKhoanController())->formRegister(),
     'register' => (new TaiKhoanController())->postRegister(),
+    'thong-tin-tai-khoan' => (new TaikhoanController)->thongTinTaiKhoan(),
+    'cap-nhat-tai-khoan' => (new TaikhoanController)->postThongTinTaiKhoan(),
 
     // Sản phẩm
     'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),

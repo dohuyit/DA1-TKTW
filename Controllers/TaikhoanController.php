@@ -3,6 +3,7 @@ class TaikhoanController
 {
     public $modelSanPham;
     public $modelTaiKhoan;
+    public $modelDanhMuc;
 
 
     public function __construct()
@@ -98,19 +99,6 @@ class TaikhoanController
             $mat_khau = $_POST['mat_khau'] ?? '';
             $chuc_vu = 2;
 
-
-            // $_SESSION['old_data'] = array(
-            //     'ho_ten' => $_POST['ho_ten'],
-            //     'ngay_sinh' => $_POST['ngay_sinh'],
-            //     'email' => $_POST['email'],
-            //     'so_dien_thoai' => $_POST['so_dien_thoai'],
-            //     'gioi_tinh' => $_POST['gioi_tinh'],
-            //     'dia_chi' => $_POST['dia_chi'],
-            //     'mat_khau' => $_POST['mat_khau'],
-
-
-            // );
-
             // Tạo 1 mảng trống để chứa dl
             $errors = [];
             if (empty($ho_ten)) {
@@ -136,6 +124,81 @@ class TaikhoanController
                 $_SESSION['thongBao'] = 'Đăng ký thất bại';
 
                 header("Location: " . BASE_URL . '?act=form-register');
+                exit();
+            }
+        }
+    }
+
+    public function thongTinTaiKhoan()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+        $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+        // var_dump($user);
+        // die;
+        require_once "./Views/thongTinTaiKhoan.php";
+    }
+
+    public function postThongTinTaiKhoan()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            // var_dump($_POST);
+            // die;
+            $tai_khoan_id = $_POST['id'];
+            $ho_ten = $_POST['ho_ten'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $gioi_tinh = $_POST['gioi_tinh'] ?? null;
+            $so_dien_thoai = $_POST['so_dien_thoai'] ?? null;
+            $dia_chi = $_POST['dia_chi'] ?? null;
+            $anh_dai_dien = $_FILES['anh_dai_dien'] ?? null;
+
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+
+            if ($ho_ten) {
+                $_SESSION['user_client']['ho_ten'] = $ho_ten;
+            }
+
+            if (isset($anh_dai_dien) && $anh_dai_dien['error'] === UPLOAD_ERR_OK) {
+                if (!empty($user['anh_dai_dien'])) {
+                    deleteFile($user['anh_dai_dien']);
+                }
+                // Upload ảnh mới
+                $new_file = uploadFile($anh_dai_dien, './Uploads/');
+            } else {
+                // Nếu không upload ảnh mới, giữ lại ảnh cũ
+                $new_file = $user['anh_dai_dien'];
+            }
+
+
+            // Tạo 1 mảng trống để chứa dl
+            $errors = [];
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = 'Họ tên không được để trống';
+            }
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = 'Số điện thoại không được để trống';
+            }
+            if (empty($email)) {
+                $errors['email'] = 'Email không được để trống';
+            }
+            $_SESSION['errors'] = $errors;
+
+
+            // Nếu k có lỗi thì thêm sản phẩm
+            if (empty($errors)) {
+
+                $status = $this->modelTaiKhoan->updateTaiKhoan($tai_khoan_id, $ho_ten, $email, $so_dien_thoai, $gioi_tinh, $new_file, $dia_chi);
+
+                if ($status) {
+                    $_SESSION['successTt'] = "Đã đổi thông tin thành công";
+                    $_SESSION['flash'] = true;
+                }
+                header("Location: " . BASE_URL . '?act=thong-tin-tai-khoan');
+                exit();
+            } else {
+                // trả lỗi
+                // Đặt chỉ thị xóa session sau khi hiển thị form
+                $_SESSION['flash'] = true;
+                header("Location: " . BASE_URL . '?act=thong-tin-tai-khoan');
                 exit();
             }
         }

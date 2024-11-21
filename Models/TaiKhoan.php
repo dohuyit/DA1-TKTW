@@ -78,4 +78,49 @@ class TaiKhoan
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
+    public function InforTaiKhoan($id)
+    {
+        try {
+            $sql = "SELECT * FROM tai_khoans WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(
+                [
+                    ':id' => $id
+                ]
+            );
+            return $stmt->fetch();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function updateTaiKhoan($id, $ho_ten, $email, $so_dien_thoai, $gioi_tinh, $anh_dai_dien, $dia_chi)
+    {
+        try {
+            $sql = "UPDATE tai_khoans SET 
+                    ho_ten = :ho_ten,
+                    email = :email,
+                    so_dien_thoai = :so_dien_thoai,
+                    gioi_tinh = :gioi_tinh,
+                    anh_dai_dien = :anh_dai_dien,
+                    dia_chi = :dia_chi
+                    WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(
+                [
+                    ':ho_ten' => $ho_ten,
+                    ':email' => $email,
+                    ':so_dien_thoai' => $so_dien_thoai,
+                    ':gioi_tinh' => $gioi_tinh,
+                    ':anh_dai_dien' => $anh_dai_dien,
+                    ':dia_chi' => $dia_chi,
+                    ':id' => $id
+                ]
+            );
+            return true;
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
 }
