@@ -113,6 +113,7 @@ function sendMail($to, $subject, $content)
         $mail->SMTPAuth   = true;
         $mail->Username   = 'bekatstore205@gmail.com';
         $mail->Password   = 'wdfa aqrd txgz fhnm';
+        // $mail->Password   = 'ftqq gyxv hiok kzkb';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
         $mail->setFrom('bekatstore205@gmail.com', 'bekat');
@@ -128,7 +129,7 @@ function sendMail($to, $subject, $content)
             )
         ));
         $mail->send();
-        // echo 'Gửi mail thành công!';
+        echo 'Gửi mail thành công!';
     } catch (Exception $e) {
         echo "Gửi mail thất bại. Mailer Error: {$mail->ErrorInfo}";
     }
