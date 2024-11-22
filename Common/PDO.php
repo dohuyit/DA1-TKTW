@@ -42,6 +42,8 @@ function uploadFile($file, $folderUpload)
 function deleteFile($file)
 {
     $pathDelete = PATH_ROOT . $file;
+    // var_dump($file);
+    // die;
     if (file_exists($pathDelete)) {
         unlink($pathDelete);
     }

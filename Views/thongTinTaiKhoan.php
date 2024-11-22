@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Common/assets/css/reset.css" />
-    <link rel="stylesheet" href="Common/assets/css/infor-order.css" />
+    <link rel="stylesheet" href="Common/assets/css/infor-user.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -35,7 +35,7 @@
                         <div class="sidebar-infor-user">
                             <ul class="menu">
                                 <li class="nav-item">
-                                    <a href="<?= BASE_URL . '?act=thong-tin-don-hang' ?>" class="nav-link active">
+                                    <a href="<?= BASE_URL . '?act=thong-tin-don-hang' ?>" class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                             viewBox="0 0 22 22" fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -46,7 +46,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= BASE_URL . '?act=thong-tin-tai-khoan' ?>" class="nav-link ">
+                                    <a href="<?= BASE_URL . '?act=thong-tin-tai-khoan' ?>" class="nav-link active">
                                         <svg width="16" height="22" viewBox="0 0 16 22" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="vuesax/outline/frame">
@@ -99,37 +99,67 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="main-infor-user">
-                            <h1>TẤT CẢ ĐƠN HÀNG</h1>
-                            <?php if (empty($listDonHang)) : ?>
-                                <div class="empty-state">
-                                    <div class="empty-box">
-                                        <img src="Common/assets/image/EmptyOrder.a0f66ce0.svg" alt="">
+                        <div class="profile-user">
+                            <h2>
+                                <ion-icon name="newspaper-outline"></ion-icon>
+                                <span>Hồ sơ của tôi</span>
+                            </h2>
+                            <form action="<?= BASE_URL . '?act=cap-nhat-tai-khoan' ?>" class="profile-content" method="post" enctype="multipart/form-data">
+                                <div class="profile-image">
+                                    <div class="image-preview">
+                                        <img src="<?= $user['anh_dai_dien'] ? $user['anh_dai_dien'] : 'Common/assets/image/avt-default.jpg'   ?>" alt="" id="image-main">
                                     </div>
-                                    <p>Đơn hàng trống</p>
+                                    <label for="file-upload" class="custom-upload-btn">
+                                        <i class="fas fa-upload"></i> Chọn ảnh
+                                    </label>
+                                    <input type="file" id="file-upload" class="upload-btn" name="anh_dai_dien" />
                                 </div>
-                            <?php else : ?>
-                                <div class="list-order">
-                                    <table>
-                                        <thead>
-                                            <th>Mã đơn hàng</th>
-                                            <th>Ngày đặt</th>
-                                            <th>Trạng thái</th>
-                                            <th>Thao tác</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($listDonHang as $itemDonHang) : ?>
-                                                <tr>
-                                                    <td><?= $itemDonHang['ma_don_hang'] ?></td>
-                                                    <td><?= $itemDonHang['ngay_dat'] ?></td>
-                                                    <td><span class="status pending"><?= $itemDonHang['ten_trang_thai'] ?></span></td>
-                                                    <td><a href="<?= BASE_URL . '?act=chi-tiet-don-hang&don_hang_id=' . $itemDonHang['id'] ?>" class="detail-link">Chi tiết</a></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                <div class="profile-form">
+                                    <div class="form-group">
+                                        <label for="name" class="title-input">Họ và tên</label>
+                                        <input type="text" name="ho_ten" placeholder="Tên của bạn..." value="<?= $user['ho_ten'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="title-input">Email</label>
+                                        <input type="email" name="email" placeholder="Email của bạn..." value="<?= $user['email'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="title-input">Số điện thoại</label>
+                                        <input type="number" name="so_dien_thoai" placeholder="Số điện thoại..." value="<?= $user['so_dien_thoai'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="title-input">Giới tính</label>
+                                        <div class="radio-inputs">
+                                            <label>
+                                                <input type="radio" class="radio-input male" name="gioi_tinh"
+                                                    value="1" <?= $user['gioi_tinh'] == 1 ? 'checked' : '' ?>>
+                                                <span class="radio-tile male">
+                                                    <span class="radio-icon">
+                                                        <i class="fa-solid fa-person"></i>
+                                                    </span>
+                                                    <strong>Nam</strong>
+                                                </span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" class="radio-input female" name="gioi_tinh"
+                                                    value="2" <?= $user['gioi_tinh'] == 2 ? 'checked' : '' ?>>
+                                                <span class="radio-tile female">
+                                                    <span class="radio-icon">
+                                                        <i class="fa-solid fa-person-dress"></i>
+                                                    </span>
+                                                    <strong>Nữ</strong>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="title-input">Địa chỉ</label>
+                                        <textarea name="dia_chi" id="" cols="30" rows="8" placeholder="Địa chỉ của bạn..."><?= $user['dia_chi'] ?></textarea>
+                                    </div>
+                                    <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                                    <button type="submit" class="save-btn">Lưu thay đổi</button>
                                 </div>
-                            <?php endif; ?>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -139,6 +169,23 @@
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        // Lấy các phần tử cần thiết
+        const fileUpload = document.getElementById('file-upload');
+        const previewImage = document.getElementById('image-main');
+
+        // Lắng nghe sự kiện thay đổi file
+        fileUpload.addEventListener('change', function() {
+            const file = this.files[0]; // Lấy file đầu tiên
+            if (file) {
+                const reader = new FileReader(); // Tạo FileReader để đọc file
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result; // Gán kết quả đọc file vào src của img
+                };
+                reader.readAsDataURL(file); // Đọc file dưới dạng Data URL
+            }
+        });
+    </script>
 </body>
 
 </html>
