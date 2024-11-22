@@ -1455,6 +1455,8 @@ main .slider-main {
 .infor-user .left img {
   width: 40px;
   height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .infor-user .left .content .desc-second p {

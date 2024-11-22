@@ -203,4 +203,33 @@ class TaikhoanController
             }
         }
     }
+
+    public function formQuenMatKhau()
+    {
+        require_once "./Views/auth/fogotPassword.php";
+        deleteSessionErrors();
+    }
+
+    public function postCapNhatMatKhau()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Lấy ra dl
+            // var_dump($_POST);
+            // die;
+            $email = $_POST['email'] ?? '';
+
+            $checkEmail = $this->modelTaiKhoan->checkEmail($email);
+
+            // var_dump($checkEmail);
+            // die;
+            if (is_array($checkEmail) && $checkEmail['chuc_vu_id'] == 2) {
+                $_SESSION['layMk'] = 'Mật khẩu của bạn là: ' . $checkEmail['mat_khau'];
+                header('Location:' . BASE_URL . '?act=quen-mat-khau');
+            } else {
+                $_SESSION['flash'] = true;
+                $_SESSION['layMk'] = 'Email không hợp lệ';
+                header('Location:' . BASE_URL . '?act=quen-mat-khau');
+            }
+        }
+    }
 }

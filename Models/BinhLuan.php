@@ -32,7 +32,6 @@ class BinhLuan
     public function getBinhLuanBySanPham($id = null)
     {
         try {
-            // Tạo câu truy vấn với các bảng liên kết
             $sql = "SELECT binh_luans.*, 
                        tai_khoans.ho_ten, 
                        tai_khoans.email, 
@@ -44,11 +43,13 @@ class BinhLuan
                 FROM binh_luans
                 INNER JOIN tai_khoans ON binh_luans.tai_khoan_id = tai_khoans.id
                 INNER JOIN san_phams ON binh_luans.san_pham_id = san_phams.id
-                INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id";
+                INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
+                ";
 
-            // Nếu có id sản phẩm thì thêm điều kiện WHERE
             if ($id) {
-                $sql .= " WHERE binh_luans.san_pham_id = :id";
+                $sql .= " WHERE binh_luans.san_pham_id = :id ORDER BY id DESC";
+            } else {
+                $sql .= "ORDER BY id DESC";
             }
 
             $stmt = $this->conn->prepare($sql);

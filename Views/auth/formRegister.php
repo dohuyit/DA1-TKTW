@@ -52,7 +52,7 @@
                         <p class="text-danger"><?= $_SESSION['errors']['mat_khau'] ?></p>
                     <?php } ?>
                     <div class="form-check">
-                        <a href="">Quên mật khẩu?</a>
+                        <a href="<?= BASE_URL . '?act=quen-mat-khau' ?>">Quên mật khẩu?</a>
                     </div>
                     <button type="submit" class="btn-submit">Sign Up</button>
                     <div class="signin-orther-title">

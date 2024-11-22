@@ -30,7 +30,7 @@ $act = $_GET['act'] ?? '/';
 // sendMail("huydonganh2005@gmail.com", "Chào mừng bạn", "Chào bạn");
 
 match ($act) {
-    // route
+    // route home
     '/' => (new HomeController())->home(),
     "productCate" => (new Homecontroller)->filterCateByHome(),
     'tim-kiem' => (new HomeController())->timKiem(),
@@ -43,11 +43,15 @@ match ($act) {
     'register' => (new TaiKhoanController())->postRegister(),
     'thong-tin-tai-khoan' => (new TaikhoanController)->thongTinTaiKhoan(),
     'cap-nhat-tai-khoan' => (new TaikhoanController)->postThongTinTaiKhoan(),
+    'quen-mat-khau' => (new TaikhoanController)->formQuenMatKhau(),
+    'cap-nhat-mat-khau' => (new TaikhoanController)->postCapNhatMatKhau(),
+
 
     // Sản phẩm
     'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),
     'san-pham-theo-danh-muc' => (new HomeController())->sanPhamDanhMuc(),
     'gui-binh-luan' => (new HomeController())->guiBinhLuan(),
+
 
     // route giỏ hàng
     'them-gio-hang' => (new GioHangDonHangController)->addGioHang(),
@@ -55,6 +59,8 @@ match ($act) {
     'cap-nhat-gio-hang' => (new GioHangDonHangController)->updateGioHang(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController)->xoaItemGioHang(),
 
+
+    // route thanh toán
     'thanh-toan' => (new GioHangDonHangController)->thanhToan(),
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'da-dat-hang' => (new GioHangDonHangController)->daDatHang(),
