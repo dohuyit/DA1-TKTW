@@ -218,11 +218,14 @@ class GioHangDonHangController
             $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
+
+        // dữ liệu trả về
         $returnData = array(
             'code' => '00',
             'message' => 'success',
             'data' => $vnp_Url
         );
+
         if (isset($_POST['redirect'])) {
             echo json_encode($returnData);
             die;
@@ -260,8 +263,23 @@ class GioHangDonHangController
             // die;
 
             if ($phuong_thuc_thanh_toan_id == 2) {
-                $this->thanhToanVNPAY($ma_don_hang, $tong_tien);
+
+                // Thêm đơn hàng với trạng thái "đang chờ thanh toán"
+                $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
+
+                $this->modelGioHang->clearCart($user['id']);
+                unset($_SESSION['products-cart']);
+                if ($donHangId) {
+                    foreach ($chiTietGioHang as $sanPham) {
+                        $don_gia = $sanPham['gia_khuyen_mai'] > 0 ? $sanPham['gia_khuyen_mai'] : $sanPham['gia_san_pham'];
+                        $tongTien = $don_gia * $sanPham['so_luong'];
+                        $this->modelDonHang->addDetailDonHang($donHangId, $sanPham['san_pham_id'], $don_gia, $sanPham['so_luong'], $tongTien);
+                    }
+
+                    $this->thanhToanVNPAY($ma_don_hang, $tong_tien);
+                }
             }
+
 
             // Thêm đơn hàng vào database
             $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
@@ -274,7 +292,8 @@ class GioHangDonHangController
                     $this->modelDonHang->addDetailDonHang($donHangId, $sanPham['san_pham_id'], $don_gia, $sanPham['so_luong'], $tongTien);
                 }
 
-                // Lấy thông tin đơn hàng để gửi mail
+                $this->modelGioHang->clearCart($user['id']);
+                unset($_SESSION['products-cart']);
                 $thongTinDonHang = $this->modelDonHang->getAllDonHang($donHangId);
 
                 // Tạo nội dung email
@@ -315,13 +334,47 @@ class GioHangDonHangController
         }
     }
 
+    public function xuLyThanhToanVNPAY()
+    {
+        $vnp_TxnRef = $_GET['vnp_TxnRef']; // Mã đơn hàng
+        $vnp_TransactionNo = 'VNP' . $_GET['vnp_TransactionNo']; // Mã giao dịch của VNPAY
+        $vnp_ResponseCode = $_GET['vnp_ResponseCode'];
+        // var_dump($vnp_TransactionNo);
+        // die;
+        $vnp_Amount = $_GET['vnp_Amount']; // Số tiền đã thanh toán (đơn vị: VND)
+        $vnp_BankCode = $_GET['vnp_BankCode']; // Mã ngân hàng
 
+
+        $donHang = $this->modelDonHang->getDonHangByMaDonHang($vnp_TxnRef);
+        // var_dump($donHang);
+        // die;
+
+
+        if ($vnp_ResponseCode == "00") {
+            $this->modelDonHang->updateThanhToanOnline($donHang['id'], $vnp_TransactionNo, 2);
+            sendMail($donHang['email_nguoi_nhan'], mb_encode_mimeheader("Bạn đã thanh toán thành công"), "Vui lòng theo dõi thời gian và nhận hàng");
+
+            header("Location: " . BASE_URL . "?act=da-dat-hang");
+            exit();
+        } else {
+            $this->modelDonHang->updateThanhToanOnline($donHang['id'], $vnp_TransactionNo, 1);
+
+            $_SESSION['thong_bao'] = 'Thanh toán thất bại';
+            header("Location: " . BASE_URL . "?act=thong-tin-don-hang");
+            exit();
+        }
+    }
 
     public function daDatHang()
     {
-        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+        if (isset($_GET['vnp_TxnRef']) && isset($_GET['vnp_TransactionNo']) && isset($_GET['vnp_ResponseCode'])) {
+            // Gọi hàm xử lý thanh toán
+            $this->xuLyThanhToanVNPAY();
+        } else {
 
-        require_once './Views/hoanThanhDonHang.php';
+            $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+            require_once './Views/hoanThanhDonHang.php';
+        }
     }
 
     public function thongTinDonHang()

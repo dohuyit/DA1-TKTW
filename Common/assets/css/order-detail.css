@@ -270,11 +270,12 @@ body {
 }
 /* END-HEADER */
 
-/* START-MAIN */
+/* Wrapper */
 .wrapper {
   background-color: rgb(245, 245, 245);
 }
 
+/* Order Detail Section */
 .order-detail {
   margin: 20px auto;
   padding: 20px;
@@ -284,6 +285,7 @@ body {
   background-color: #ffffff;
 }
 
+/* Order Info */
 .order-info h1 {
   font-size: 28px;
   font-weight: bold;
@@ -302,7 +304,7 @@ body {
   gap: 10px;
 }
 
-.order-info .status {
+.order-info :is(.status, .payment, .payment-method) {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 14px;
@@ -311,8 +313,28 @@ body {
   animation: pulse 2s infinite;
 }
 
+.payment.pending {
+  background-color: #1976d2;
+}
+
+.payment.success {
+  background-color: rgb(21, 202, 48);
+}
+
+.payment-method.cod {
+  background-color: #ffa726;
+}
+
+.payment-method.online {
+  background-color: #1976d2;
+}
+
 .status.pending {
   background-color: #ffa726;
+}
+
+.status.completed {
+  background-color: rgb(21, 202, 48);
 }
 
 .cart-detail {
@@ -451,6 +473,7 @@ table tfoot .text-right strong {
   }
 }
 
+/* Back Button */
 .btn-forward {
   display: flex;
   justify-content: center;
@@ -465,6 +488,7 @@ table tfoot .text-right strong {
   font-size: 14px;
   font-weight: bold;
 }
+
 /* END-MAIN */
 
 /* FOOTER */

@@ -8,7 +8,7 @@ class DonHang
         $this->conn = connectDB();
     }
 
-    public function addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id)
+    public function addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id,)
     {
         try {
             $sql = "INSERT INTO don_hangs (tai_khoan_id, ten_nguoi_nhan, email_nguoi_nhan, sdt_nguoi_nhan, dia_chi_nguoi_nhan, ghi_chu, tong_tien, phuong_thuc_thanh_toan_id, ngay_dat, ma_don_hang,trang_thai_id) VALUES(:tai_khoan_id, :ten_nguoi_nhan, :email_nguoi_nhan, :sdt_nguoi_nhan, :dia_chi_nguoi_nhan, :ghi_chu, :tong_tien, :phuong_thuc_thanh_toan_id, :ngay_dat ,:ma_don_hang,:trang_thai_id)";
@@ -108,5 +108,30 @@ class DonHang
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
+    }
+
+    public function getDonHangByMaDonHang($ma_don_hang)
+    {
+        try {
+            $sql = "SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai 
+            FROM don_hangs
+            INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id WHERE ma_don_hang = :ma_don_hang";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':ma_don_hang' => $ma_don_hang]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function updateThanhToanOnline($donHangId, $ma_giao_dich, $trangThaiThanhToan)
+    {
+        $sql = "UPDATE don_hangs SET ma_giao_dich=:ma_giao_dich,trang_thai_thanh_toan = :trangThaiThanhToan WHERE id = :donHangId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':ma_giao_dich' => $ma_giao_dich,
+            ':trangThaiThanhToan' => $trangThaiThanhToan,
+            ':donHangId' => $donHangId,
+        ]);
     }
 }

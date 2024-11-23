@@ -114,8 +114,7 @@ function sendMail($to, $subject, $content)
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'bekatstore205@gmail.com';
-        $mail->Password   = 'zgie gtvr hsxx nuha
-';
+        // $mail->Password   = 'zgie gtvr hsxx nuha';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
         $mail->setFrom('bekatstore205@gmail.com', 'bekat');

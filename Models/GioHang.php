@@ -119,16 +119,10 @@ class GioHang
         }
     }
 
-    // // Model/GioHang.php
-    // public function getTongSoLuongSanPham($userId)
-    // {
-    //     $sql = "SELECT COUNT(DISTINCT chi_tiet_gio_hangs.san_pham_id) AS so_luong_san_pham 
-    //         FROM chi_tiet_gio_hangs 
-    //         JOIN gio_hangs ON chi_tiet_gio_hangs.gio_hang_id = gio_hangs.id 
-    //         WHERE gio_hangs.tai_khoan_id = ?";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute([$userId]);
-    //     $result = $stmt->fetch();
-    //     return $result['so_luong_san_pham'] ?? 0; // Trả về 0 nếu không có sản phẩm
-    // }
+    public function clearCart($tai_khoan_id)
+    {
+        $sql = "DELETE FROM gio_hangs WHERE tai_khoan_id = :tai_khoan_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':tai_khoan_id' => $tai_khoan_id]);
+    }
 }
