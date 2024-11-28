@@ -57,10 +57,9 @@ function deleteSessionErrors()
         unset($_SESSION['flash']);
         unset($_SESSION['errors']);
         unset($_SESSION['thongBao']);
+        unset($_SESSION['thongBaoError']);
         unset($_SESSION['old_data']);
         unset($_SESSION['successMk']);
-        unset($_SESSION['successTt']);
-        unset($_SESSION['successAnh']);
         unset($_SESSION['errorsKH']);
         unset($_SESSION['tong']);
         unset($_SESSION['layMk']);
@@ -114,7 +113,7 @@ function sendMail($to, $subject, $content)
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'bekatstore205@gmail.com';
-        // $mail->Password   = 'zgie gtvr hsxx nuha';
+        $mail->Password   = 'zgie gtvr hsxx nuha';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
         $mail->setFrom('bekatstore205@gmail.com', 'bekat');
@@ -134,4 +133,23 @@ function sendMail($to, $subject, $content)
     } catch (Exception $e) {
         echo "Gửi mail thất bại. Mailer Error: {$mail->ErrorInfo}";
     }
+}
+
+function showAlert($type, $message,  $timer = 1500)
+{
+    ob_start();
+?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                position: "center",
+                icon: "<?= $type ?>", // success, error, warning, info
+                title: "<?= $message ?>",
+                showConfirmButton: false,
+                timer: <?= $timer ?>
+            });
+        });
+    </script>
+<?php
+    echo ob_get_clean();
 }

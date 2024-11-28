@@ -464,8 +464,8 @@ body {
   background-color: #ffa726;
 }
 
-.status.confirmed {
-  background-color: #66bb6a;
+.status.danger {
+  background-color: #e31515;
 }
 
 .status.delivered {
@@ -482,6 +482,65 @@ body {
 .detail-link:hover {
   color: #ff5252;
 }
+
+#pagination {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.page-arrow,
+.page-btn {
+  padding: 8px 12px;
+  margin: 0 2px;
+  border: 2px solid var(--color-hover);
+  background-color: white;
+  color: var(--color-hover);
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.page-arrow:disabled,
+.page-btn:disabled {
+  color: #aaa;
+  border-color: #ccc;
+  cursor: not-allowed;
+  background-color: #f9f9f9;
+}
+
+.page-btn.active {
+  background-color: var(--color-hover);
+  color: white;
+  animation: activeBtnEffect 0.3s ease-in-out;
+}
+
+.page-arrow:hover:not(:disabled),
+.page-btn:hover:not(.active) {
+  background-color: var(--color-hover);
+  color: white;
+  transform: scale(1.1);
+}
+
+.page-arrow:disabled:hover {
+  transform: none;
+}
+
+@keyframes activeBtnEffect {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* END-MAIN */
 
 /* FOOTER */

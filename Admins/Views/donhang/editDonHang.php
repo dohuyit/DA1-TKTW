@@ -51,7 +51,7 @@
                 <div class="form-group">
                   <label>Email</label>
                   <input type="text" class="form-control" name="email_nguoi_nhan" value="<?= $donHang['email_nguoi_nhan'] ?>" placeholder="Nhập tên danh mục">
-  
+
                   <?php if (isset($_SESSION['errors']['email_nguoi_nhan'])) { ?>
                     <p class="text-danger"><?= $_SESSION['errors']['email_nguoi_nhan'] ?></p>
                   <?php } ?>
@@ -64,32 +64,29 @@
                     <p class="text-danger"><?= $_SESSION['errors']['dia_chi_nguoi_nhan'] ?></p>
                   <?php } ?>
                 </div>
-
-
-              </div>
-              <div class="form-group">
-                <label>Ghi chú</label>
-                <textarea name="ghi_chu" class="form-control" placeholder="Nhập mô tả"><?= $donHang['ghi_chu'] ?></textarea>
-                <?php if (isset($_SESSION['errors']['ghi_chu'])) { ?>
-                  <p class="text-danger"><?= $_SESSION['errors']['ghi_chu'] ?></p>
-                <?php } ?>
-              </div>
-
-              <hr>
-
-              <div class="form-group">
-                <label for="inputStatus">Trạng thái đơn hàng</label>
-                <select id="inputStatus" name="trang_thai_id" class="form-control custom-select">
-                  <?php foreach ($listTrangThaiDonHang as $trangThai) { ?>
-                    <option <?= $trangThai['id'] < $donHang['trang_thai_id'] ? 'disabled' : '' ?> <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?> value="<?= $trangThai['id'] ?>">
-                      <?= $trangThai['ten_trang_thai'] ?>
-                    </option>
+                <div class="form-group">
+                  <label>Ghi chú</label>
+                  <textarea name="ghi_chu" class="form-control" placeholder="Nhập mô tả" rows="8"><?= $donHang['ghi_chu'] ?></textarea>
+                  <?php if (isset($_SESSION['errors']['ghi_chu'])) { ?>
+                    <p class="text-danger"><?= $_SESSION['errors']['ghi_chu'] ?></p>
                   <?php } ?>
-                </select>
-                <?php if (isset($_SESSION['errors']['trang_thai'])) { ?>
-                  <p class="text-danger"><?= $_SESSION['errors']['trang_thai'] ?></p>
-                <?php } ?>
+                </div>
+                <div class="form-group">
+                  <label for="inputStatus">Trạng thái đơn hàng</label>
+                  <select id="inputStatus" name="trang_thai_id" class="form-control custom-select">
+                    <?php foreach ($listTrangThaiDonHang as $trangThai) { ?>
+                      <option <?= $trangThai['id'] < $donHang['trang_thai_id'] ? 'disabled' : '' ?> <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?> value="<?= $trangThai['id'] ?>">
+                        <?= $trangThai['ten_trang_thai'] ?>
+                      </option>
+                    <?php } ?>
+                  </select>
+                  <?php if (isset($_SESSION['errors']['trang_thai'])) { ?>
+                    <p class="text-danger"><?= $_SESSION['errors']['trang_thai'] ?></p>
+                  <?php } ?>
+                </div>
+
               </div>
+
 
           </div>
           <!-- /.card-body -->

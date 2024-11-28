@@ -332,6 +332,9 @@ body {
 .status.pending {
   background-color: #ffa726;
 }
+.status.danger {
+  background-color: var(--color-hover);
+}
 
 .status.completed {
   background-color: rgb(21, 202, 48);
@@ -473,20 +476,44 @@ table tfoot .text-right strong {
   }
 }
 
-/* Back Button */
-.btn-forward {
+.cart-detail .group-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-forward,
+.btn-destroy {
   display: flex;
   justify-content: center;
   align-items: center;
   width: max-content;
   margin-top: 20px;
-  color: #fff;
   padding: 10px 15px;
   text-transform: uppercase;
   gap: 10px;
-  background-color: var(--color-head-card);
   font-size: 14px;
   font-weight: bold;
+  color: #fff;
+}
+
+.btn-forward {
+  background-color: var(--color-head-card);
+}
+
+.btn-destroy {
+  background-color: var(--color-hover);
+}
+
+.btn-destroy.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: #3d4750;
+  pointer-events: none;
+}
+
+.btn-destroy.disabled:hover {
+  opacity: 0.6;
 }
 
 /* END-MAIN */

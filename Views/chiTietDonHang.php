@@ -94,7 +94,12 @@
                             <p><strong><i class="fas fa-barcode"></i> Mã Đơn Hàng: </strong><?= $donHangInfor[0]['ma_don_hang'] ?></p>
                             <p><strong><i class="fas fa-calendar-alt"></i> Ngày Đặt Hàng:</strong> <?= $donHangInfor[0]['ngay_dat'] ?></p>
                             <p><strong><i class="fas fa-info-circle"></i> Trạng Thái:</strong>
-                                <span class="status pending"><?= $donHangInfor[0]["ten_trang_thai"] ?></span>
+                                <?php if ($donHangInfor[0]["ten_trang_thai"] == "Hủy đơn"): ?>
+                                    <span class="status danger"><?= $donHangInfor[0]["ten_trang_thai"] ?></span>
+                                <?php else: ?>
+                                    <span class="status pending"><?= $donHangInfor[0]["ten_trang_thai"] ?></span>
+                                <?php endif; ?>
+
                             </p>
                             <p><strong><i class="fas fa-user"></i> Tên Khách Hàng:</strong> <?= $donHangInfor[0]['ten_nguoi_nhan'] ?></p>
                             <p><strong><i class="fas fa-envelope"></i> Email:</strong> <?= $donHangInfor[0]['email_nguoi_nhan'] ?></p>
@@ -145,10 +150,24 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <a href="<?= BASE_URL . '?act=thong-tin-don-hang' ?>" class="btn-forward">
-                                <ion-icon name="arrow-back-outline"></ion-icon>
-                                <span>Quay lại</span>
-                            </a>
+                            <div class="group-btn">
+                                <a href="<?= BASE_URL . '?act=thong-tin-don-hang' ?>" class="btn-forward">
+                                    <ion-icon name="arrow-back-outline"></ion-icon>
+                                    <span>Quay lại</span>
+                                </a>
+                                <?php if ($trangThaiDonHang == 11 || $trangThaiThanhToan != 0 || $trangThaiDonHang != 1): ?>
+                                    <a href="#" class="btn-destroy disabled">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                        <span>Hủy đơn</span>
+                                    </a>
+                                <?php else: ?>
+                                    <a href="<?= BASE_URL . '?act=huy-don-hang&id=' . $donHangInfor[0]['id'] ?>" class="btn-destroy">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                        <span>Hủy đơn</span>
+                                    </a>
+                                <?php endif ?>
+                            </div>
+
                         </div>
                     </div>
                 </div>

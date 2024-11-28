@@ -392,6 +392,8 @@ class GioHangDonHangController
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
         $id_don_hang = $_GET['don_hang_id'];
         $donHangInfor = $this->modelDonHang->getAllDonHang($tai_khoan_id = null, $id_don_hang);
+        $trangThaiDonHang = $donHangInfor[0]['trang_thai_id'];
+        $trangThaiThanhToan = $donHangInfor[0]['trang_thai_thanh_toan'];
         // echo "<pre>";
         // var_dump($donHangInfor);
         // echo "</pre>";
@@ -407,5 +409,37 @@ class GioHangDonHangController
         $chi_tiet_gio_hang_id = $_GET['chi_tiet_gio_hang_id'];
         $xoa = $this->modelGioHang->deleteSanPhamGioHang($chi_tiet_gio_hang_id);
         header('location:' . BASE_URL . '?act=gio-hang');
+    }
+
+    public function huyDonHang()
+    {
+        if (isset($_SESSION['user_client'])) {
+            // lấy ra thông tin tài khẩn đăng nhập
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+            $tai_khoan_id = $user['id'];
+            // var_dump($tai_khoan_id);
+            // die;
+            $donHangId = $_GET['id'];
+
+            // kiểm tra có đơn hàng hay khong
+            $donHang = $this->modelDonHang->getAllDonHang($tai_khoan_id = null, $donHangId);
+
+            // var_dump($donHang);
+            // die;
+
+            if ($donHang[0]['trang_thai_id'] != 1) {
+                echo "Chỉ đơn hàng ở trạng thái 'Chưa xác nhận mới có thể hủy'";
+                exit;
+            }
+
+            // hủy đơn hàng 
+            $this->modelDonHang->updateTrangThaiDonHang($donHangId, 11);
+            header("location: " . BASE_URL . '?act=thong-tin-don-hang');
+            exit;
+        } else {
+            // var_dump('Bạn chưa đăng  nhập');
+            header("location: " . BASE_URL . 'login');
+            die;
+        }
     }
 }

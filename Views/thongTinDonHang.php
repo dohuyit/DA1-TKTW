@@ -122,12 +122,24 @@
                                                 <tr>
                                                     <td><?= $itemDonHang['ma_don_hang'] ?></td>
                                                     <td><?= $itemDonHang['ngay_dat'] ?></td>
-                                                    <td><span class="status pending"><?= $itemDonHang['ten_trang_thai'] ?></span></td>
+                                                    <td>
+                                                        <?php if ($itemDonHang['ten_trang_thai'] == "Hủy đơn"): ?>
+                                                            <span class="status danger"><?= $itemDonHang['ten_trang_thai']  ?></span>
+                                                        <?php else: ?>
+                                                            <span class="status pending"><?= $itemDonHang['ten_trang_thai']  ?></span>
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td><a href="<?= BASE_URL . '?act=chi-tiet-don-hang&don_hang_id=' . $itemDonHang['id'] ?>" class="detail-link">Chi tiết</a></td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table>
+                                    <div id="pagination">
+                                        <button class="page-arrow prev" disabled>&laquo;</button>
+                                        <div class="page-numbers"></div>
+                                        <button class="page-arrow next">&raquo;</button>
+                                    </div>
+
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -139,6 +151,92 @@
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const rowsPerPage = 6; // Số dòng mỗi trang
+            const tableBody = document.querySelector("tbody");
+            const rows = tableBody.querySelectorAll("tr");
+            const pagination = document.getElementById("pagination");
+            const pageNumbers = pagination.querySelector(".page-numbers");
+            const prevButton = pagination.querySelector(".prev");
+            const nextButton = pagination.querySelector(".next");
+
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+            let currentPage = 1;
+
+            // Hiển thị các dòng dựa trên trang hiện tại
+            function displayRows(page) {
+                const startIndex = (page - 1) * rowsPerPage;
+                const endIndex = page * rowsPerPage;
+
+                rows.forEach((row, index) => {
+                    if (index >= startIndex && index < endIndex) {
+                        row.style.display = ""; // Hiện dòng
+                    } else {
+                        row.style.display = "none"; // Ẩn dòng
+                    }
+                });
+            }
+
+            // Tạo nút phân trang
+            function setupPagination() {
+                pageNumbers.innerHTML = "";
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement("button");
+                    button.textContent = i;
+                    button.className = "page-btn";
+                    if (i === currentPage) {
+                        button.classList.add("active");
+                    }
+
+                    button.addEventListener("click", function() {
+                        currentPage = i;
+                        updatePagination();
+                    });
+
+                    pageNumbers.appendChild(button);
+                }
+            }
+
+            // Cập nhật trạng thái nút và hiển thị dòng
+            function updatePagination() {
+                displayRows(currentPage);
+
+                // Xóa active khỏi tất cả các nút
+                document.querySelectorAll(".page-btn").forEach((btn) => {
+                    btn.classList.remove("active");
+                });
+
+                // Đánh dấu nút hiện tại là active
+                const activeButton = pageNumbers.querySelector(`.page-btn:nth-child(${currentPage})`);
+                if (activeButton) activeButton.classList.add("active");
+
+                // Bật hoặc tắt nút mũi tên
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === totalPages;
+            }
+
+            // Xử lý sự kiện cho nút mũi tên
+            prevButton.addEventListener("click", function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePagination();
+                }
+            });
+
+            nextButton.addEventListener("click", function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePagination();
+                }
+            });
+
+            displayRows(currentPage);
+            setupPagination();
+            updatePagination();
+        });
+    </script>
 </body>
 
 </html>

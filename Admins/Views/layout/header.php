@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AdminLTE 3 | DataTables</title>
+    <title>Admin Bekat</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
     <link rel="stylesheet" href="assets/dist/css/admin.css" />
     <link rel="stylesheet" href="assets/dist/css/formLogin.css" />
-    
+
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css" />
 </head>

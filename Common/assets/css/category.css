@@ -457,11 +457,11 @@ main #title-main {
   position: absolute;
   top: 65%;
   left: 10%;
-  width: 80%;
-  height: 80px;
+  width: 85%;
+  height: 30px;
   border-radius: 50%;
   background-color: #00000050;
-  filter: blur(19px);
+  filter: blur(4px);
   z-index: -1;
 }
 

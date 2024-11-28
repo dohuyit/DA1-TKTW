@@ -65,7 +65,7 @@ class TaikhoanController
                 header("location:" . BASE_URL);
                 exit();
             } else {
-                $_SESSION['errors'] = $result;
+                $_SESSION['thongBao'] = $result;
                 $_SESSION['flash'] = true;
                 header("Location:" . BASE_URL . '?act=form-login');
                 exit();
@@ -116,7 +116,7 @@ class TaikhoanController
                 $tai_khoan = $this->modelTaiKhoan->insertTaiKhoan($ho_ten, $email, $mat_khau, $chuc_vu);
                 // var_dump($tai_khoan);
                 // die();
-                $_SESSION['thongBao'] = 'Đăng kí thành công. Vui lòng đăng nhập để mua hàng và bình luận';
+                $_SESSION['thongBao'] = 'Đăng kí tài khoản thành công';
                 header("Location: " . BASE_URL . '?act=form-login');
                 exit();
             } else {

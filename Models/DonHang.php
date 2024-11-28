@@ -68,7 +68,7 @@ class DonHang
             $conditions = [];
             $params = [];
             if ($tai_khoan_id !== null) {
-                $conditions[] = "don_hangs.tai_khoan_id = :tai_khoan_id";
+                $conditions[] = "don_hangs.tai_khoan_id = :tai_khoan_id ORDER BY id DESC";
                 $params[':tai_khoan_id'] = $tai_khoan_id;
             }
             if ($don_hang_id !== null) {
@@ -133,5 +133,48 @@ class DonHang
             ':trangThaiThanhToan' => $trangThaiThanhToan,
             ':donHangId' => $donHangId,
         ]);
+    }
+
+    public function getTrangThaiDonHang()
+    {
+        try {
+            $sql = "SELECT * FROM trang_thai_don_hangs  ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchALL(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function getPhuongThucThanhToan()
+    {
+        try {
+            $sql = "SELECT * FROM phuong_thuc_thanh_toans  ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchALL(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function updateTrangThaiDonHang($donHangId, $trangThaiId)
+    {
+        try {
+            $sql = "UPDATE don_hangs SET trang_thai_id= :trang_thai_id WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':trang_thai_id' => $trangThaiId,
+                ':id' => $donHangId
+
+            ]);
+
+            return true;
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
     }
 }
