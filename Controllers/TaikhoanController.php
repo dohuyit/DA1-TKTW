@@ -59,16 +59,30 @@ class TaikhoanController
                     'id' => $id
                 ];
 
-                // var_dump($_SESSION['user_client']);
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Đăng nhập thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL,
+                ];
+                // var_dump($_SESSION['alert']);
                 // die;
-                $_SESSION['thongBao'] = "Đăng nhập thành công";
-                header("location:" . BASE_URL);
+
+                showAlert();
                 exit();
             } else {
-                $_SESSION['thongBao'] = $result;
+                // $_SESSION['thongBao'] = $result;
                 $_SESSION['flash'] = true;
-                header("Location:" . BASE_URL . '?act=form-login');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => $result,
+                    'type' => 'error',
+                    'redirect' =>  BASE_URL . '?act=form-login',
+                ];
+                showAlert();
                 exit();
+                // header("Location:" . BASE_URL . '?act=form-login');
+                // exit();
             }
         }
     }
@@ -78,8 +92,19 @@ class TaikhoanController
         if (isset($_SESSION['user_client'])) {
             unset($_SESSION['user_client']);
             unset($_SESSION['products-cart']);
-            $_SESSION['thongBao'] = "Đăng xuất thành công";
-            header('Location:' . BASE_URL);
+            // $_SESSION['thongBao'] = "Đăng xuất thành công";
+            // header('Location:' . BASE_URL);
+            $_SESSION['alert'] = [
+                'title' => 'Success',
+                'message' => 'Đăng xuất thành công!',
+                'type' => 'success',
+                'redirect' => BASE_URL,
+            ];
+            // var_dump($_SESSION['alert']);
+            // die;
+
+            showAlert();
+            exit();
         }
     }
 
@@ -116,8 +141,16 @@ class TaikhoanController
                 $tai_khoan = $this->modelTaiKhoan->insertTaiKhoan($ho_ten, $email, $mat_khau, $chuc_vu);
                 // var_dump($tai_khoan);
                 // die();
-                $_SESSION['thongBao'] = 'Đăng kí tài khoản thành công';
-                header("Location: " . BASE_URL . '?act=form-login');
+                // $_SESSION['thongBao'] = 'Đăng kí tài khoản thành công';
+                // header("Location: " . BASE_URL . '?act=form-login');
+                // exit();
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Đăng kí tài khoản thành công',
+                    'type' => 'success',
+                    'redirect' => BASE_URL,
+                ];
+                showAlert();
                 exit();
             } else {
                 $_SESSION['flash'] = true;
@@ -188,11 +221,13 @@ class TaikhoanController
 
                 $status = $this->modelTaiKhoan->updateTaiKhoan($tai_khoan_id, $ho_ten, $email, $so_dien_thoai, $gioi_tinh, $new_file, $dia_chi);
 
-                if ($status) {
-                    $_SESSION['successTt'] = "Đã đổi thông tin thành công";
-                    $_SESSION['flash'] = true;
-                }
-                header("Location: " . BASE_URL . '?act=thong-tin-tai-khoan');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Đổi thông tin thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL,
+                ];
+                showAlert();
                 exit();
             } else {
                 // trả lỗi

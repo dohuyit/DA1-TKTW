@@ -541,6 +541,56 @@ body {
   }
 }
 
+/* Kiểu chung cho tất cả các phương thức thanh toán */
+.payment-method {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  width: fit-content;
+  transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi khi hover */
+  animation: pudding-effect 2s ease-in-out infinite; /* Áp dụng animation khi xuất hiện */
+}
+
+/* Phương thức thanh toán bình thường */
+.payment-method.normal {
+  border: 2px solid #28a745;
+  color: #28a745;
+}
+
+/* Phương thức thanh toán qua ngân hàng */
+.payment-method.banking {
+  border: 3px solid #007bff;
+  color: #007bff;
+}
+
+/* Hiệu ứng khi hover */
+.payment-method:hover {
+  transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+/* Keyframes cho hiệu ứng bánh pudding */
+@keyframes pudding-effect {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* END-MAIN */
 
 /* FOOTER */

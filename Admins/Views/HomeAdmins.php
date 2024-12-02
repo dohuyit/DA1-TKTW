@@ -43,7 +43,7 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Đơn hàng</span>
-                                    <span class="info-box-number">41,410</span>
+                                    <span class="info-box-number"><?= $listDonHang ?></span>
 
                                     <span class="progress-description">
                                         70% Increase in 30 Days
@@ -60,7 +60,7 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Tổng doanh thu</span>
-                                    <span class="info-box-number">41,410</span>
+                                    <span class="info-box-number"><?= formatPrice($tongDoanhThu) ?></span>
 
                                     <span class="progress-description">
                                         70% Increase in 30 Days
@@ -77,7 +77,7 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Sản phẩm</span>
-                                    <span class="info-box-number">41,410</span>
+                                    <span class="info-box-number"><?= $listSanPham ?></span>
 
                                     <span class="progress-description">
                                         70% Increase in 30 Days
@@ -96,7 +96,7 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Bình luận sản phẩm</span>
-                                    <span class="info-box-number">41,410</span>
+                                    <span class="info-box-number"><?= $listBinhLuanSanPham ?></span>
 
                                     <span class="progress-description">
                                         70% Increase in 30 Days
@@ -163,28 +163,8 @@
                                     <h3 class="card-title">Line Chart</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart">
-                                        <div class="chartjs-size-monitor">
-                                            <div class="chartjs-size-monitor-expand">
-                                                <div class=""></div>
-                                            </div>
-                                            <div class="chartjs-size-monitor-shrink">
-                                                <div class=""></div>
-                                            </div>
-                                        </div>
-                                        <canvas
-                                            id="lineChart"
-                                            style="
-                          min-height: 250px;
-                          height: 250px;
-                          max-height: 250px;
-                          max-width: 100%;
-                          display: block;
-                          width: 572px;
-                        "
-                                            width="715"
-                                            height="312"
-                                            class="chartjs-render-monitor"></canvas>
+                                    <div>
+                                        <canvas id="myChart"></canvas>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -200,46 +180,18 @@
                                 <!-- /.card-header -->
                                 <div class="card-body p-0">
                                     <div class="list-group">
-                                        <div class="list-group-item d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <img src="dist/img/user1-128x128.jpg" alt="User Image" class="rounded-circle mr-3" style="width: 50px;">
-                                                <div>
-                                                    <a class="users-list-name font-weight-bold h5 mb-1" href="#">Alexander Pierce</a>
-                                                    <p class="text-muted mb-0">Senior Web Developer</p>
+                                        <?php foreach ($listTaiKhoan as $itemTaiKhoan) : ?>
+                                            <div class="list-group-item d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="<?= $itemTaiKhoan['anh_dai_dien'] ? $itemTaiKhoan['anh_dai_dien'] : BASE_URL . 'Common/assets/image/avt-default.jpg' ?>" alt="User Image" class="rounded-circle mr-3" style="width: 50px;">
+                                                    <div>
+                                                        <a class="users-list-name font-weight-bold h5 mb-1" href="#"><?= $itemTaiKhoan['ho_ten'] ?></a>
+                                                        <p class="text-muted mb-0">Người dùng</p>
+                                                    </div>
                                                 </div>
+                                                <span class="badge badge-success"><?= $itemTaiKhoan['trang_thai'] == 1 ? "Active" : "Block" ?></span>
                                             </div>
-                                            <span class="badge badge-success">Active</span>
-                                        </div>
-                                        <div class="list-group-item d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <img src="dist/img/user8-128x128.jpg" alt="User Image" class="rounded-circle mr-3" style="width: 50px;">
-                                                <div>
-                                                    <a class="users-list-name font-weight-bold h5 mb-1" href="#">Norman</a>
-                                                    <p class="text-muted mb-0">UI/UX Designer</p>
-                                                </div>
-                                            </div>
-                                            <span class="badge badge-warning">Pending</span>
-                                        </div>
-                                        <div class="list-group-item d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <img src="dist/img/user7-128x128.jpg" alt="User Image" class="rounded-circle mr-3" style="width: 50px;">
-                                                <div>
-                                                    <a class="users-list-name font-weight-bold h5 mb-1" href="#">Jane</a>
-                                                    <p class="text-muted mb-0">Project Manager</p>
-                                                </div>
-                                            </div>
-                                            <span class="badge badge-danger">Inactive</span>
-                                        </div>
-                                        <div class="list-group-item d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <img src="dist/img/user7-128x128.jpg" alt="User Image" class="rounded-circle mr-3" style="width: 50px;">
-                                                <div>
-                                                    <a class="users-list-name font-weight-bold h5 mb-1" href="#">Jane</a>
-                                                    <p class="text-muted mb-0">Frontend Developer</p>
-                                                </div>
-                                            </div>
-                                            <span class="badge badge-danger">Inactive</span>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                                 <!--/.card -->
@@ -253,3 +205,40 @@
         </div>
         <!-- /.content-wrapper -->
         <?php include './Views/layout/footer.php' ?>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('myChart');
+
+            // Chuẩn bị dữ liệu từ PHP
+            const labels = [
+                <?php foreach ($listThongKe as $itemThongKe) : ?> "<?= $itemThongKe['ten_danh_muc'] ?>",
+                <?php endforeach; ?>
+            ];
+
+            const dataValues = [
+                <?php foreach ($listThongKe as $itemThongKe) : ?>
+                    <?= $itemThongKe['countSp'] ?>,
+                <?php endforeach; ?>
+            ];
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số lượng sản phẩm',
+                        data: dataValues,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>

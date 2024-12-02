@@ -135,21 +135,25 @@ function sendMail($to, $subject, $content)
     }
 }
 
-function showAlert($type, $message,  $timer = 1500)
+function showAlert()
 {
-    ob_start();
-?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                position: "center",
-                icon: "<?= $type ?>", // success, error, warning, info
-                title: "<?= $message ?>",
-                showConfirmButton: false,
-                timer: <?= $timer ?>
-            });
-        });
-    </script>
-<?php
-    echo ob_get_clean();
+    if (isset($_SESSION['alert'])) {
+        echo "
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+        <script type='text/javascript'>
+            window.onload = function() {
+                Swal.fire({
+                    title: '{$_SESSION['alert']['title']}',
+                    text: '{$_SESSION['alert']['message']}',
+                    icon: '{$_SESSION['alert']['type']}',
+                    showConfirmButton: false,
+                });
+                setTimeout(function() {
+                    window.location.href = '{$_SESSION['alert']['redirect']}';
+                }, 1500);
+            }
+        </script>
+        ";
+        unset($_SESSION['alert']);
+    }
 }

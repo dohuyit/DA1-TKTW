@@ -4,14 +4,16 @@
      <div class="sidebar">
          <!-- Sidebar user panel (optional) -->
          <div class="mt-3 pb-3 mb-3 d-flex">
-             <img src="assets/dist/img/logo.png" alt="Logo" class="img-fluid" />
+             <a href="<?= BASE_URL_ADMIN ?>">
+                 <img src="assets/dist/img/logo.png" alt="Logo" class="img-fluid" />
+             </a>
          </div>
 
          <!-- Sidebar Menu -->
          <nav class="mt-2">
              <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                  <li class="nav-item mb-3">
-                     <a href="#" class="nav-link active">
+                     <a href="<?= BASE_URL_ADMIN ?>" class="nav-link active">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>Dashboard</p>
                      </a>

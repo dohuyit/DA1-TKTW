@@ -15,6 +15,7 @@ require_once './Controllers/ControllersBinhLuan.php';
 
 
 // Require toàn bộ file Models
+require_once './Models/AdminTrangChu.php';
 require_once './Models/AdminDanhMuc.php';
 require_once './Models/AdminSanPham.php';
 require_once './Models/AdminDonHang.php';

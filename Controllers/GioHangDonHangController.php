@@ -66,7 +66,14 @@ class GioHangDonHangController
 
                 $_SESSION['products-cart'] = count($chiTietGioHang);
 
-                header('Location:' . BASE_URL . '?act=gio-hang');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Thêm giỏ hàng thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL . '?act=gio-hang',
+                ];
+                showAlert();
+                exit();
             } else {
                 header('Location:' . BASE_URL . '?act=form-login');
             }
@@ -88,8 +95,6 @@ class GioHangDonHangController
 
                 $gioHang = ['id' => $gioHangId];
                 $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-                // var_dump($chiTietGioHang);
-                // die();
             } else {
                 $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
                 // var_dump($chiTietGioHang);
@@ -128,8 +133,13 @@ class GioHangDonHangController
                 }
 
 
-                // Chuyển hướng về giỏ hàng
-                header('Location:' . BASE_URL . '?act=gio-hang');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Cập nhật giỏ hàng thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL . '?act=gio-hang',
+                ];
+                showAlert();
                 exit();
             } else {
                 header('Location:' . BASE_URL . '?act=form-login');
@@ -384,6 +394,8 @@ class GioHangDonHangController
         $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
         $tai_khoan_id = $user['id'];
         $listDonHang = $this->modelDonHang->getAllDonHang($tai_khoan_id);
+        // var_dump($listDonHang);
+        // die;
         require_once './Views/thongTinDonHang.php';
     }
 

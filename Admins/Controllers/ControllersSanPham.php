@@ -68,8 +68,6 @@ class AdminSanPhamController
             $img_array = $_FILES['img_array'];
 
             $errors = [];
-
-            $errors = [];
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = 'Tên sản phẩm không được để trống';
             }
@@ -120,7 +118,15 @@ class AdminSanPhamController
                         $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh);
                     }
                 }
-                header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
+                // header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
+                // exit();
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Thêm sản phẩm thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=san-pham',
+                ];
+                showAlert();
                 exit();
             } else {
                 $_SESSION['flash'] = true;
@@ -138,7 +144,7 @@ class AdminSanPhamController
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
         if ($sanPham) {
             $this->modelSanPham->destroySanPham($id);
-            deleteFile($sanPham)['hinh_anh'];
+            deleteFile($sanPham['hinh_anh']);
         }
         if ($listAnhSanPham) {
             foreach ($listAnhSanPham as $key => $anhSP) {
@@ -146,7 +152,13 @@ class AdminSanPhamController
                 $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
             }
         }
-        header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
+        $_SESSION['alert'] = [
+            'title' => 'Success',
+            'message' => 'Xóa sản phẩm thành công!',
+            'type' => 'success',
+            'redirect' => BASE_URL_ADMIN . '?act=san-pham',
+        ];
+        showAlert();
         exit();
     }
 
@@ -231,10 +243,16 @@ class AdminSanPhamController
             $_SESSION['errors'] = $errors;
 
 
-            // Nếu k có lỗi thì thêm sản phẩm
+
             if (empty($errors)) {
                 $san_pham_id = $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $new_file);
-                header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Cập nhật sản phẩm thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=san-pham',
+                ];
+                showAlert();
                 exit();
             } else {
                 $_SESSION['flash'] = true;

@@ -8,6 +8,18 @@ class AdminBinhLuan
     {
         $this->conn = connectDB();
     }
+    public function getAllBinhLuan()
+    {
+        try {
+            $sql = "SELECT * FROM binh_luans";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
     public function getBinhLuanFromKhachHang($id)
     {
         try {

@@ -114,6 +114,7 @@
                                         <thead>
                                             <th>Mã đơn hàng</th>
                                             <th>Ngày đặt</th>
+                                            <th>Phương thức thanh toán</th>
                                             <th>Trạng thái</th>
                                             <th>Thao tác</th>
                                         </thead>
@@ -122,6 +123,17 @@
                                                 <tr>
                                                     <td><?= $itemDonHang['ma_don_hang'] ?></td>
                                                     <td><?= $itemDonHang['ngay_dat'] ?></td>
+                                                    <td>
+                                                        <?php if ($itemDonHang['phuong_thuc_thanh_toan_id'] == 1): ?>
+                                                            <span class="payment-method <?= "normal" ?>">
+                                                                Thanh toán COD
+                                                            </span>
+                                                        <?php else: ?>
+                                                            <span class="payment-method <?= "banking" ?>">
+                                                                Thanh Toán banking
+                                                            </span>
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td>
                                                         <?php if ($itemDonHang['ten_trang_thai'] == "Hủy đơn"): ?>
                                                             <span class="status danger"><?= $itemDonHang['ten_trang_thai']  ?></span>

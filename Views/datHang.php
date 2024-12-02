@@ -125,7 +125,7 @@
                                 <div class="main-group">
                                     <h2 class="heading-main-cart">
                                         <span>Giỏ hàng</span>
-                                        <span>(2 sản phẩm)</span>
+                                        <span>(<?= $_SESSION['products-cart'] ?> sản phẩm)</span>
                                     </h2>
                                     <div class="table-products">
                                         <table>

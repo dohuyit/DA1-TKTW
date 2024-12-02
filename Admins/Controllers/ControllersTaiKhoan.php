@@ -265,60 +265,43 @@ class AdminTaiKhoanController
                 // dn thanh cong
                 // Luu thong tin vao session
                 $_SESSION['user_admin'] = $user;
-                header("Location:" . BASE_URL_ADMIN);
+
+
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Đăng nhập thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN,
+                ];
+                showAlert();
                 exit();
             } else {
-                // Lỗi thì lưu lỗi vào session
-                $_SESSION['errors'] = $user;
-                //    var_dump($_SESSION['errors']);die();
 
                 $_SESSION['flash'] = true;
-
-                header("Location:" . BASE_URL_ADMIN . '?act=login-admin');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => $user,
+                    'type' => 'error',
+                    'redirect' => BASE_URL_ADMIN . '?act=login-admin',
+                ];
+                showAlert();
                 exit();
             }
         }
     }
 
-
-    // public function login()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         // lay dl
-    //         $email = $_POST['email'];
-    //         $password = $_POST['password'];
-
-    //         // xử lý kiểm tra thông tin đăng nhập
-    //         $user = $this->modelTaiKhoan->checkLogin($email, $password);
-    //         //    var_dump($user);die();
-
-    //         if ($user == $email) {
-    //             // dn thanh cong
-    //             // Luu thong tin vao session
-    //             $_SESSION['user_admin'] = $user;
-    //             header("Location:" . BASE_URL_ADMIN);
-    //             exit();
-    //         } else {
-    //             // Lỗi thì lưu lỗi vào session
-    //             $_SESSION['errors'] = $user;
-    //             //    var_dump($_SESSION['errors']);die();
-
-    //             $_SESSION['flash'] = true;
-
-    //             header("Location:" . BASE_URL_ADMIN . '?act=login-admin');
-    //             exit();
-    //         }
-    //     }
-    // }
-
-
-
-
     public function logout()
     {
         if (isset($_SESSION['user_admin'])) {
             unset($_SESSION['user_admin']);
-            header('Location:' . BASE_URL_ADMIN . '?act=view-logout');
+            $_SESSION['alert'] = [
+                'title' => 'Success',
+                'message' => 'Đăng xuất tài khoản thành công!',
+                'type' => 'success',
+                'redirect' => BASE_URL_ADMIN . '?act=view-logout',
+            ];
+            showAlert();
+            exit();
         }
     }
 
@@ -384,10 +367,6 @@ class AdminTaiKhoanController
                     header("Location:" . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
                 }
             } else {
-                // Lỗi thì lưu lỗi vào session
-                //    $_SESSION['errors'] = $user;
-                //    var_dump($_SESSION['errors']);die();
-
                 $_SESSION['flash'] = true;
 
                 header("Location:" . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');

@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="profile">
                         <div class="avatar">
-                            <img src="<?= $user['anh_dai_dien'] ?>" alt="">
+                            <img src="<?= $user['anh_dai_dien'] ? $user['anh_dai_dien'] : 'Common/assets/image/avt-default.jpg' ?>" alt="">
                         </div>
                         <div class="content-avatar">
                             <p>Xin chào,</p>
