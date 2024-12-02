@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý danh sách thú cưng</h1>
+          <h1>Sản phẩm <strong><?= $sanPham['ten_san_pham'] ?></strong></h1>
         </div>
       </div><!-- /.container-fluid -->
   </section>
@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="col-12 col-sm-6">
-            <h3 class="my-3">Tên sản phẩm: <?= $sanPham['ten_san_pham'] ?></h3>
+            <h3 class="my-3">Tên sản phẩm: $sanPham['hinh_anh']</h3>
             <hr>
             <h4 class="mt-3">Giá tiền: <?= $sanPham['gia_san_pham'] ?></h4>
             <h4 class="mt-3">Giá khuyến mãi: <?= $sanPham['gia_khuyen_mai'] ?></h4>
@@ -73,7 +73,6 @@
                         <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div>
                       </div>
                     </div>
-
                   </div>
 
                   <div>

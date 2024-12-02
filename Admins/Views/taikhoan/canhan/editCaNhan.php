@@ -26,17 +26,17 @@
         <!-- left column -->
         <div class="col-md-4">
           <div class="text-center">
-            <form action="<?= BASE_URL_ADMIN . '?act=sua-anh-tai-khoan' ?>" method="POST" enctype="multipart/form-data">
-              <?php if (isset($_SESSION['successAnh'])) { ?>
-                <div class="alert alert-info alert-dismissable">
-                  <a href="" class="panel-close close" data-dismiss="alert"></a>
-                  <i class="fa fa-coffee"></i>
-                  <?= $_SESSION['successAnh'] ?>
-                </div>
-              <?php } ?>
+            <form action="<?= BASE_URL_ADMIN . '?act=sua-anh-tai-khoan' ?>" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center align-items-center flex-column">
               <input type="text" name="tai_khoan_id" id="" value="<?= $thongTin['id'] ?>" hidden>
+              <div class=" bg bg-light d-flex justify-content-center align-items-center shadow" style="border-radius: 50%; width: 170px; height: 170px;">
+                <img src=".<?= $thongTin['anh_dai_dien'] ?>"
+                  width="150"
+                  height="150"
+                  class="avatar img-circle"
+                  alt="avatar"
+                  style="border-radius: 50%;">
+              </div>
 
-              <img src=".<?= $thongTin['anh_dai_dien'] ?>" style="width:100px" class="avatar img-circle" alt="avatar">
               <input type="file" name="anh_dai_dien">
 
               <div class="form-group">
@@ -55,13 +55,6 @@
 
         <div class="col-md-8 personal-info">
           <form action="<?= BASE_URL_ADMIN . '?act=sua-thong-tin-ca-nhan-quan-tri' ?>" method="POST">
-            <?php if (isset($_SESSION['successTt'])) { ?>
-              <div class="alert alert-info alert-dismissable">
-                <a href="" class="panel-close close" data-dismiss="alert"></a>
-                <i class="fa fa-coffee"></i>
-                <?= $_SESSION['successTt'] ?>
-              </div>
-            <?php } ?>
             <input type="text" name="tai_khoan_id" id="" value="<?= $thongTin['id'] ?>" hidden>
 
 

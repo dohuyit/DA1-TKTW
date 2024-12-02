@@ -69,6 +69,12 @@ match ($act) {
     // route reset password tài khoản
     'reset-pass' => (new AdminTaiKhoanController)->resetPassword(),
 
+    // route quản lý tài khoản cá nhân (quản trị)
+    'form-sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->formEditCaNhanQuanTri(),
+    'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->postEditCaNhanQuanTri(),
+    'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->postEditMatKhauCaNhan(),
+    'sua-anh-tai-khoan' => (new AdminTaiKhoanController)->suaAnhTaiKhoanAdmin(),
+
     // Quản lý tài khoản khách hàng
     'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController)->danhSachKhachHang(),
     'form-sua-khach-hang' => (new AdminTaiKhoanController)->formEditKhachHang(),
@@ -82,7 +88,7 @@ match ($act) {
 
     'logout-admin' => (new AdminTaiKhoanController)->logout(),
 
-    //      // route bình luậnupdateTrangThaiBinhLuan
+    // route bình luận
     'update-trang-thai-binh-luan' => (new AdminBinhLuanController())->updateTrangThaiBinhLuan(),
     'xoa-binh-luan' => (new AdminBinhLuanController())->xoaBinhLuan(),
     'xoa-binh-luan-khach-hang' => (new AdminBinhLuanController())->xoaBinhLuanKhachHang(),

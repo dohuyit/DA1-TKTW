@@ -66,7 +66,7 @@
                       <td><?= $quanTri['ho_ten'] ?></td>
                       <td><?= $quanTri['email'] ?></td>
                       <td><?= $quanTri['so_dien_thoai'] ?></td>
-                      <td><?= $quanTri['trang_thai'] == 1 ? 'Active' : 'Inactive' ?></td>
+                      <td><?= $quanTri['trang_thai'] == 1 ? '<span class="btn btn-outline-info rounded">Hoạt động</span>' : '<span class="btn btn-outline-danger rounded">Khóa</span>' ?></td>
 
                       <td>
                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-quan-tri&id_quan_tri=' . $quanTri['id'] ?>"> <button class="btn btn-warning">Sửa</button></a>

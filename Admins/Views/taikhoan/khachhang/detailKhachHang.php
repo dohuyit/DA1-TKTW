@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6">
-                    <img src="../<?= $khachHang['anh_dai_dien'] ?>" alt="" style="width: 70%;">
+                    <img src="../<?= $khachHang['anh_dai_dien'] ?>" alt="" width="70%">
                 </div>
 
 
@@ -127,7 +127,7 @@
                 </div>
 
 
-                <!-- <div class="col-12">
+                <div class="col-12">
                     <hr>
                     <h2>Lịch sử bình luận</h2>
                     <div class="card-body">
@@ -157,7 +157,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
+                                    <?php foreach ($listBinhLuan as $key => $binhLuan) : ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
                                             <td><a target="_blank" href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $binhLuan['san_pham_id'] ?>"><?= $binhLuan['ten_san_pham'] ?></a></td>
@@ -184,12 +184,12 @@
 
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->

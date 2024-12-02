@@ -217,7 +217,16 @@ class AdminTaiKhoanController
                 //  var_dump($san_pham_id);die;
 
                 //  var_dump($a); die();
-                header("Location: " . BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang');
+                // header("Location: " . BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang');
+                // exit();
+
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Sửa thông tin thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang',
+                ];
+                showAlert();
                 exit();
             } else {
                 // trả lỗi
@@ -238,7 +247,7 @@ class AdminTaiKhoanController
 
         $listDonHang = $this->modelDonHang->getDonHangFromKhachHang($id_khach_hang);
 
-        // $listBinhLuan = $this->modelSanPham->getBinhLuanFromKhachHang($id_khach_hang);
+        $listBinhLuan = $this->modelSanPham->getBinhLuanFromKhachHang($id_khach_hang);
         require_once './Views/taikhoan/khachhang/detailKhachHang.php';
     }
 
@@ -313,7 +322,9 @@ class AdminTaiKhoanController
     public function formEditCaNhanQuanTri()
     {
         $email = $_SESSION['user_admin'];
-        $thongTin = $this->modelTaiKhoan->getTaiKhoanformEmail($email);
+        // var_dump($email[0]);
+        // die;
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanformEmail($email[0]);
 
         require_once './Views/taikhoan/canhan/editCaNhan.php';
         deleteSessionErrors();
@@ -330,11 +341,13 @@ class AdminTaiKhoanController
 
 
             // Lấy thông tin user từ sesion
-            $user  = $this->modelTaiKhoan->getTaiKhoanformEmail($_SESSION['user_admin']);
-
+            $user  = $this->modelTaiKhoan->getTaiKhoanformEmail($_SESSION['user_admin'][0]);
+            // var_dump($user);
+            // die;
             $checkPass = password_verify($old_pass, $user['mat_khau']);
 
-            //var_dump('ok');die();
+            // var_dump($checkPass);
+            // die();
             $errors = [];
             if (!$checkPass) {
                 $errors['old_pass'] = 'Mật khẩu cũ không đúng';
@@ -361,10 +374,14 @@ class AdminTaiKhoanController
                 $hashPass = password_hash($new_pass, PASSWORD_BCRYPT);
                 $status = $this->modelTaiKhoan->resetPassword($user['id'], $hashPass);
                 if ($status) {
-                    $_SESSION['success'] = "Đã đổi mật khẩu thành công";
-                    $_SESSION['flash'] = true;
-
-                    header("Location:" . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                    $_SESSION['alert'] = [
+                        'title' => 'Success',
+                        'message' => 'Đổi mật khẩu thành công!',
+                        'type' => 'success',
+                        'redirect' => BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri',
+                    ];
+                    showAlert();
+                    exit();
                 }
             } else {
                 $_SESSION['flash'] = true;
@@ -378,9 +395,6 @@ class AdminTaiKhoanController
 
     public function postEditCaNhanQuanTri()
     {
-        // xử lý form nhập
-        //var_dump($_POST);
-
         // Kiểm tra xem dữ dữ liệu có phải đc submit lên không
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Lấy ra dl
@@ -415,11 +429,13 @@ class AdminTaiKhoanController
             if (empty($errors)) {
                 $status = $this->modelTaiKhoan->updateTaiKhoanCaNhan($tai_khoan_id, $ho_ten, $email, $so_dien_thoai, $dia_chi);
 
-                if ($status) {
-                    $_SESSION['thongtin'] = "Đã đổi thông tin thành công";
-                    $_SESSION['flash'] = true;
-                }
-                header("Location: " . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Cập nhật thông tin thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri',
+                ];
+                showAlert();
                 exit();
             } else {
                 // trả lỗi
@@ -451,7 +467,7 @@ class AdminTaiKhoanController
             // Logic sửa ảnh
             if (isset($anh_dai_dien)) {
                 // upload file ảnh mới lên
-                $new_file = uploadFile($anh_dai_dien, './uploads');
+                $new_file = uploadFile($anh_dai_dien, './uploads/');
                 if (!empty($old_file)) { // Nếu có ảnh cũ thì xóa đi
                     deleteFile($old_file);
                 }
@@ -464,11 +480,13 @@ class AdminTaiKhoanController
                 $status = $this->modelTaiKhoan->updateAnhDaiDienAdmin($tai_khoan_id, $new_file);
                 //  var_dump($status);die();
 
-                if ($status) {
-                    $_SESSION['successAnh'] = "Đã đổi thông tin thành công";
-                    $_SESSION['flash'] = true;
-                }
-                header("Location: " . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Sửa ảnh thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri',
+                ];
+                showAlert();
                 exit();
             } else {
                 // trả lỗi

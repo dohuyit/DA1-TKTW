@@ -73,7 +73,16 @@ class AdminDanhMucController
             // Nếu k có lỗi thì sửa danh mục
             if (empty($errors)) {
                 $this->modelDanhMuc->update_danhmuc($id, $ten_danh_muc, $mo_ta);
-                header("Location: " . BASE_URL_ADMIN . '?act=danh-muc');
+                // header("Location: " . BASE_URL_ADMIN . '?act=danh-muc');
+                // exit();
+
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Cập nhật danh mục thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=danh-muc',
+                ];
+                showAlert();
                 exit();
             } else {
                 // trả lỗi
@@ -90,7 +99,14 @@ class AdminDanhMucController
         if ($danhMuc) {
             $this->modelDanhMuc->delete_danhmuc($id);
         }
-        header("Location: " . BASE_URL_ADMIN . '?act=danh-muc');
+
+        $_SESSION['alert'] = [
+            'title' => 'Success',
+            'message' => 'Xóa danh mục thành công!',
+            'type' => 'success',
+            'redirect' => BASE_URL_ADMIN . '?act=danh-muc',
+        ];
+        showAlert();
         exit();
     }
 }

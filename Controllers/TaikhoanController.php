@@ -71,18 +71,15 @@ class TaikhoanController
                 showAlert();
                 exit();
             } else {
-                // $_SESSION['thongBao'] = $result;
                 $_SESSION['flash'] = true;
                 $_SESSION['alert'] = [
-                    'title' => 'Success',
+                    'title' => 'Lỗi',
                     'message' => $result,
                     'type' => 'error',
                     'redirect' =>  BASE_URL . '?act=form-login',
                 ];
                 showAlert();
                 exit();
-                // header("Location:" . BASE_URL . '?act=form-login');
-                // exit();
             }
         }
     }
@@ -92,17 +89,13 @@ class TaikhoanController
         if (isset($_SESSION['user_client'])) {
             unset($_SESSION['user_client']);
             unset($_SESSION['products-cart']);
-            // $_SESSION['thongBao'] = "Đăng xuất thành công";
-            // header('Location:' . BASE_URL);
+
             $_SESSION['alert'] = [
                 'title' => 'Success',
                 'message' => 'Đăng xuất thành công!',
                 'type' => 'success',
                 'redirect' => BASE_URL,
             ];
-            // var_dump($_SESSION['alert']);
-            // die;
-
             showAlert();
             exit();
         }
@@ -124,8 +117,13 @@ class TaikhoanController
             $mat_khau = $_POST['mat_khau'] ?? '';
             $chuc_vu = 2;
 
-            // Tạo 1 mảng trống để chứa dl
+            $checkEmailExist = $this->modelTaiKhoan->checkEmailExists($email);
+            // var_dump($checkEmailExist);
+            // die;
             $errors = [];
+            if ($checkEmailExist) {
+                $errors['email'] = 'Email đã tồn tại';
+            }
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = 'Họ tên không được để trống';
             }
@@ -137,13 +135,12 @@ class TaikhoanController
             }
             $_SESSION['errors'] = $errors;
 
+
+
             if (empty($errors)) {
                 $tai_khoan = $this->modelTaiKhoan->insertTaiKhoan($ho_ten, $email, $mat_khau, $chuc_vu);
                 // var_dump($tai_khoan);
                 // die();
-                // $_SESSION['thongBao'] = 'Đăng kí tài khoản thành công';
-                // header("Location: " . BASE_URL . '?act=form-login');
-                // exit();
                 $_SESSION['alert'] = [
                     'title' => 'Success',
                     'message' => 'Đăng kí tài khoản thành công',

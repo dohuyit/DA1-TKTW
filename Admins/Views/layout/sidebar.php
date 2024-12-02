@@ -36,7 +36,7 @@
                          <li class="nav-item">
                              <a href="<?= BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang' ?>" class="nav-link">
                                  <i class="fas fa-minus"></i>
-                                 <p class="m-3">Tài khoản khách hàng</p>
+                                 <p>Tài khoản khách hàng</p>
                              </a>
                          </li>
                      </ul>

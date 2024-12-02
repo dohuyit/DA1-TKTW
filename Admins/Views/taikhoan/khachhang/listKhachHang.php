@@ -56,7 +56,7 @@
                           </td>
                           <td><?= $khachHang['email'] ?></td>
                           <td><?= $khachHang['so_dien_thoai'] ?></td>
-                          <td><?= $khachHang['trang_thai'] == 1 ? 'Active' : 'Inactive' ?></td>
+                          <td><?= $khachHang['trang_thai'] == 1 ? '<span class="btn btn-outline-info rounded">Hoạt động</span>' : '<span class="btn btn-outline-danger rounded">Khóa</span>' ?></td>
 
                           <td>
                             <div class="btn-group">

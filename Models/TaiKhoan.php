@@ -25,9 +25,9 @@ class TaiKhoan
                         return [
                             'email' => $user['email'],
                             'id' => $user['id']
-                        ]; // trả về email và id
+                        ];
                     } else {
-                        return "Tài khoản bị cấm";
+                        return "Tài khoản bị cấm, vui lòng liên hệ quản trị viên";
                     }
                 }
             } elseif ($user && password_verify($mat_khau, $user['mat_khau'])) {
@@ -78,6 +78,20 @@ class TaiKhoan
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
+    public function checkEmailExists($email)
+    {
+        try {
+            $sql = "SELECT COUNT(*) FROM tai_khoans WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':email' => $email]);
+            return  $stmt->fetchColumn();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return false;
+        }
+    }
+
 
     public function InforTaiKhoan($id)
     {
