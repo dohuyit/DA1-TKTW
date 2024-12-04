@@ -31,7 +31,13 @@ class AdminDanhMucController
 
             if (empty($errors)) {
                 $this->modelDanhMuc->insert_danhmuc($ten_danh_muc, $mo_ta);
-                header("Location: " . BASE_URL_ADMIN . '?act=danh-muc');
+                $_SESSION['alert'] = [
+                    'title' => 'Success',
+                    'message' => 'Thêm danh mục thành công!',
+                    'type' => 'success',
+                    'redirect' => BASE_URL_ADMIN . '?act=danh-muc',
+                ];
+                showAlert();
                 exit();
             } else {
                 require_once './views/danhmuc/addDanhMuc.php';
@@ -96,9 +102,30 @@ class AdminDanhMucController
     {
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
-        if ($danhMuc) {
-            $this->modelDanhMuc->delete_danhmuc($id);
+
+        if (!$danhMuc) {
+            $_SESSION['alert'] = [
+                'title' => 'Error',
+                'message' => 'Danh mục không tồn tại!',
+                'type' => 'error',
+                'redirect' => BASE_URL_ADMIN . '?act=danh-muc',
+            ];
+            showAlert();
+            exit();
         }
+
+        if ($this->modelDanhMuc->hasProducts($id)) {
+            $_SESSION['alert'] = [
+                'title' => 'Error',
+                'message' => 'Không thể xóa danh mục này vì có sản phẩm liên kết!',
+                'type' => 'error',
+                'redirect' => BASE_URL_ADMIN . '?act=danh-muc',
+            ];
+            showAlert();
+            exit();
+        }
+
+        $this->modelDanhMuc->delete_danhmuc($id);
 
         $_SESSION['alert'] = [
             'title' => 'Success',

@@ -84,4 +84,17 @@ class AdminDanhMuc
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
+    public function hasProducts($id)
+    {
+        $query = "SELECT COUNT(*) AS product_count FROM danh_mucs WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(
+            [
+                ':id' => $id
+            ]
+        );
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['product_count'] > 0;
+    }
 }

@@ -80,6 +80,7 @@ class GioHangDonHangController
         }
     }
 
+    // hiển thị giỏ hàng
     public function gioHang()
     {
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
@@ -274,7 +275,6 @@ class GioHangDonHangController
 
             if ($phuong_thuc_thanh_toan_id == 2) {
 
-                // Thêm đơn hàng với trạng thái "đang chờ thanh toán"
                 $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
 
                 $this->modelGioHang->clearCart($user['id']);
@@ -291,7 +291,7 @@ class GioHangDonHangController
             }
 
 
-            // Thêm đơn hàng vào database
+
             $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
 
             if ($donHangId) {
@@ -337,7 +337,6 @@ class GioHangDonHangController
 
                 // Thông báo đặt hàng thành công và chuyển hướng
                 $_SESSION['flash'] = true;
-                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
                 header('Location:' . BASE_URL . '?act=da-dat-hang');
                 exit();
             }
@@ -378,7 +377,6 @@ class GioHangDonHangController
     public function daDatHang()
     {
         if (isset($_GET['vnp_TxnRef']) && isset($_GET['vnp_TransactionNo']) && isset($_GET['vnp_ResponseCode'])) {
-            // Gọi hàm xử lý thanh toán
             $this->xuLyThanhToanVNPAY();
         } else {
 
@@ -433,7 +431,6 @@ class GioHangDonHangController
             // die;
             $donHangId = $_GET['id'];
 
-            // kiểm tra có đơn hàng hay khong
             $donHang = $this->modelDonHang->getAllDonHang($tai_khoan_id = null, $donHangId);
 
             // var_dump($donHang);

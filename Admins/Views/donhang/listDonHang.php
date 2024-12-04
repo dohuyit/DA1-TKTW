@@ -56,8 +56,17 @@
                           <td><?= $donHang['ten_nguoi_nhan'] ?></td>
                           <td><?= $donHang['sdt_nguoi_nhan'] ?></td>
                           <td><?= $donHang['ngay_dat'] ?></td>
-                          <td><?= $donHang['tong_tien'] ?></td>
-                          <td><?= $donHang['ten_trang_thai'] ?></td>
+                          <td><?= formatPrice($donHang['tong_tien']) ?></td>
+                          <td>
+                            <?php if ($donHang['ten_trang_thai'] == "Hủy đơn") : ?>
+                              <span class="badge badge-danger rounded"><?= $donHang['ten_trang_thai'] ?></span>
+                            <?php elseif ($donHang['ten_trang_thai'] == "Thành công") : ?>
+                              <span class="badge badge-success rounded"><?= $donHang['ten_trang_thai'] ?></span>
+                            <?php else : ?>
+                              <span class="badge badge-primary rounded"><?= $donHang['ten_trang_thai'] ?></span>
+                            <?php endif; ?>
+                          </td>
+
 
                           <td>
                             <div class="btn-group">
